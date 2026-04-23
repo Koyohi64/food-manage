@@ -1,0 +1,568 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>AI Recipe Proposal - Culinary Editorial</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-tertiary-fixed": "#410003",
+                            "surface-container-low": "#f3f4f3",
+                            "surface-container-highest": "#e1e3e2",
+                            outline: "#707a6c",
+                            "on-secondary": "#ffffff",
+                            primary: "#0d631b",
+                            "primary-container": "#2e7d32",
+                            "secondary-container": "#fc820c",
+                            "tertiary-container": "#d02d2d",
+                            "tertiary-fixed-dim": "#ffb3ac",
+                            "surface-tint": "#1b6d24",
+                            "surface-variant": "#e1e3e2",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-dim": "#d9dad9",
+                            "on-secondary-fixed": "#311300",
+                            "secondary-fixed": "#ffdcc6",
+                            "on-primary": "#ffffff",
+                            "on-primary-fixed-variant": "#005312",
+                            "tertiary-fixed": "#ffdad6",
+                            "error-container": "#ffdad6",
+                            "on-tertiary-container": "#ffedeb",
+                            "inverse-primary": "#88d982",
+                            "on-surface": "#191c1c",
+                            "on-error-container": "#93000a",
+                            "on-error": "#ffffff",
+                            "on-tertiary-fixed-variant": "#930010",
+                            surface: "#f9f9f8",
+                            "on-primary-container": "#cbffc2",
+                            "inverse-on-surface": "#f0f1f0",
+                            "on-tertiary": "#ffffff",
+                            "on-secondary-fixed-variant": "#723600",
+                            "inverse-surface": "#2e3131",
+                            "on-secondary-container": "#5e2c00",
+                            "primary-fixed-dim": "#88d982",
+                            "on-primary-fixed": "#002204",
+                            "primary-fixed": "#a3f69c",
+                            "surface-container-high": "#e7e8e7",
+                            "outline-variant": "#bfcaba",
+                            "secondary-fixed-dim": "#ffb786",
+                            "on-surface-variant": "#40493d",
+                            "surface-container": "#edeeed",
+                            tertiary: "#ac0c18",
+                            background: "#f9f9f8",
+                            secondary: "#964900",
+                            error: "#ba1a1a",
+                            "surface-bright": "#f9f9f8",
+                            "on-background": "#191c1c",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans"],
+                            body: ["Be Vietnam Pro"],
+                            label: ["Be Vietnam Pro"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .editorial-shadow {
+                box-shadow: 0 32px 32px -4px rgba(25, 28, 28, 0.06);
+            }
+            .glass-panel {
+                background-color: rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(24px);
+            }
+        </style>
+    </head>
+    <body class="bg-surface font-body text-on-surface antialiased">
+        <!-- TopAppBar -->
+        <header
+            class="fixed top-0 right-0 left-64 z-40 flex items-center justify-between px-8 bg-stone-50/80 dark:bg-stone-900/80 backdrop-blur-md w-full h-16 font-plus-jakarta-sans font-medium"
+        >
+            <div
+                class="hidden md:block text-xl font-bold text-green-900 dark:text-white"
+            >
+                The Culinary Editorial
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="relative group">
+                    <span
+                        class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer"
+                        >search</span
+                    >
+                </div>
+                <span
+                    class="material-symbols-outlined text-stone-500 hover:opacity-80 transition-opacity cursor-pointer"
+                    >notifications</span
+                >
+                <span
+                    class="material-symbols-outlined text-stone-500 hover:opacity-80 transition-opacity cursor-pointer"
+                    >settings</span
+                >
+            </div>
+        </header>
+        <!-- SideNavBar -->
+        <aside
+            class="fixed left-0 top-0 h-full flex flex-col py-8 px-4 bg-stone-50 dark:bg-stone-900 h-screen w-64 border-r-0 font-plus-jakarta-sans antialiased text-stone-900 dark:text-stone-100 z-50"
+        >
+            <div class="mb-10 px-4">
+                <h1
+                    class="text-2xl font-bold tracking-tight text-green-900 dark:text-green-100"
+                >
+                    Culinary Editorial
+                </h1>
+                <p class="text-xs text-on-surface-variant opacity-70">
+                    The Living Pantry
+                </p>
+            </div>
+            <nav class="flex-1 space-y-2">
+                <a
+                    class="flex items-center gap-4 py-3 text-stone-500 dark:text-stone-400 pl-5 hover:text-stone-800 dark:hover:text-stone-200 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition-colors duration-200 rounded-xl"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="font-medium">Home</span>
+                </a>
+                <a
+                    class="flex items-center gap-4 py-3 text-green-800 dark:text-green-400 font-bold border-l-4 border-green-800 dark:border-green-400 pl-4 bg-stone-100 dark:bg-stone-800/50 rounded-r-xl scale-[0.99] transition-transform"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="font-medium">Inventory</span>
+                </a>
+                <a
+                    class="flex items-center gap-4 py-3 text-stone-500 dark:text-stone-400 pl-5 hover:text-stone-800 dark:hover:text-stone-200 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition-colors duration-200 rounded-xl"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">history</span>
+                    <span class="font-medium">History</span>
+                </a>
+                <a
+                    class="flex items-center gap-4 py-3 text-stone-500 dark:text-stone-400 pl-5 hover:text-stone-800 dark:hover:text-stone-200 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition-colors duration-200 rounded-xl"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">person</span>
+                    <span class="font-medium">Profile</span>
+                </a>
+            </nav>
+            <div class="mt-auto px-4">
+                <button
+                    class="w-full bg-primary text-on-primary py-4 rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-primary/10 hover:brightness-110 transition-all"
+                >
+                    Add Ingredient
+                </button>
+            </div>
+        </aside>
+        <!-- Main Canvas -->
+        <main class="ml-64 pt-24 pb-32 px-12 max-w-7xl mx-auto">
+            <!-- Recipe Header Section -->
+            <div
+                class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16"
+            >
+                <div class="lg:col-span-7">
+                    <div
+                        class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full text-xs font-bold uppercase tracking-widest"
+                    >
+                        <span
+                            class="material-symbols-outlined text-sm"
+                            style="font-variation-settings: &quot;FILL&quot; 1"
+                            >auto_awesome</span
+                        >
+                        AI Proposal
+                    </div>
+                    <h2
+                        class="text-5xl font-extrabold font-headline text-on-surface tracking-tight leading-[1.1] mb-6"
+                    >
+                        Spicy Vegetable
+                        <span class="text-primary italic">Stir-fry</span>
+                    </h2>
+                    <p
+                        class="text-lg text-on-surface-variant leading-relaxed max-w-xl"
+                    >
+                        A vibrant, nutrient-dense stir-fry featuring a balanced
+                        heat from Thai chilies and the crisp texture of
+                        farm-fresh seasonal vegetables. Perfectly portioned for
+                        your current inventory.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <div
+                            class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-sm"
+                        >
+                            <span class="material-symbols-outlined text-primary"
+                                >schedule</span
+                            >
+                            <span class="font-medium">15 Minutes</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-sm"
+                        >
+                            <span class="material-symbols-outlined text-primary"
+                                >restaurant</span
+                            >
+                            <span class="font-medium">Medium Effort</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-sm"
+                        >
+                            <span class="material-symbols-outlined text-primary"
+                                >local_fire_department</span
+                            >
+                            <span class="font-medium">420 kcal</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5">
+                    <div
+                        class="aspect-square rounded-[2rem] overflow-hidden bg-surface-container-high relative editorial-shadow"
+                    >
+                        <img
+                            alt="Spicy vegetable stir fry"
+                            class="w-full h-full object-cover"
+                            data-alt="Gourmet spicy vegetable stir fry in a dark ceramic bowl with steam rising, vibrant greens and red peppers, soft overhead lighting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBigMcAg9nUsuSWAXjk9J5A7gAXfqKiL2eGbc1O8tiovnDtiFPs6pRhkE235he-9pLoAiRsADqu9YGQ6lD70TN45yvk-wzzrkiRkB7MjDawxWRDsjlflN-kOhFtangvJvh54QAwDl6OgxCMgsgHiX7rlcD9N-pAjKFiVUF6gHheougyJ3GSweqcHG-J5E80R3JW5RwquG9ISn_QKnddTzPGvAOCqGPJKFoZoBDvWyZFF77FZjc1eVmZmwZGdaD3qIMaeXAA3oG4W6Ba"
+                        />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                        ></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Recipe Details Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Ingredients List -->
+                <div class="lg:col-span-4">
+                    <h3
+                        class="text-xl font-bold font-headline mb-8 border-l-4 border-secondary-container pl-4"
+                    >
+                        Ingredients Used
+                    </h3>
+                    <div class="space-y-3">
+                        <!-- Existing Items -->
+                        <div
+                            class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl group transition-all hover:bg-surface-bright"
+                        >
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-sm"
+                                        style="
+                                            font-variation-settings: &quot;FILL&quot;
+                                                1;
+                                        "
+                                        >check_circle</span
+                                    >
+                                </div>
+                                <span class="font-medium"
+                                    >Broccoli Florets</span
+                                >
+                            </div>
+                            <span
+                                class="text-xs text-on-surface-variant font-medium"
+                                >200g</span
+                            >
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl group transition-all hover:bg-surface-bright"
+                        >
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-sm"
+                                        style="
+                                            font-variation-settings: &quot;FILL&quot;
+                                                1;
+                                        "
+                                        >check_circle</span
+                                    >
+                                </div>
+                                <span class="font-medium"
+                                    >Bell Peppers (Red)</span
+                                >
+                            </div>
+                            <span
+                                class="text-xs text-on-surface-variant font-medium"
+                                >1 Unit</span
+                            >
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl group transition-all hover:bg-surface-bright"
+                        >
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-sm"
+                                        style="
+                                            font-variation-settings: &quot;FILL&quot;
+                                                1;
+                                        "
+                                        >check_circle</span
+                                    >
+                                </div>
+                                <span class="font-medium">Soy Sauce</span>
+                            </div>
+                            <span
+                                class="text-xs text-on-surface-variant font-medium"
+                                >2 Tbsp</span
+                            >
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl group transition-all hover:bg-surface-bright"
+                        >
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-sm"
+                                        style="
+                                            font-variation-settings: &quot;FILL&quot;
+                                                1;
+                                        "
+                                        >check_circle</span
+                                    >
+                                </div>
+                                <span class="font-medium">Firm Tofu</span>
+                            </div>
+                            <span
+                                class="text-xs text-on-surface-variant font-medium"
+                                >150g</span
+                            >
+                        </div>
+                        <!-- Missing/Warning Item -->
+                        <div
+                            class="flex items-center justify-between p-4 bg-tertiary-container/5 rounded-xl border border-tertiary-container/10"
+                        >
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-sm"
+                                        >error</span
+                                    >
+                                </div>
+                                <span class="font-medium text-on-surface"
+                                    >Sesame Oil</span
+                                >
+                            </div>
+                            <span class="text-xs text-tertiary font-bold"
+                                >MISSING</span
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="mt-12 p-6 rounded-3xl bg-secondary-fixed/30 border border-secondary-fixed"
+                    >
+                        <p
+                            class="text-sm font-semibold text-on-secondary-fixed mb-4"
+                        >
+                            Pro Tip
+                        </p>
+                        <p
+                            class="text-sm text-on-secondary-fixed leading-relaxed"
+                        >
+                            Add a pinch of toasted sesame seeds at the very end
+                            to mimic the missing oil's nutty profile.
+                        </p>
+                    </div>
+                </div>
+                <!-- Cooking Instructions -->
+                <div class="lg:col-span-8">
+                    <h3
+                        class="text-xl font-bold font-headline mb-8 border-l-4 border-primary pl-4"
+                    >
+                        Step-by-Step
+                    </h3>
+                    <div class="space-y-12 relative">
+                        <!-- Visual Connection Line -->
+                        <div
+                            class="absolute left-[1.125rem] top-4 bottom-4 w-px bg-surface-container-highest"
+                        ></div>
+                        <div class="flex gap-8 group">
+                            <div
+                                class="relative z-10 flex-shrink-0 w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface transition-all group-hover:bg-primary group-hover:text-on-primary"
+                            >
+                                1
+                            </div>
+                            <div class="pt-1">
+                                <h4 class="text-lg font-bold mb-2">
+                                    Prep &amp; Sear Tofu
+                                </h4>
+                                <p
+                                    class="text-on-surface-variant leading-relaxed"
+                                >
+                                    Pat the firm tofu dry and cut into 1-inch
+                                    cubes. Heat a large skillet with a drizzle
+                                    of cooking oil and sear the tofu until
+                                    golden brown on all sides. Set aside.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-8 group">
+                            <div
+                                class="relative z-10 flex-shrink-0 w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface transition-all group-hover:bg-primary group-hover:text-on-primary"
+                            >
+                                2
+                            </div>
+                            <div class="pt-1">
+                                <h4 class="text-lg font-bold mb-2">
+                                    The Aromatics
+                                </h4>
+                                <p
+                                    class="text-on-surface-variant leading-relaxed"
+                                >
+                                    In the same pan, add minced ginger and
+                                    garlic. Sauté for 30 seconds until fragrant,
+                                    then toss in the broccoli and sliced bell
+                                    peppers. Keep the heat high for a proper
+                                    char.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-8 group">
+                            <div
+                                class="relative z-10 flex-shrink-0 w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface transition-all group-hover:bg-primary group-hover:text-on-primary"
+                            >
+                                3
+                            </div>
+                            <div class="pt-1">
+                                <h4 class="text-lg font-bold mb-2">
+                                    Glaze &amp; Finish
+                                </h4>
+                                <p
+                                    class="text-on-surface-variant leading-relaxed"
+                                >
+                                    Pour in the soy sauce and a splash of water
+                                    to create a light steam. Toss the tofu back
+                                    in and mix thoroughly until the sauce
+                                    thickens and coats the vegetables.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-16 flex items-center justify-between p-8 bg-surface-container rounded-[2rem]"
+                    >
+                        <div class="flex items-center gap-6">
+                            <button
+                                class="flex flex-col items-center gap-1 group"
+                            >
+                                <div
+                                    class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface-variant group-hover:bg-primary group-hover:text-on-primary transition-all"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >refresh</span
+                                    >
+                                </div>
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider opacity-60"
+                                    >Regenerate</span
+                                >
+                            </button>
+                            <button
+                                class="flex flex-col items-center gap-1 group"
+                            >
+                                <div
+                                    class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface-variant group-hover:bg-primary group-hover:text-on-primary transition-all"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >bolt</span
+                                    >
+                                </div>
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider opacity-60"
+                                    >Make Faster</span
+                                >
+                            </button>
+                            <button
+                                class="flex flex-col items-center gap-1 group"
+                            >
+                                <div
+                                    class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface-variant group-hover:bg-primary group-hover:text-on-primary transition-all"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >add_circle</span
+                                    >
+                                </div>
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider opacity-60"
+                                    >Add Condition</span
+                                >
+                            </button>
+                        </div>
+                        <button
+                            class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-10 py-5 rounded-full font-bold text-lg flex items-center gap-3 editorial-shadow active:scale-95 transition-all"
+                        >
+                            <span>Cooked it! (Update Inventory)</span>
+                            <span class="material-symbols-outlined"
+                                >task_alt</span
+                            >
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- BottomNavBar (Zubora Report) -->
+        <footer
+            class="fixed bottom-0 right-0 left-64 z-50 flex justify-center pb-4"
+        >
+            <div
+                class="max-w-2xl mx-auto rounded-full mb-6 border border-stone-200/20 bg-white/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-2xl shadow-stone-200/50 dark:shadow-black/50 flex items-center px-6 py-2 gap-4"
+            >
+                <button
+                    class="flex items-center gap-3 bg-green-800 text-white rounded-full px-6 py-2 font-be-vietnam-pro text-sm tracking-wide hover:scale-105 transition-transform duration-300 active:scale-95 duration-150"
+                >
+                    <span class="material-symbols-outlined">mic</span>
+                    <span>Zubora Report</span>
+                </button>
+                <div class="w-px h-6 bg-stone-200/30"></div>
+                <button
+                    class="text-stone-600 dark:text-stone-300 hover:scale-105 transition-transform duration-300 px-3"
+                >
+                    <span class="material-symbols-outlined">camera</span>
+                </button>
+                <button
+                    class="text-stone-600 dark:text-stone-300 hover:scale-105 transition-transform duration-300 px-3"
+                >
+                    <span class="material-symbols-outlined">history</span>
+                </button>
+            </div>
+        </footer>
+    </body>
+</html>

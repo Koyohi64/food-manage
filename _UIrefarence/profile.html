@@ -1,0 +1,697 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Profile - The Culinary Editorial</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-tertiary-fixed": "#410003",
+                            "tertiary-container": "#d02d2d",
+                            "surface-bright": "#f9f9f8",
+                            "primary-fixed-dim": "#88d982",
+                            background: "#f9f9f8",
+                            "surface-dim": "#d9dad9",
+                            "secondary-container": "#fc820c",
+                            "surface-container-lowest": "#ffffff",
+                            "on-tertiary-fixed-variant": "#930010",
+                            "on-secondary-fixed-variant": "#723600",
+                            "inverse-on-surface": "#f0f1f0",
+                            "error-container": "#ffdad6",
+                            "primary-fixed": "#a3f69c",
+                            "on-secondary": "#ffffff",
+                            "on-primary-fixed-variant": "#005312",
+                            "on-tertiary-container": "#ffedeb",
+                            "surface-container-low": "#f3f4f3",
+                            "secondary-fixed": "#ffdcc6",
+                            "surface-tint": "#1b6d24",
+                            "on-surface-variant": "#40493d",
+                            "on-error": "#ffffff",
+                            "on-tertiary": "#ffffff",
+                            "surface-variant": "#e1e3e2",
+                            "on-primary-fixed": "#002204",
+                            "inverse-surface": "#2e3131",
+                            "on-surface": "#191c1c",
+                            error: "#ba1a1a",
+                            "outline-variant": "#bfcaba",
+                            "tertiary-fixed": "#ffdad6",
+                            "on-secondary-container": "#5e2c00",
+                            "on-secondary-fixed": "#311300",
+                            "on-primary": "#ffffff",
+                            "surface-container-highest": "#e1e3e2",
+                            "surface-container-high": "#e7e8e7",
+                            "primary-container": "#2e7d32",
+                            "on-error-container": "#93000a",
+                            outline: "#707a6c",
+                            "secondary-fixed-dim": "#ffb786",
+                            "on-background": "#191c1c",
+                            primary: "#0d631b",
+                            "surface-container": "#edeeed",
+                            secondary: "#964900",
+                            "on-primary-container": "#cbffc2",
+                            "inverse-primary": "#88d982",
+                            tertiary: "#ac0c18",
+                            "tertiary-fixed-dim": "#ffb3ac",
+                            surface: "#f9f9f8",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans"],
+                            body: ["Be Vietnam Pro"],
+                            label: ["Be Vietnam Pro"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Be Vietnam Pro", sans-serif;
+            }
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .tonal-shift-bg {
+                background-color: #f3f4f3;
+            }
+            .surface-container-low {
+                background-color: #f3f4f3;
+            }
+        </style>
+    </head>
+    <body class="bg-surface text-on-surface">
+        <!-- TopAppBar -->
+        <header
+            class="bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-md fixed top-0 w-full z-50"
+        >
+            <div
+                class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto"
+            >
+                <div
+                    class="text-xl font-bold tracking-tight text-green-900 dark:text-green-400 font-plus-jakarta"
+                >
+                    The Culinary Editorial
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <nav class="flex gap-6">
+                        <a
+                            class="text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors px-3 py-1 rounded-lg"
+                            href="#"
+                            >Pantry</a
+                        >
+                        <a
+                            class="text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors px-3 py-1 rounded-lg"
+                            href="#"
+                            >Recipes</a
+                        >
+                        <a
+                            class="text-green-800 dark:text-green-400 font-semibold px-3 py-1 rounded-lg"
+                            href="#"
+                            >Profile</a
+                        >
+                    </nav>
+                    <div class="flex items-center gap-4">
+                        <button
+                            class="material-symbols-outlined text-on-surface-variant hover:bg-stone-200/50 p-2 rounded-full transition-colors"
+                            data-icon="notifications"
+                        >
+                            notifications
+                        </button>
+                        <button
+                            class="material-symbols-outlined text-on-surface-variant hover:bg-stone-200/50 p-2 rounded-full transition-colors"
+                            data-icon="account_circle"
+                        >
+                            account_circle
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- SideNavBar (Hidden on Mobile) -->
+        <aside
+            class="hidden md:flex h-screen w-64 border-r-0 fixed left-0 top-0 bg-stone-50 dark:bg-stone-950 flex flex-col p-4 gap-2 z-40 pt-20"
+        >
+            <div class="px-4 py-6 mb-4">
+                <div
+                    class="text-lg font-black text-green-900 dark:text-green-500"
+                >
+                    The Living Pantry
+                </div>
+                <div
+                    class="text-xs text-stone-500 uppercase tracking-widest mt-1"
+                >
+                    Curated Culinary Gallery
+                </div>
+            </div>
+            <nav class="space-y-1">
+                <a
+                    class="flex items-center gap-3 text-stone-600 dark:text-stone-400 px-4 py-3 hover:bg-stone-200 dark:hover:bg-stone-800/60 rounded-xl transition-all group active:scale-95"
+                    href="#"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        data-icon="inventory_2"
+                        >inventory_2</span
+                    >
+                    <span class="font-plus-jakarta font-medium text-sm"
+                        >Pantry</span
+                    >
+                </a>
+                <a
+                    class="flex items-center gap-3 text-stone-600 dark:text-stone-400 px-4 py-3 hover:bg-stone-200 dark:hover:bg-stone-800/60 rounded-xl transition-all group active:scale-95"
+                    href="#"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        data-icon="history_edu"
+                        >history_edu</span
+                    >
+                    <span class="font-plus-jakarta font-medium text-sm"
+                        >History</span
+                    >
+                </a>
+                <a
+                    class="flex items-center gap-3 text-stone-600 dark:text-stone-400 px-4 py-3 hover:bg-stone-200 dark:hover:bg-stone-800/60 rounded-xl transition-all group active:scale-95"
+                    href="#"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        data-icon="restaurant_menu"
+                        >restaurant_menu</span
+                    >
+                    <span class="font-plus-jakarta font-medium text-sm"
+                        >Recipes</span
+                    >
+                </a>
+                <a
+                    class="flex items-center gap-3 bg-green-100 dark:bg-green-900/30 text-green-900 dark:text-green-200 rounded-xl font-bold px-4 py-3 active:scale-95 transition-transform"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined" data-icon="person"
+                        >person</span
+                    >
+                    <span class="font-plus-jakarta font-medium text-sm"
+                        >Profile</span
+                    >
+                </a>
+                <a
+                    class="flex items-center gap-3 text-stone-600 dark:text-stone-400 px-4 py-3 hover:bg-stone-200 dark:hover:bg-stone-800/60 rounded-xl transition-all group active:scale-95"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined" data-icon="settings"
+                        >settings</span
+                    >
+                    <span class="font-plus-jakarta font-medium text-sm"
+                        >Settings</span
+                    >
+                </a>
+            </nav>
+            <div class="mt-auto p-4">
+                <button
+                    class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-4 rounded-full font-bold shadow-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity active:scale-95"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        data-icon="auto_awesome"
+                        >auto_awesome</span
+                    >
+                    Generate Recipe
+                </button>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="md:ml-64 pt-24 pb-20 px-6 max-w-7xl mx-auto">
+            <!-- Hero Header Asymmetric Layout -->
+            <section
+                class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 items-end"
+            >
+                <div
+                    class="lg:col-span-7 flex flex-col md:flex-row gap-8 items-center md:items-end"
+                >
+                    <div class="relative">
+                        <div
+                            class="w-40 h-40 rounded-3xl overflow-hidden shadow-2xl rotate-3 bg-surface-container-highest"
+                        >
+                            <img
+                                alt="User avatar"
+                                class="w-full h-full object-cover"
+                                data-alt="professional portrait of a person with a warm smile, soft natural lighting, editorial style, high-end photography"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtP_KA0xxkTZbKsxeI7Io9T-oZUi7NMzgDxLN31xoercV1ndsOjEXMXHZgN9yTv-TxTfn1Udm5txZo2yJ2FIjzcGzirxHlSTbP3T_hpqmrwMFhxxznbFyyf9XDlpMTr2uZc7v1ZZoUVZvbbRY7mzIFTUJ5qcNE0B9Pf1hLGU26I9gp55KD8VjOz69L6jFlFNWpsVWaf3dTyc2mtkx7tyo3vQEQHUSvyPn9Ts1yL1m0K0a9oGS3cZhv2g7xWZ0OQiSkbee23he6lWDt"
+                            />
+                        </div>
+                        <div
+                            class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full text-xs font-bold shadow-lg -rotate-6"
+                        >
+                            EPICUREAN LEVEL 42
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left space-y-2">
+                        <h1
+                            class="text-display-md font-extrabold text-on-surface tracking-tight leading-none"
+                        >
+                            Julian Vane
+                        </h1>
+                        <p class="text-on-surface-variant font-body">
+                            Gastronomy Enthusiast &amp; Sustainable Kitchen
+                            Advocate
+                        </p>
+                        <div
+                            class="flex flex-wrap gap-2 justify-center md:justify-start pt-2"
+                        >
+                            <span
+                                class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-xs font-bold"
+                                >MASTER CURATOR</span
+                            >
+                            <span
+                                class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold"
+                                >MEMBER SINCE 2023</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 grid grid-cols-3 gap-4">
+                    <div
+                        class="bg-surface-container-lowest p-5 rounded-xl text-center space-y-1"
+                    >
+                        <div class="text-display-sm font-bold text-primary">
+                            12.4
+                        </div>
+                        <div
+                            class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold leading-tight"
+                        >
+                            Waste Saved (kg)
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-container-lowest p-5 rounded-xl text-center space-y-1"
+                    >
+                        <div class="text-display-sm font-bold text-secondary">
+                            148
+                        </div>
+                        <div
+                            class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold leading-tight"
+                        >
+                            Ingredients Managed
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-container-lowest p-5 rounded-xl text-center space-y-1"
+                    >
+                        <div class="text-display-sm font-bold text-tertiary">
+                            89
+                        </div>
+                        <div
+                            class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold leading-tight"
+                        >
+                            Recipes Discovered
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Bento Grid for Profile Details -->
+            <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
+                <!-- Preferences Section -->
+                <div
+                    class="md:col-span-3 lg:col-span-4 bg-surface-container-low rounded-xl p-8 flex flex-col gap-6"
+                >
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Dietary Identity</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <div
+                                class="bg-primary-fixed text-on-primary-fixed px-4 py-2 rounded-full text-sm font-medium"
+                            >
+                                Vegetarian
+                            </div>
+                            <div
+                                class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full text-sm font-medium"
+                            >
+                                Gluten-Free
+                            </div>
+                            <div
+                                class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full text-sm font-medium"
+                            >
+                                Nut-Free
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            Favorite Cuisines
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container-highest overflow-hidden shrink-0"
+                                >
+                                    <img
+                                        alt="Mediterranean"
+                                        class="w-full h-full object-cover"
+                                        data-alt="vibrant mediterranean salad with olives and feta, bright colors, fresh ingredients"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDooHeFW6ksZLG_ysf3kexH79UQHoqi3ylnyYtLvNujCwIkEDyCs1P2HBKDc6bDoXPa5q3ZtZ9u9Q2JXCTG-rVurkYFRLuPOIEhgnmOAjCzdfrEGjYUR_v18_iYNHO7mXB0SqFhef5Pce2X-BmryNsAGWikPmQq4KQznoZoTs154aIznv3VnUVhEvGmzCmy1t6i50Aj27yyMO_ZZa3KKz79iZM8mGRYqwoimtwMzvEO0S2oN36fzjX8sgKTZTSunb2NtZYs1aC6NM1Q"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-sm font-bold">
+                                        Mediterranean
+                                    </div>
+                                    <div
+                                        class="w-full bg-surface-container-highest h-1.5 rounded-full mt-1"
+                                    >
+                                        <div
+                                            class="bg-primary w-[85%] h-full rounded-full"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container-highest overflow-hidden shrink-0"
+                                >
+                                    <img
+                                        alt="Japanese"
+                                        class="w-full h-full object-cover"
+                                        data-alt="clean minimal presentation of high-end japanese sushi, dark background, editorial lighting"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0lyfHu6MQBe2Ln9aDqy75NsQfy-yf1v_w_pOJPraNOJ4pMrsmc-K2I5hYEWz4kgw6TjcY8mLPP3OyfOmZQ46lzXaq4bpJeaJ5MKaMxjwhFWDv01t5y3dnKuA3LLceB_SNgdeysDUQGmnANiH5JWzUnxYFfXCjuA5BlYcr41KbdF8l8bbO6rG5DudQA1f8AzHcX6EL3kgvIPErEF2x6-gMIjGjtfOW6butY-73EAmayQcdSE_20Of7MVK5hNKaikYntVAwpa6qj_Z9"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-sm font-bold">
+                                        Japanese
+                                    </div>
+                                    <div
+                                        class="w-full bg-surface-container-highest h-1.5 rounded-full mt-1"
+                                    >
+                                        <div
+                                            class="bg-primary w-[60%] h-full rounded-full"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Connected Devices (The "Smart Gallery") -->
+                <div
+                    class="md:col-span-3 lg:col-span-5 bg-surface-container-lowest rounded-xl p-8"
+                >
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold">Connected Ecosystem</h3>
+                        <button
+                            class="text-primary text-sm font-bold flex items-center gap-1"
+                        >
+                            Add New
+                            <span
+                                class="material-symbols-outlined text-sm"
+                                data-icon="add"
+                                >add</span
+                            >
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div
+                            class="p-6 rounded-xl bg-surface-container-low flex flex-col gap-4 group hover:bg-surface-bright transition-colors"
+                        >
+                            <span
+                                class="material-symbols-outlined text-primary text-3xl"
+                                data-icon="kitchen"
+                                >kitchen</span
+                            >
+                            <div>
+                                <div class="font-bold text-on-surface">
+                                    Samsung Smart Hub
+                                </div>
+                                <div class="text-xs text-on-surface-variant">
+                                    Last synced 2m ago
+                                </div>
+                            </div>
+                            <div
+                                class="mt-auto flex items-center gap-2 text-[10px] text-primary font-bold uppercase tracking-wider"
+                            >
+                                <span
+                                    class="w-2 h-2 bg-primary rounded-full animate-pulse"
+                                ></span>
+                                Online
+                            </div>
+                        </div>
+                        <div
+                            class="p-6 rounded-xl bg-surface-container-low flex flex-col gap-4 group hover:bg-surface-bright transition-colors"
+                        >
+                            <span
+                                class="material-symbols-outlined text-secondary text-3xl"
+                                data-icon="oven_gen"
+                                >oven_gen</span
+                            >
+                            <div>
+                                <div class="font-bold text-on-surface">
+                                    Miele Smart Oven
+                                </div>
+                                <div class="text-xs text-on-surface-variant">
+                                    Connected
+                                </div>
+                            </div>
+                            <div
+                                class="mt-auto flex items-center gap-2 text-[10px] text-primary font-bold uppercase tracking-wider"
+                            >
+                                <span
+                                    class="w-2 h-2 bg-primary rounded-full"
+                                ></span>
+                                Standby
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-6 p-4 rounded-xl bg-gradient-to-r from-surface-container-highest to-surface-container-low border border-outline-variant/15 flex items-center gap-4"
+                    >
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant"
+                            data-icon="info"
+                            >info</span
+                        >
+                        <p class="text-xs text-on-surface-variant font-medium">
+                            Synchronizing these devices allows for real-time
+                            inventory tracking and precision recipe cooking
+                            times.
+                        </p>
+                    </div>
+                </div>
+                <!-- Impact Visualization Section -->
+                <div
+                    class="md:col-span-6 lg:col-span-3 bg-gradient-to-br from-green-900 to-green-800 text-white rounded-xl p-8 relative overflow-hidden flex flex-col justify-between"
+                >
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold mb-2">
+                            Sustainability Footprint
+                        </h3>
+                        <p class="text-green-100 text-sm leading-relaxed">
+                            Your curated consumption habits have saved the
+                            equivalent of 3 mature trees this year.
+                        </p>
+                    </div>
+                    <div class="relative z-10 mt-8 space-y-4">
+                        <div class="flex justify-between items-end">
+                            <span
+                                class="text-xs font-bold uppercase tracking-widest text-green-200"
+                                >Community Rank</span
+                            >
+                            <span class="text-2xl font-black">Top 4%</span>
+                        </div>
+                        <div class="w-full bg-white/20 h-2 rounded-full">
+                            <div
+                                class="bg-primary-fixed w-[96%] h-full rounded-full"
+                            ></div>
+                        </div>
+                    </div>
+                    <!-- Abstract Decorative Element -->
+                    <div
+                        class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"
+                    ></div>
+                    <div
+                        class="absolute -top-10 -left-10 w-32 h-32 bg-primary/20 rounded-full blur-2xl"
+                    ></div>
+                </div>
+            </div>
+            <!-- Recent Activity / Achievement Row -->
+            <section class="mt-12">
+                <h2 class="text-2xl font-extrabold mb-6 tracking-tight">
+                    Recent Achievements
+                </h2>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+                >
+                    <div
+                        class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-lowest transition-transform hover:scale-[1.02] cursor-pointer"
+                    >
+                        <div
+                            class="w-12 h-12 flex items-center justify-center rounded-full bg-primary-fixed text-on-primary-fixed shrink-0"
+                        >
+                            <span
+                                class="material-symbols-outlined"
+                                data-icon="eco"
+                                >eco</span
+                            >
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">Zero Waste Week</div>
+                            <div class="text-[10px] text-on-surface-variant">
+                                Completed 2 days ago
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-lowest transition-transform hover:scale-[1.02] cursor-pointer"
+                    >
+                        <div
+                            class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary-fixed text-on-secondary-fixed shrink-0"
+                        >
+                            <span
+                                class="material-symbols-outlined"
+                                data-icon="local_fire_department"
+                                >local_fire_department</span
+                            >
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">15 Day Streak</div>
+                            <div class="text-[10px] text-on-surface-variant">
+                                Managing active pantry
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-lowest transition-transform hover:scale-[1.02] cursor-pointer"
+                    >
+                        <div
+                            class="w-12 h-12 flex items-center justify-center rounded-full bg-tertiary-fixed text-on-tertiary-fixed shrink-0"
+                        >
+                            <span
+                                class="material-symbols-outlined"
+                                data-icon="menu_book"
+                                >menu_book</span
+                            >
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">
+                                Flavor Alchemist
+                            </div>
+                            <div class="text-[10px] text-on-surface-variant">
+                                Created 5 original recipes
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low border border-dashed border-outline-variant/30 flex items-center justify-center"
+                    >
+                        <span
+                            class="text-xs font-bold text-on-surface-variant uppercase tracking-widest"
+                            >See All 24 Badges</span
+                        >
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- BottomNavBar (Mobile Only) -->
+        <nav
+            class="md:hidden fixed bottom-0 left-0 right-0 bg-stone-50/90 backdrop-blur-lg flex justify-around items-center p-4 z-50"
+        >
+            <button class="flex flex-col items-center gap-1 text-stone-500">
+                <span class="material-symbols-outlined" data-icon="inventory_2"
+                    >inventory_2</span
+                >
+                <span class="text-[10px] font-bold uppercase tracking-tighter"
+                    >Pantry</span
+                >
+            </button>
+            <button class="flex flex-col items-center gap-1 text-stone-500">
+                <span
+                    class="material-symbols-outlined"
+                    data-icon="restaurant_menu"
+                    >restaurant_menu</span
+                >
+                <span class="text-[10px] font-bold uppercase tracking-tighter"
+                    >Recipes</span
+                >
+            </button>
+            <div class="relative -top-6">
+                <button
+                    class="bg-gradient-to-br from-primary to-primary-container text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center border-4 border-surface"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        data-icon="auto_awesome"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >auto_awesome</span
+                    >
+                </button>
+            </div>
+            <button class="flex flex-col items-center gap-1 text-stone-500">
+                <span class="material-symbols-outlined" data-icon="history_edu"
+                    >history_edu</span
+                >
+                <span class="text-[10px] font-bold uppercase tracking-tighter"
+                    >History</span
+                >
+            </button>
+            <button class="flex flex-col items-center gap-1 text-green-800">
+                <span
+                    class="material-symbols-outlined"
+                    data-icon="person"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >person</span
+                >
+                <span class="text-[10px] font-bold uppercase tracking-tighter"
+                    >Profile</span
+                >
+            </button>
+        </nav>
+        <!-- Floating "Zubora Report" Trigger -->
+        <button
+            class="fixed bottom-24 right-8 md:bottom-8 md:right-8 bg-surface-container-lowest/80 backdrop-blur-xl p-4 rounded-3xl shadow-xl flex items-center gap-3 border border-white/20 active:scale-95 transition-transform group"
+        >
+            <div
+                class="bg-primary-container p-2 rounded-2xl text-white group-hover:rotate-12 transition-transform"
+            >
+                <span
+                    class="material-symbols-outlined"
+                    data-icon="mic"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >mic</span
+                >
+            </div>
+            <span class="font-bold text-sm text-on-surface pr-2"
+                >Zubora Report</span
+            >
+        </button>
+    </body>
+</html>

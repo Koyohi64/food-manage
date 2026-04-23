@@ -1,0 +1,733 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>The Culinary Editorial - History</title>
+        <!-- Typography -->
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- Icons -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- Tailwind -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-tertiary-fixed": "#410003",
+                            "tertiary-container": "#d02d2d",
+                            "surface-bright": "#f9f9f8",
+                            "primary-fixed-dim": "#88d982",
+                            background: "#f9f9f8",
+                            "surface-dim": "#d9dad9",
+                            "secondary-container": "#fc820c",
+                            "surface-container-lowest": "#ffffff",
+                            "on-tertiary-fixed-variant": "#930010",
+                            "on-secondary-fixed-variant": "#723600",
+                            "inverse-on-surface": "#f0f1f0",
+                            "error-container": "#ffdad6",
+                            "primary-fixed": "#a3f69c",
+                            "on-secondary": "#ffffff",
+                            "on-primary-fixed-variant": "#005312",
+                            "on-tertiary-container": "#ffedeb",
+                            "surface-container-low": "#f3f4f3",
+                            "secondary-fixed": "#ffdcc6",
+                            "surface-tint": "#1b6d24",
+                            "on-surface-variant": "#40493d",
+                            "on-error": "#ffffff",
+                            "on-tertiary": "#ffffff",
+                            "surface-variant": "#e1e3e2",
+                            "on-primary-fixed": "#002204",
+                            "inverse-surface": "#2e3131",
+                            "on-surface": "#191c1c",
+                            error: "#ba1a1a",
+                            "outline-variant": "#bfcaba",
+                            "tertiary-fixed": "#ffdad6",
+                            "on-secondary-container": "#5e2c00",
+                            "on-secondary-fixed": "#311300",
+                            "on-primary": "#ffffff",
+                            "surface-container-highest": "#e1e3e2",
+                            "surface-container-high": "#e7e8e7",
+                            "primary-container": "#2e7d32",
+                            "on-error-container": "#93000a",
+                            outline: "#707a6c",
+                            "secondary-fixed-dim": "#ffb786",
+                            "on-background": "#191c1c",
+                            primary: "#0d631b",
+                            "surface-container": "#edeeed",
+                            secondary: "#964900",
+                            "on-primary-container": "#cbffc2",
+                            "inverse-primary": "#88d982",
+                            tertiary: "#ac0c18",
+                            "tertiary-fixed-dim": "#ffb3ac",
+                            surface: "#f9f9f8",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "1.5rem",
+                            full: "9999px",
+                        },
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans"],
+                            body: ["Be Vietnam Pro"],
+                            label: ["Be Vietnam Pro"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            body {
+                font-family: "Be Vietnam Pro", sans-serif;
+            }
+            h1,
+            h2,
+            h3,
+            .font-headline {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+            .tonal-shift-bg {
+                background-color: #f3f4f3;
+            }
+            .glass-card {
+                background: rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(24px);
+            }
+        </style>
+    </head>
+    <body class="bg-surface text-on-surface">
+        <!-- Top Navigation Anchor -->
+        <nav class="fixed top-0 w-full z-50 bg-stone-50/80 backdrop-blur-md">
+            <div
+                class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto"
+            >
+                <div
+                    class="text-xl font-bold tracking-tight text-green-900 font-headline"
+                >
+                    The Culinary Editorial
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a
+                        class="text-stone-500 hover:bg-stone-200/50 transition-colors px-3 py-1 rounded-lg"
+                        href="#"
+                        >Pantry</a
+                    >
+                    <a
+                        class="text-green-800 font-semibold px-3 py-1 rounded-lg"
+                        href="#"
+                        >History</a
+                    >
+                    <a
+                        class="text-stone-500 hover:bg-stone-200/50 transition-colors px-3 py-1 rounded-lg"
+                        href="#"
+                        >Recipes</a
+                    >
+                </div>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="p-2 text-stone-600 hover:bg-stone-200/50 rounded-full transition-colors"
+                    >
+                        <span class="material-symbols-outlined"
+                            >notifications</span
+                        >
+                    </button>
+                    <button
+                        class="p-2 text-stone-600 hover:bg-stone-200/50 rounded-full transition-colors"
+                    >
+                        <span class="material-symbols-outlined"
+                            >account_circle</span
+                        >
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- Sidebar Anchor (Desktop) -->
+        <aside
+            class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 bg-stone-50 p-4 gap-2 pt-24"
+        >
+            <div class="mb-8 px-4">
+                <h2 class="text-lg font-black text-green-900 font-headline">
+                    The Living Pantry
+                </h2>
+                <p class="text-xs text-stone-500 font-medium">
+                    Curated Culinary Gallery
+                </p>
+            </div>
+            <nav class="flex flex-col gap-1">
+                <a
+                    class="flex items-center gap-3 text-stone-600 px-4 py-3 hover:bg-stone-200 rounded-xl transition-all"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="font-medium text-sm">Pantry</span>
+                </a>
+                <a
+                    class="flex items-center gap-3 bg-green-100 text-green-900 px-4 py-3 rounded-xl font-bold"
+                    href="#"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >history_edu</span
+                    >
+                    <span class="font-medium text-sm">History</span>
+                </a>
+                <a
+                    class="flex items-center gap-3 text-stone-600 px-4 py-3 hover:bg-stone-200 rounded-xl transition-all"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined"
+                        >restaurant_menu</span
+                    >
+                    <span class="font-medium text-sm">Recipes</span>
+                </a>
+                <a
+                    class="flex items-center gap-3 text-stone-600 px-4 py-3 hover:bg-stone-200 rounded-xl transition-all"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">person</span>
+                    <span class="font-medium text-sm">Profile</span>
+                </a>
+                <a
+                    class="flex items-center gap-3 text-stone-600 px-4 py-3 hover:bg-stone-200 rounded-xl transition-all"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="font-medium text-sm">Settings</span>
+                </a>
+            </nav>
+            <div class="mt-auto p-4">
+                <button
+                    class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-full font-bold shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                >
+                    <span class="material-symbols-outlined">magic_button</span>
+                    Generate Recipe
+                </button>
+            </div>
+        </aside>
+        <!-- Main Content Canvas -->
+        <main class="pt-24 lg:pl-64 min-h-screen">
+            <div class="max-w-screen-xl mx-auto px-6 py-8">
+                <!-- Editorial Header Section -->
+                <header class="mb-12">
+                    <h1
+                        class="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight mb-4"
+                    >
+                        Culinary Chronicles
+                    </h1>
+                    <p
+                        class="text-on-surface-variant max-w-2xl text-lg leading-relaxed"
+                    >
+                        A curated visual archive of your journey through
+                        flavors. Every meal tells a story of the ingredients
+                        used and the inspiration found.
+                    </p>
+                </header>
+                <!-- Filtering & Search Bento -->
+                <section class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-12">
+                    <div
+                        class="md:col-span-6 lg:col-span-7 bg-surface-container-low rounded-xl p-4 flex items-center gap-3"
+                    >
+                        <span class="material-symbols-outlined text-outline"
+                            >search</span
+                        >
+                        <input
+                            class="bg-transparent border-none focus:ring-0 w-full text-on-surface placeholder:text-outline-variant"
+                            placeholder="Search by meal or ingredient..."
+                            type="text"
+                        />
+                    </div>
+                    <div
+                        class="md:col-span-3 lg:col-span-2 bg-surface-container-low rounded-xl p-4 flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors"
+                    >
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm"
+                                >calendar_today</span
+                            >
+                            <span class="text-sm font-medium">All Time</span>
+                        </div>
+                        <span class="material-symbols-outlined text-sm"
+                            >expand_more</span
+                        >
+                    </div>
+                    <div
+                        class="md:col-span-3 lg:col-span-3 flex gap-2 overflow-x-auto no-scrollbar"
+                    >
+                        <button
+                            class="bg-primary-fixed text-on-primary-fixed px-5 py-3 rounded-full text-sm font-bold whitespace-nowrap active:scale-95 transition-transform"
+                        >
+                            All Meals
+                        </button>
+                        <button
+                            class="bg-surface-container-high text-on-surface-variant px-5 py-3 rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors"
+                        >
+                            AI Proposed
+                        </button>
+                        <button
+                            class="bg-surface-container-high text-on-surface-variant px-5 py-3 rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors"
+                        >
+                            Manual
+                        </button>
+                    </div>
+                </section>
+                <!-- Empty State (Hidden by default, shown if no results) -->
+                <div
+                    class="hidden flex flex-col items-center justify-center py-20 text-center"
+                >
+                    <div
+                        class="w-64 h-64 bg-surface-container-low rounded-full flex items-center justify-center mb-8"
+                    >
+                        <span
+                            class="material-symbols-outlined text-8xl text-outline-variant"
+                            style="
+                                font-variation-settings: &quot;wght&quot; 100;
+                            "
+                            >restaurant_menu</span
+                        >
+                    </div>
+                    <h3 class="text-2xl font-bold text-on-surface mb-2">
+                        Your kitchen is waiting for its first story
+                    </h3>
+                    <p class="text-on-surface-variant max-w-sm">
+                        No cooked meals found in your history yet. Start by
+                        generating a recipe from your pantry.
+                    </p>
+                    <button
+                        class="mt-8 px-8 py-3 bg-primary text-on-primary rounded-full font-bold"
+                    >
+                        Cook Something Now
+                    </button>
+                </div>
+                <!-- History Grid -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+                >
+                    <!-- Card 1 -->
+                    <div
+                        class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all hover:bg-surface-bright"
+                    >
+                        <div class="relative h-64 w-full overflow-hidden">
+                            <img
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                data-alt="top-down professional food photography of a vibrant green summer risotto garnished with microgreens and parmesan shavings in a ceramic bowl"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9Bq2jWqdYpGh6BOfB7XndPzh_Gf5fw1EmWx8GnBl0rLOzMBzYkOkBLpML5gUf7SyRLV1hu0CB89hAgfNOQT57BZwwkyrGhW42XLgy5JuBeSSN_f6VogPZVc4yfQpQSLAn4AnWZOEH8JCG5pmhva7nu60eSe4QlF8_qulm6m73Wuie2HqXrLm7sKR80DPPQ02VWzToBllZn7ONnXDcKaiv3BIZEh1rpVHSYrhljccbkPHgWkHbRzLMgDUovNJT0_kZ4lDKTeE-7D_H"
+                            />
+                            <div class="absolute top-4 right-4">
+                                <span
+                                    class="bg-green-100 text-green-900 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-md bg-opacity-90"
+                                    >AI Proposed</span
+                                >
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3
+                                    class="text-xl font-bold text-on-surface leading-tight"
+                                >
+                                    Wild Garlic &amp; Asparagus Risotto
+                                </h3>
+                                <span class="text-xs font-medium text-outline"
+                                    >Yesterday</span
+                                >
+                            </div>
+                            <p
+                                class="text-sm text-on-surface-variant mb-6 line-clamp-2"
+                            >
+                                A creamy, vibrant seasonal dish celebrating
+                                early spring foraged greens and crisp textures.
+                            </p>
+                            <div class="mt-auto">
+                                <p
+                                    class="text-[10px] font-bold text-outline-variant uppercase tracking-wider mb-3"
+                                >
+                                    Pantry Depleted
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Arborio Rice</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Asparagus</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Wild Garlic</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >+2 more</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div
+                        class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all hover:bg-surface-bright"
+                    >
+                        <div class="relative h-64 w-full overflow-hidden">
+                            <img
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                data-alt="close up shot of a hearty beef stew with chunks of carrot and potato in a dark cast iron pot with rustic lighting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvgEfF5Sn7zJVd_IRs1Hro6SIw9fuOYUgF_K0U41fQr4LsgRv3QwwrqrBvBconJs6Ip4Pqk5ZK-2GQC2fdD9qgIg7P1fW0L9kZdElu_uz_kOHiGWY91aHMyKolierP3RMXczV89wgW-sYQ-M4w2CLWREdLo90by2lqxuCH_LZV2n9HXIsLeXBEENPwVAVp63HtlNrJLAr04Be8Z6Ms_uV558AMjOCBoK6QwVfjQaduLC8ruJ0qgr60_uCcUpTJIfvZpoCakM3akRAE"
+                            />
+                            <div class="absolute top-4 right-4">
+                                <span
+                                    class="bg-orange-100 text-orange-900 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-md bg-opacity-90"
+                                    >Zubora Report</span
+                                >
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3
+                                    class="text-xl font-bold text-on-surface leading-tight"
+                                >
+                                    Slow-Cooked Pantry Beef Stew
+                                </h3>
+                                <span class="text-xs font-medium text-outline"
+                                    >Oct 14</span
+                                >
+                            </div>
+                            <p
+                                class="text-sm text-on-surface-variant mb-6 line-clamp-2"
+                            >
+                                Efficiently clearing out the root cellar. Deep,
+                                umami-rich flavors with minimal prep time.
+                            </p>
+                            <div class="mt-auto">
+                                <p
+                                    class="text-[10px] font-bold text-outline-variant uppercase tracking-wider mb-3"
+                                >
+                                    Pantry Depleted
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Beef Chuck</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Carrots</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Potatoes</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Onion</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div
+                        class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all hover:bg-surface-bright"
+                    >
+                        <div class="relative h-64 w-full overflow-hidden">
+                            <img
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                data-alt="modern minimalist plating of pan-seared salmon with citrus glaze and charred bok choy on a gray ceramic plate"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3MwZOT5JJIP1cE6arrmeX5O9YuiG8NmHgVKBT5qkN1OjlHuydoAf_Xt3oQTblIeq7Wl5bl_n0x8KlWAmr-KaUJcdK1ePogsSjkaBaM_JRr2zTeogaIPblze1hw4Z6Gr5IWnnguQ_qzUpGsA0kcDCAi0GTEz5VKGrG4BgQXXug2BfSYPTmKE2D4-Fc3PVrodg-8LepeC-Y_Wfd9iassyqGz7Z0CqdxyIRrdJ3TVihLXRI-_4YmRl495v4fBJslhswgJ0xV2vktsTaH"
+                            />
+                            <div class="absolute top-4 right-4">
+                                <span
+                                    class="bg-stone-200 text-stone-700 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-md bg-opacity-90"
+                                    >Manual Entry</span
+                                >
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3
+                                    class="text-xl font-bold text-on-surface leading-tight"
+                                >
+                                    Miso-Glazed Salmon &amp; Bok Choy
+                                </h3>
+                                <span class="text-xs font-medium text-outline"
+                                    >Oct 12</span
+                                >
+                            </div>
+                            <p
+                                class="text-sm text-on-surface-variant mb-6 line-clamp-2"
+                            >
+                                A light, high-protein dinner featuring fermented
+                                umami and crisp charred vegetables.
+                            </p>
+                            <div class="mt-auto">
+                                <p
+                                    class="text-[10px] font-bold text-outline-variant uppercase tracking-wider mb-3"
+                                >
+                                    Pantry Depleted
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Salmon Fillet</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Miso Paste</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Bok Choy</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 (Asymmetric sizing/pattern) -->
+                    <div
+                        class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all hover:bg-surface-bright md:col-span-2"
+                    >
+                        <div class="grid grid-cols-1 md:grid-cols-2 h-full">
+                            <div
+                                class="relative h-64 md:h-full w-full overflow-hidden"
+                            >
+                                <img
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    data-alt="high contrast photo of fresh handmade pasta noodles dusted with flour on a dark wood table with a warm golden sunbeam"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQR-qyifFFtMx1_Str8Wbvn52_vMG0A3uHn2E6OVCWtxRJ1AEVw5c-GMMhyUH4NowcQ9-RzqZ3Qu1MEq_I8mG8lC103K8ABpPMzOlArQsTENAhGHWzigw7R8yXQzD_870VBk8ixqSpt5k9pwQb2U3zfv4YN76A-n3maxgOZgh-ydhwLJ8OhYVHpqVXKMcGY5YG2EffFV79BOqw1a9TykP9DTWiUzu_raQIypl9cl_CrBDpj7t9dHBk-CFuPQzTE36vtRFxVQI7QPLp"
+                                />
+                            </div>
+                            <div class="p-8 flex flex-col justify-center">
+                                <div
+                                    class="flex justify-between items-start mb-4"
+                                >
+                                    <h3
+                                        class="text-2xl font-extrabold text-on-surface leading-tight"
+                                    >
+                                        Handmade Fettuccine Alfredo
+                                    </h3>
+                                    <span
+                                        class="text-xs font-medium text-outline"
+                                        >Oct 10</span
+                                    >
+                                </div>
+                                <div class="mb-4">
+                                    <span
+                                        class="bg-green-100 text-green-900 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full"
+                                        >AI Proposed</span
+                                    >
+                                </div>
+                                <p
+                                    class="text-base text-on-surface-variant mb-8"
+                                >
+                                    Utilized the remaining heavy cream and eggs
+                                    before expiration. A rich, indulgent classic
+                                    made from scratch.
+                                </p>
+                                <div class="mt-auto">
+                                    <p
+                                        class="text-[10px] font-bold text-outline-variant uppercase tracking-wider mb-3"
+                                    >
+                                        Pantry Depleted
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                            >Heavy Cream</span
+                                        >
+                                        <span
+                                            class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                            >00 Flour</span
+                                        >
+                                        <span
+                                            class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                            >Eggs</span
+                                        >
+                                        <span
+                                            class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                            >Parmesan</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div
+                        class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all hover:bg-surface-bright"
+                    >
+                        <div class="relative h-64 w-full overflow-hidden">
+                            <img
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                data-alt="rustic wooden board with various cheeses, cured meats, nuts and dried fruits beautifully arranged for a grazing board"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXIA8vBXD_sruR1-8U28xwGOs3fmcOPl9oI7V48bOa7gyDheQ_yGmBCG0k-XHwKGImbnBibnRIzOM4MtMZEhYYLggPp0HBzcMhhzUsBBZUO8qit5cpBag3jGe_kbqKLnIyEP-2RJmjvHc2ZLYgn5VVLHD-NJLCGfnzd7KwEqvaZWdcoFuj0aMQyoVvKSn1zpJEwS9p-FxNryNQdspfktrvCeVfcaoH3JXNj4OjdDJnpRnXAO1kvQVYfcC6CH0vr16bJg0Z76F-7kaj"
+                            />
+                            <div class="absolute top-4 right-4">
+                                <span
+                                    class="bg-orange-100 text-orange-900 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-md bg-opacity-90"
+                                    >Zubora Report</span
+                                >
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3
+                                    class="text-xl font-bold text-on-surface leading-tight"
+                                >
+                                    The "Clear-The-Fridge" Board
+                                </h3>
+                                <span class="text-xs font-medium text-outline"
+                                    >Oct 08</span
+                                >
+                            </div>
+                            <p
+                                class="text-sm text-on-surface-variant mb-6 line-clamp-2"
+                            >
+                                A creative assembly of small bites, cheeses, and
+                                preserved goods. Zero waste achieved.
+                            </p>
+                            <div class="mt-auto">
+                                <p
+                                    class="text-[10px] font-bold text-outline-variant uppercase tracking-wider mb-3"
+                                >
+                                    Pantry Depleted
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Brie</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Salami</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >Walnuts</span
+                                    >
+                                    <span
+                                        class="bg-surface-container text-on-surface-variant text-xs px-3 py-1 rounded-md"
+                                        >+4 more</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Load More Interaction -->
+                <div class="flex justify-center mt-16 mb-12">
+                    <button
+                        class="flex items-center gap-2 text-stone-500 font-bold hover:text-on-surface transition-colors"
+                    >
+                        <span>Explore more of your history</span>
+                        <span class="material-symbols-outlined"
+                            >arrow_downward</span
+                        >
+                    </button>
+                </div>
+            </div>
+        </main>
+        <!-- Floating Action Button Anchor (Mobile Only logic handled via visibility) -->
+        <button
+            class="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-full shadow-2xl flex items-center justify-center lg:hidden z-50 active:scale-90 transition-transform"
+        >
+            <span class="material-symbols-outlined text-3xl">add</span>
+        </button>
+        <!-- Bottom Navigation Bar (Mobile only) -->
+        <nav
+            class="md:hidden fixed bottom-0 left-0 w-full bg-stone-50/80 backdrop-blur-md z-40 border-t border-transparent"
+        >
+            <div class="flex justify-around items-center py-3">
+                <a
+                    class="flex flex-col items-center gap-1 text-stone-500"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="text-[10px] font-medium">Pantry</span>
+                </a>
+                <a
+                    class="flex flex-col items-center gap-1 text-green-800"
+                    href="#"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >history_edu</span
+                    >
+                    <span class="text-[10px] font-bold">History</span>
+                </a>
+                <a
+                    class="flex flex-col items-center gap-1 text-stone-500"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined"
+                        >restaurant_menu</span
+                    >
+                    <span class="text-[10px] font-medium">Recipes</span>
+                </a>
+                <a
+                    class="flex flex-col items-center gap-1 text-stone-500"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">person</span>
+                    <span class="text-[10px] font-medium">Profile</span>
+                </a>
+            </div>
+        </nav>
+        <!-- Zubora Floating Sheet (Design system signature) -->
+        <div
+            class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-lg px-4 pb-4 hidden"
+        >
+            <div class="glass-card rounded-t-3xl p-8 shadow-2xl">
+                <div
+                    class="w-12 h-1.5 bg-surface-container-highest rounded-full mx-auto mb-6"
+                ></div>
+                <h2 class="text-2xl font-bold text-on-surface mb-4">
+                    The Zubora Report
+                </h2>
+                <div
+                    class="bg-surface-container-highest rounded-2xl p-4 mb-6 flex items-center gap-4"
+                >
+                    <span
+                        class="material-symbols-outlined text-primary text-3xl"
+                        >mic</span
+                    >
+                    <p class="text-on-surface-variant italic">
+                        "I just cooked a simple omelette with eggs and
+                        spinach..."
+                    </p>
+                </div>
+                <button
+                    class="w-full py-4 bg-primary text-on-primary rounded-full font-bold"
+                >
+                    Confirm Log
+                </button>
+            </div>
+        </div>
+    </body>
+</html>
