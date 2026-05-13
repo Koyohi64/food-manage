@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Zubora Kitchen - Refrigerator Scan</title>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- Material Symbols -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .material-symbols-outlined {
+                font-family: "Material Symbols Outlined";
+                font-weight: normal;
+                font-style: normal;
+                font-size: 24px;
+                line-height: 1;
+                letter-spacing: normal;
+                text-transform: none;
+                display: inline-block;
+                white-space: nowrap;
+                word-wrap: normal;
+                direction: ltr;
+                -webkit-font-feature-settings: "liga";
+                -webkit-font-smoothing: antialiased;
+            }
+        </style>
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-surface-variant": "#3d4a3e",
+                            "on-tertiary-fixed": "#301400",
+                            "on-surface": "#161d17",
+                            outline: "#6d7b6d",
+                            "surface-container-low": "#eef6eb",
+                            surface: "#f3fcf0",
+                            secondary: "#944a00",
+                            error: "#ba1a1a",
+                            "surface-container": "#e8f0e5",
+                            "on-tertiary": "#ffffff",
+                            "on-secondary-container": "#693300",
+                            "on-tertiary-container": "#794418",
+                            "surface-tint": "#006d36",
+                            "secondary-fixed": "#ffdcc5",
+                            "primary-container": "#4ade80",
+                            "surface-container-high": "#e2ebe0",
+                            "on-background": "#161d17",
+                            "on-secondary": "#ffffff",
+                            "inverse-primary": "#4de082",
+                            "secondary-fixed-dim": "#ffb783",
+                            "surface-variant": "#dde5da",
+                            "on-primary": "#ffffff",
+                            background: "#f3fcf0",
+                            "on-secondary-fixed": "#301400",
+                            tertiary: "#895024",
+                            primary: "#006d36",
+                            "on-primary-container": "#005e2d",
+                            "primary-fixed": "#6dfe9c",
+                            "primary-fixed-dim": "#4de082",
+                            "tertiary-container": "#ffb47f",
+                            "outline-variant": "#bccabb",
+                            "surface-dim": "#d4dcd2",
+                            "on-error": "#ffffff",
+                            "surface-container-highest": "#dde5da",
+                            "on-error-container": "#93000a",
+                            "secondary-container": "#fd933d",
+                            "on-primary-fixed-variant": "#005227",
+                            "on-primary-fixed": "#00210c",
+                            "inverse-surface": "#2b322b",
+                            "tertiary-fixed-dim": "#ffb784",
+                            "on-tertiary-fixed-variant": "#6c3a0f",
+                            "inverse-on-surface": "#ebf3e8",
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary-fixed-variant": "#713700",
+                            "error-container": "#ffdad6",
+                            "tertiary-fixed": "#ffdcc6",
+                            "surface-bright": "#f3fcf0",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            "margin-mobile": "20px",
+                            "margin-desktop": "64px",
+                            "max-width": "1200px",
+                            base: "4px",
+                            xs: "4px",
+                            xl: "32px",
+                            md: "16px",
+                            lg: "24px",
+                            sm: "8px",
+                            gutter: "16px",
+                        },
+                        fontFamily: {
+                            "headline-lg-mobile": ["Plus Jakarta Sans"],
+                            "body-lg": ["Be Vietnam Pro"],
+                            "headline-lg": ["Plus Jakarta Sans"],
+                            "display-lg": ["Plus Jakarta Sans"],
+                            "label-md": ["Be Vietnam Pro"],
+                            "headline-md": ["Plus Jakarta Sans"],
+                            "body-md": ["Be Vietnam Pro"],
+                            "label-sm": ["Be Vietnam Pro"],
+                        },
+                        fontSize: {
+                            "headline-lg-mobile": [
+                                "28px",
+                                {
+                                    lineHeight: "34px",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "body-lg": [
+                                "18px",
+                                {
+                                    lineHeight: "28px",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "40px",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "display-lg": [
+                                "40px",
+                                {
+                                    lineHeight: "48px",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                            "label-md": [
+                                "14px",
+                                {
+                                    lineHeight: "20px",
+                                    letterSpacing: "0.05em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "headline-md": [
+                                "24px",
+                                {
+                                    lineHeight: "32px",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "body-md": [
+                                "16px",
+                                {
+                                    lineHeight: "24px",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                {
+                                    lineHeight: "16px",
+                                    fontWeight: "500",
+                                },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body
+        class="bg-background text-on-background font-body-md antialiased overflow-hidden"
+    >
+        <div class="flex h-screen w-full">
+            <!-- SideNavBar (Desktop/Tablet) -->
+            <nav
+                class="hidden md:flex flex-col gap-lg p-lg fixed left-0 top-0 h-full w-64 md:w-72 z-50 overflow-y-auto bg-surface dark:bg-surface-dim border-r border-outline-variant dark:border-outline shadow-sm dark:shadow-none"
+            >
+                <!-- Brand Area -->
+                <div class="flex items-center gap-sm mb-xl">
+                    <div
+                        aria-label="Zubora Kitchen Logo"
+                        class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary"
+                    >
+                        <span class="material-symbols-outlined text-[24px]"
+                            >restaurant</span
+                        >
+                    </div>
+                    <div>
+                        <h1
+                            class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim font-bold"
+                        >
+                            Zubora Kitchen
+                        </h1>
+                        <p
+                            class="font-label-sm text-label-sm text-on-surface-variant"
+                        >
+                            Your AI Sous Chef
+                        </p>
+                    </div>
+                </div>
+                <!-- CTA -->
+                <button
+                    class="w-full py-3 px-4 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex justify-center items-center gap-2 hover:bg-primary-fixed-variant transition-colors shadow-sm mb-md"
+                >
+                    <span class="material-symbols-outlined text-[20px]"
+                        >add</span
+                    >
+                    Add Ingredients
+                </button>
+                <!-- Navigation Links -->
+                <ul class="flex flex-col gap-2">
+                    <!-- Home (Inactive) -->
+                    <li>
+                        <a
+                            class="flex items-center gap-md text-on-surface-variant dark:text-on-surface-variant rounded-xl px-4 py-3 font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-primary dark:hover:text-primary-fixed-dim transition-all"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined">home</span>
+                            <span class="font-label-md text-label-md"
+                                >Home</span
+                            >
+                        </a>
+                    </li>
+                    <!-- Food Inventory (Active) -->
+                    <li>
+                        <a
+                            class="flex items-center gap-md bg-primary-container/20 text-on-primary-container dark:bg-primary-fixed-dim/10 dark:text-primary-fixed-dim rounded-xl px-4 py-3 font-bold scale-[0.98] transition-transform"
+                            href="#"
+                        >
+                            <span
+                                class="material-symbols-outlined"
+                                style="
+                                    font-variation-settings: &quot;FILL&quot; 1;
+                                "
+                                >inventory_2</span
+                            >
+                            <span class="font-label-md text-label-md"
+                                >Food Inventory</span
+                            >
+                        </a>
+                    </li>
+                    <!-- Recipe List (Inactive) -->
+                    <li>
+                        <a
+                            class="flex items-center gap-md text-on-surface-variant dark:text-on-surface-variant rounded-xl px-4 py-3 font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-primary dark:hover:text-primary-fixed-dim transition-all"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >restaurant_menu</span
+                            >
+                            <span class="font-label-md text-label-md"
+                                >Recipe List</span
+                            >
+                        </a>
+                    </li>
+                    <!-- Settings (Inactive) -->
+                    <li>
+                        <a
+                            class="flex items-center gap-md text-on-surface-variant dark:text-on-surface-variant rounded-xl px-4 py-3 font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest hover:text-primary dark:hover:text-primary-fixed-dim transition-all mt-auto"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >settings</span
+                            >
+                            <span class="font-label-md text-label-md"
+                                >Settings</span
+                            >
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Main Content Area -->
+            <div
+                class="flex-1 flex flex-col md:ml-64 lg:ml-72 min-h-screen h-screen"
+            >
+                <!-- TopAppBar (Mobile visible, Desktop integrates smoothly) -->
+                <header
+                    class="flex items-center justify-between px-margin-mobile md:px-margin-desktop py-md w-full z-40 bg-surface/80 backdrop-blur-md dark:bg-surface-dim/80"
+                >
+                    <div class="md:hidden flex items-center gap-2">
+                        <h1
+                            class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim font-bold tracking-tight"
+                        >
+                            Zubora Kitchen
+                        </h1>
+                    </div>
+                    <div class="hidden md:block"></div>
+                    <!-- Spacer for desktop -->
+                    <div class="flex items-center gap-sm">
+                        <button
+                            class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors"
+                        >
+                            <span class="material-symbols-outlined"
+                                >account_circle</span
+                            >
+                        </button>
+                    </div>
+                </header>
+                <!-- Scrollable Content -->
+                <main
+                    class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop pb-xl pt-sm"
+                >
+                    <!-- Page Header -->
+                    <div class="mb-xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <a
+                                class="text-on-surface-variant hover:text-primary flex items-center transition-colors"
+                                href="#"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[20px]"
+                                    >arrow_back</span
+                                >
+                            </a>
+                            <span
+                                class="font-label-md text-label-md text-tertiary"
+                                >Inventory Scan</span
+                            >
+                        </div>
+                        <h2
+                            class="font-display-lg text-display-lg text-on-background"
+                        >
+                            Refrigerator Analysis
+                        </h2>
+                        <p
+                            class="font-body-lg text-body-lg text-on-surface-variant mt-xs max-w-2xl"
+                        >
+                            Zubora AI has scanned your photo and identified
+                            these ingredients. Review and add them to your
+                            inventory.
+                        </p>
+                    </div>
+                    <!-- Main Layout Grid -->
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-12 gap-xl items-start max-w-[1200px]"
+                    >
+                        <!-- Left/Top Column: The Scanner View -->
+                        <div class="lg:col-span-7 flex flex-col gap-md">
+                            <!-- Image Container -->
+                            <div
+                                class="relative w-full aspect-[4/3] md:aspect-[16/9] bg-surface-container rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-outline-variant/50"
+                            >
+                                <!-- The Source Image -->
+                                <img
+                                    class="w-full h-full object-cover"
+                                    data-alt="A brightly lit interior view of a modern refrigerator, meticulously organized. Fresh organic produce like vivid orange carrots, red bell peppers, and leafy green kale are visible in clear crisper drawers. The upper glass shelves hold neatly arranged dairy products, including white yogurt containers and clear glass milk bottles. The lighting is cool, clean, and casts soft shadows, highlighting the freshness of the ingredients in a pristine culinary environment."
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF4hcj4bidviJ5yaXSklptCvLx0ZuYdMeuURnZHtYwkkGFUSAHz8CaYggQSPQf8oRH1zHqi6_Ow1_Wi5t2ydveIVVyPVsMtYOA_0XDHWemvMCSw_hzLyq-JrVZA_ewSSfCHdm7Yjtru3JlHFuhiasAKVRCBQ7FinnNO4YiZexRgqUl4c95fkH98bLtlsUzaVKibSDR4w6ZQ6rHvLNvwqP_ZFcISTXDfA_TBIhSGZvEPW1iKhWvqFfqq1Um8Y-0VWGEmNOInN3t-w"
+                                />
+                                <!-- Overlay Gradient for legibility of bottom items -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"
+                                ></div>
+                                <!-- AI Bounding Boxes -->
+                                <!-- Item 1: Bell Peppers -->
+                                <div
+                                    class="absolute top-[35%] left-[15%] w-[22%] h-[28%] border-2 border-primary rounded-lg bg-primary/10 transition-all hover:bg-primary/20 cursor-pointer"
+                                >
+                                    <div
+                                        class="absolute -top-3 -right-2 bg-primary text-on-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm whitespace-nowrap"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[12px]"
+                                            >check</span
+                                        >
+                                        Bell Pepper
+                                    </div>
+                                </div>
+                                <!-- Item 2: Greek Yogurt -->
+                                <div
+                                    class="absolute top-[10%] left-[55%] w-[18%] h-[25%] border-2 border-primary rounded-lg bg-primary/10 transition-all hover:bg-primary/20 cursor-pointer"
+                                >
+                                    <div
+                                        class="absolute -top-3 -right-2 bg-primary text-on-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm whitespace-nowrap"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[12px]"
+                                            >check</span
+                                        >
+                                        Yogurt
+                                    </div>
+                                </div>
+                                <!-- Item 3: Carrots -->
+                                <div
+                                    class="absolute top-[60%] left-[40%] w-[30%] h-[20%] border-2 border-primary rounded-lg bg-primary/10 transition-all hover:bg-primary/20 cursor-pointer"
+                                >
+                                    <div
+                                        class="absolute -top-3 -right-2 bg-primary text-on-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm whitespace-nowrap"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[12px]"
+                                            >check</span
+                                        >
+                                        Carrot
+                                    </div>
+                                </div>
+                                <!-- Scanning Status UI -->
+                                <div
+                                    class="absolute bottom-4 left-4 right-4 flex items-center justify-between"
+                                >
+                                    <div
+                                        class="flex items-center gap-2 bg-surface/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-tertiary text-[18px]"
+                                            >auto_awesome</span
+                                        >
+                                        <span
+                                            class="font-label-sm text-label-sm text-on-surface"
+                                            >Scan Complete</span
+                                        >
+                                    </div>
+                                    <button
+                                        aria-label="Retake Photo"
+                                        class="w-10 h-10 rounded-full bg-surface/90 backdrop-blur-md flex items-center justify-center text-on-surface hover:bg-white transition-colors shadow-sm"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[20px]"
+                                            >photo_camera</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Info Text -->
+                            <p
+                                class="font-body-md text-body-md text-on-surface-variant text-sm flex items-center gap-1"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[16px]"
+                                    >info</span
+                                >
+                                Tap any bounding box to manually adjust the
+                                detected item.
+                            </p>
+                        </div>
+                        <!-- Right/Bottom Column: The Results List -->
+                        <div class="lg:col-span-5 flex flex-col h-full">
+                            <!-- AI Styled Container for Results -->
+                            <div
+                                class="relative rounded-[20px] p-[1px] bg-gradient-to-br from-tertiary/30 via-surface-variant to-primary/30 flex-1 flex flex-col shadow-[0_8px_24px_rgba(0,0,0,0.04)]"
+                            >
+                                <div
+                                    class="bg-surface-container-lowest rounded-[19px] p-md lg:p-lg flex-1 flex flex-col h-full"
+                                >
+                                    <!-- Results Header -->
+                                    <div
+                                        class="flex items-center justify-between mb-lg"
+                                    >
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="material-symbols-outlined text-tertiary"
+                                                >auto_awesome</span
+                                            >
+                                            <h3
+                                                class="font-headline-lg text-headline-lg text-on-background"
+                                            >
+                                                Newly Detected
+                                            </h3>
+                                        </div>
+                                        <span
+                                            class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2.5 py-1 rounded-full"
+                                            >3 Items</span
+                                        >
+                                    </div>
+                                    <!-- The List -->
+                                    <div
+                                        class="flex flex-col gap-sm flex-1 overflow-y-auto pr-1"
+                                    >
+                                        <!-- Item 1: Carrots -->
+                                        <div
+                                            class="group flex items-center justify-between p-4 bg-surface rounded-xl border border-outline-variant/30 hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all"
+                                        >
+                                            <div
+                                                class="flex items-center gap-md"
+                                            >
+                                                <div
+                                                    class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined"
+                                                        >nutrition</span
+                                                    >
+                                                </div>
+                                                <div>
+                                                    <h4
+                                                        class="font-label-md text-label-md text-on-background group-hover:text-primary transition-colors"
+                                                    >
+                                                        Organic Carrots
+                                                    </h4>
+                                                    <p
+                                                        class="font-body-md text-body-md text-sm text-on-surface-variant"
+                                                    >
+                                                        Vegetables • Bunch
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex flex-col items-end gap-2"
+                                            >
+                                                <div
+                                                    class="flex items-center gap-1 bg-surface-container text-on-surface-variant px-2 py-0.5 rounded text-[11px] font-medium tracking-wider uppercase"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[12px]"
+                                                        >eco</span
+                                                    >
+                                                    Est. 2 weeks
+                                                </div>
+                                                <button
+                                                    class="text-tertiary hover:underline font-label-sm text-label-sm flex items-center gap-0.5"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[14px]"
+                                                        >edit</span
+                                                    >
+                                                    Edit
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Item 2: Yogurt -->
+                                        <div
+                                            class="group flex items-center justify-between p-4 bg-surface rounded-xl border border-outline-variant/30 hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all"
+                                        >
+                                            <div
+                                                class="flex items-center gap-md"
+                                            >
+                                                <div
+                                                    class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined"
+                                                        >egg_alt</span
+                                                    >
+                                                </div>
+                                                <div>
+                                                    <h4
+                                                        class="font-label-md text-label-md text-on-background group-hover:text-primary transition-colors"
+                                                    >
+                                                        Greek Yogurt
+                                                    </h4>
+                                                    <p
+                                                        class="font-body-md text-body-md text-sm text-on-surface-variant"
+                                                    >
+                                                        Dairy • 1 Tub
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex flex-col items-end gap-2"
+                                            >
+                                                <div
+                                                    class="flex items-center gap-1 bg-tertiary-container/40 text-on-tertiary-container px-2 py-0.5 rounded text-[11px] font-medium tracking-wider uppercase"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[12px]"
+                                                        >warning</span
+                                                    >
+                                                    Est. 4 days
+                                                </div>
+                                                <button
+                                                    class="text-tertiary hover:underline font-label-sm text-label-sm flex items-center gap-0.5"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[14px]"
+                                                        >edit</span
+                                                    >
+                                                    Edit
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Item 3: Bell Peppers -->
+                                        <div
+                                            class="group flex items-center justify-between p-4 bg-surface rounded-xl border border-outline-variant/30 hover:border-primary/50 hover:shadow-sm cursor-pointer transition-all"
+                                        >
+                                            <div
+                                                class="flex items-center gap-md"
+                                            >
+                                                <div
+                                                    class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined"
+                                                        >eco</span
+                                                    >
+                                                </div>
+                                                <div>
+                                                    <h4
+                                                        class="font-label-md text-label-md text-on-background group-hover:text-primary transition-colors"
+                                                    >
+                                                        Bell Peppers
+                                                    </h4>
+                                                    <p
+                                                        class="font-body-md text-body-md text-sm text-on-surface-variant"
+                                                    >
+                                                        Vegetables • 2 Mixed
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex flex-col items-end gap-2"
+                                            >
+                                                <div
+                                                    class="flex items-center gap-1 bg-surface-container text-on-surface-variant px-2 py-0.5 rounded text-[11px] font-medium tracking-wider uppercase"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[12px]"
+                                                        >eco</span
+                                                    >
+                                                    Est. 1 week
+                                                </div>
+                                                <button
+                                                    class="text-tertiary hover:underline font-label-sm text-label-sm flex items-center gap-0.5"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[14px]"
+                                                        >edit</span
+                                                    >
+                                                    Edit
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Missing Items Action -->
+                                        <button
+                                            class="w-full py-3 mt-2 border border-dashed border-outline-variant rounded-xl text-on-surface-variant font-label-md text-label-md flex justify-center items-center gap-2 hover:bg-surface hover:text-primary transition-colors"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-[20px]"
+                                                >add_circle</span
+                                            >
+                                            Add Missing Item
+                                        </button>
+                                    </div>
+                                    <!-- Sticky Footer Action -->
+                                    <div
+                                        class="pt-lg mt-md border-t border-outline-variant/20"
+                                    >
+                                        <button
+                                            class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl shadow-sm hover:bg-primary-fixed-variant transition-colors flex justify-center items-center gap-2"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-[20px]"
+                                                >inventory_2</span
+                                            >
+                                            Confirm &amp; Add to Inventory
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>

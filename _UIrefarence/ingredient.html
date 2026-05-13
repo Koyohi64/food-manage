@@ -4,89 +4,20 @@
     <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>Add Ingredient | Culinary Editorial</title>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-            rel="stylesheet"
-        />
+        <title>Food Inventory Management - Zubora Kitchen</title>
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-        <script id="tailwind-config">
-            tailwind.config = {
-                darkMode: "class",
-                theme: {
-                    extend: {
-                        colors: {
-                            "on-tertiary-fixed": "#410003",
-                            "surface-container-low": "#f3f4f3",
-                            "surface-container-highest": "#e1e3e2",
-                            outline: "#707a6c",
-                            "on-secondary": "#ffffff",
-                            primary: "#0d631b",
-                            "primary-container": "#2e7d32",
-                            "secondary-container": "#fc820c",
-                            "tertiary-container": "#d02d2d",
-                            "tertiary-fixed-dim": "#ffb3ac",
-                            "surface-tint": "#1b6d24",
-                            "surface-variant": "#e1e3e2",
-                            "surface-container-lowest": "#ffffff",
-                            "surface-dim": "#d9dad9",
-                            "on-secondary-fixed": "#311300",
-                            "secondary-fixed": "#ffdcc6",
-                            "on-primary": "#ffffff",
-                            "on-primary-fixed-variant": "#005312",
-                            "tertiary-fixed": "#ffdad6",
-                            "error-container": "#ffdad6",
-                            "on-tertiary-container": "#ffedeb",
-                            "inverse-primary": "#88d982",
-                            "on-surface": "#191c1c",
-                            "on-error-container": "#93000a",
-                            "on-error": "#ffffff",
-                            "on-tertiary-fixed-variant": "#930010",
-                            surface: "#f9f9f8",
-                            "on-primary-container": "#cbffc2",
-                            "inverse-on-surface": "#f0f1f0",
-                            "on-tertiary": "#ffffff",
-                            "on-secondary-fixed-variant": "#723600",
-                            "inverse-surface": "#2e3131",
-                            "on-secondary-container": "#5e2c00",
-                            "primary-fixed-dim": "#88d982",
-                            "on-primary-fixed": "#002204",
-                            "primary-fixed": "#a3f69c",
-                            "surface-container-high": "#e7e8e7",
-                            "outline-variant": "#bfcaba",
-                            "secondary-fixed-dim": "#ffb786",
-                            "on-surface-variant": "#40493d",
-                            "surface-container": "#edeeed",
-                            tertiary: "#ac0c18",
-                            background: "#f9f9f8",
-                            secondary: "#964900",
-                            error: "#ba1a1a",
-                            "surface-bright": "#f9f9f8",
-                            "on-background": "#191c1c",
-                        },
-                        borderRadius: {
-                            DEFAULT: "0.25rem",
-                            lg: "0.5rem",
-                            xl: "0.75rem",
-                            full: "9999px",
-                        },
-                        fontFamily: {
-                            headline: ["Plus Jakarta Sans"],
-                            body: ["Be Vietnam Pro"],
-                            label: ["Be Vietnam Pro"],
-                        },
-                    },
-                },
-            };
-        </script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
         <style>
             .material-symbols-outlined {
                 font-variation-settings:
@@ -95,393 +26,692 @@
                     "GRAD" 0,
                     "opsz" 24;
             }
-            body {
-                font-family: "Be Vietnam Pro", sans-serif;
-            }
-            h1,
-            h2,
-            h3 {
-                font-family: "Plus Jakarta Sans", sans-serif;
-            }
         </style>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "tertiary-fixed": "#ffdcc6",
+                            "surface-bright": "#f3fcf0",
+                            "secondary-container": "#fd933d",
+                            "inverse-on-surface": "#ebf3e8",
+                            "on-secondary-fixed-variant": "#713700",
+                            "on-background": "#161d17",
+                            "surface-container": "#e8f0e5",
+                            "on-tertiary-container": "#794418",
+                            "on-surface": "#161d17",
+                            "surface-variant": "#dde5da",
+                            error: "#ba1a1a",
+                            "on-secondary-fixed": "#301400",
+                            "on-tertiary-fixed-variant": "#6c3a0f",
+                            "surface-container-low": "#eef6eb",
+                            "inverse-primary": "#4de082",
+                            "outline-variant": "#bccabb",
+                            "on-primary": "#ffffff",
+                            outline: "#6d7b6d",
+                            "primary-container": "#4ade80",
+                            "surface-container-highest": "#dde5da",
+                            "surface-tint": "#006d36",
+                            primary: "#006d36",
+                            "primary-fixed-dim": "#4de082",
+                            "surface-container-lowest": "#ffffff",
+                            "on-primary-fixed-variant": "#005227",
+                            "on-surface-variant": "#3d4a3e",
+                            "tertiary-fixed-dim": "#ffb784",
+                            "on-secondary": "#ffffff",
+                            "on-tertiary": "#ffffff",
+                            secondary: "#944a00",
+                            "on-tertiary-fixed": "#301400",
+                            "on-secondary-container": "#693300",
+                            "on-error-container": "#93000a",
+                            tertiary: "#895024",
+                            "surface-container-high": "#e2ebe0",
+                            "surface-dim": "#d4dcd2",
+                            "on-primary-fixed": "#00210c",
+                            "secondary-fixed": "#ffdcc5",
+                            "inverse-surface": "#2b322b",
+                            background: "#f3fcf0",
+                            "on-error": "#ffffff",
+                            "primary-fixed": "#6dfe9c",
+                            "on-primary-container": "#005e2d",
+                            surface: "#f3fcf0",
+                            "tertiary-container": "#ffb47f",
+                            "secondary-fixed-dim": "#ffb783",
+                            "error-container": "#ffdad6",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            gutter: "16px",
+                            "margin-mobile": "20px",
+                            "max-width": "1200px",
+                            sm: "8px",
+                            lg: "24px",
+                            base: "4px",
+                            xl: "32px",
+                            xs: "4px",
+                            "margin-desktop": "64px",
+                            md: "16px",
+                        },
+                        fontFamily: {
+                            "body-lg": ["Be Vietnam Pro"],
+                            "body-md": ["Be Vietnam Pro"],
+                            "headline-lg-mobile": ["Plus Jakarta Sans"],
+                            "headline-md": ["Plus Jakarta Sans"],
+                            "headline-lg": ["Plus Jakarta Sans"],
+                            "display-lg": ["Plus Jakarta Sans"],
+                            "label-md": ["Be Vietnam Pro"],
+                            "label-sm": ["Be Vietnam Pro"],
+                        },
+                        fontSize: {
+                            "body-lg": [
+                                "18px",
+                                {
+                                    lineHeight: "28px",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "body-md": [
+                                "16px",
+                                {
+                                    lineHeight: "24px",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "headline-lg-mobile": [
+                                "28px",
+                                {
+                                    lineHeight: "34px",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "headline-md": [
+                                "24px",
+                                {
+                                    lineHeight: "32px",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "40px",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "display-lg": [
+                                "40px",
+                                {
+                                    lineHeight: "48px",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                            "label-md": [
+                                "14px",
+                                {
+                                    lineHeight: "20px",
+                                    letterSpacing: "0.05em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                {
+                                    lineHeight: "16px",
+                                    fontWeight: "500",
+                                },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
     </head>
-    <body class="bg-surface text-on-surface antialiased">
-        <!-- Top Navigation Bar -->
+    <body class="bg-background text-on-background font-body-md min-h-screen">
+        <!-- TopNavBar (Mobile Only) -->
         <header
-            class="fixed top-0 right-0 left-0 z-40 flex items-center justify-between px-8 bg-stone-50/80 dark:bg-stone-900/80 backdrop-blur-md w-full h-16"
+            class="md:hidden flex justify-between items-center w-full px-margin-mobile py-sm fixed top-0 z-50 bg-surface shadow-sm"
         >
-            <div class="flex items-center gap-4">
-                <button
-                    class="p-2 hover:bg-surface-container-low rounded-full transition-colors"
-                >
-                    <span class="material-symbols-outlined text-on-surface"
-                        >arrow_back</span
-                    >
-                </button>
+            <div class="flex items-center gap-sm">
                 <span
-                    class="text-xl font-bold text-green-900 dark:text-white font-headline"
-                    >The Culinary Editorial</span
+                    class="material-symbols-outlined text-primary text-[28px]"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >restaurant</span
+                >
+                <span
+                    class="text-headline-md font-headline-md font-bold text-primary"
+                    >Zubora Kitchen</span
                 >
             </div>
-            <div class="flex items-center gap-4">
-                <span
-                    class="material-symbols-outlined text-stone-500 hover:opacity-80 cursor-pointer"
-                    >notifications</span
+            <div class="flex gap-md text-on-surface-variant">
+                <button
+                    class="hover:bg-surface-container-low transition-colors rounded-full p-2 active:scale-95 transition-transform"
                 >
-                <span
-                    class="material-symbols-outlined text-stone-500 hover:opacity-80 cursor-pointer"
-                    >settings</span
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <button
+                    class="hover:bg-surface-container-low transition-colors rounded-full p-2 active:scale-95 transition-transform"
                 >
+                    <span class="material-symbols-outlined">mic</span>
+                </button>
             </div>
         </header>
-        <main class="pt-24 pb-32 px-6 max-w-5xl mx-auto">
-            <div class="mb-12">
-                <h1
-                    class="text-4xl font-extrabold tracking-tight text-on-surface mb-2"
-                >
-                    Add Ingredient
-                </h1>
-                <p class="text-on-surface-variant font-body">
-                    Catalog your latest finds to the Living Pantry.
-                </p>
-            </div>
-            <!-- Mode Selection: Asymmetric Layout -->
-            <section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-12">
-                <!-- Scan Receipt -->
-                <div
-                    class="md:col-span-4 group cursor-pointer bg-surface-container-lowest p-8 rounded-xl flex flex-col items-center justify-center text-center transition-all hover:bg-surface-bright shadow-sm"
-                >
-                    <div
-                        class="w-16 h-16 mb-4 rounded-full bg-primary-fixed flex items-center justify-center group-hover:scale-110 transition-transform"
-                    >
-                        <span
-                            class="material-symbols-outlined text-on-primary-fixed text-3xl"
-                            >receipt_long</span
-                        >
-                    </div>
-                    <h3 class="text-lg font-bold mb-1">Scan Receipt</h3>
-                    <p class="text-sm text-on-surface-variant px-4">
-                        Auto-detect items from your grocery store bill.
-                    </p>
-                </div>
-                <!-- Photo of Fridge -->
-                <div
-                    class="md:col-span-4 group cursor-pointer bg-surface-container-lowest p-8 rounded-xl flex flex-col items-center justify-center text-center transition-all hover:bg-surface-bright shadow-sm"
-                >
-                    <div
-                        class="w-16 h-16 mb-4 rounded-full bg-secondary-fixed flex items-center justify-center group-hover:scale-110 transition-transform"
-                    >
-                        <span
-                            class="material-symbols-outlined text-on-secondary-fixed text-3xl"
-                            >kitchen</span
-                        >
-                    </div>
-                    <h3 class="text-lg font-bold mb-1">Photo of Fridge</h3>
-                    <p class="text-sm text-on-surface-variant px-4">
-                        Identify fresh produce and staples at a glance.
-                    </p>
-                </div>
-                <!-- Manual Input -->
-                <div
-                    class="md:col-span-4 group cursor-pointer bg-surface-container-lowest p-8 rounded-xl flex flex-col items-center justify-center text-center transition-all hover:bg-surface-bright shadow-sm"
-                >
-                    <div
-                        class="w-16 h-16 mb-4 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:scale-110 transition-transform"
-                    >
-                        <span
-                            class="material-symbols-outlined text-on-surface-variant text-3xl"
-                            >edit_note</span
-                        >
-                    </div>
-                    <h3 class="text-lg font-bold mb-1">Manual Input</h3>
-                    <p class="text-sm text-on-surface-variant px-4">
-                        Add single items or specialty ingredients manually.
-                    </p>
-                </div>
-            </section>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                <!-- Left: Preview Area -->
-                <div class="sticky top-24">
-                    <div
-                        class="relative aspect-[3/4] rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center group"
-                    >
-                        <img
-                            class="w-full h-full object-cover"
-                            data-alt="overhead high-angle shot of a crumpled grocery receipt on a clean light stone surface with a sprig of fresh rosemary nearby for decoration"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb2fLPe8YfodS8ElJj-tIfk5XKA7Au7dnv_GwECr3g8F65v7wH3sv1Cr5z4NSPNWyrbju-ridxEHwJP_Z8ROgFH1gJXP-jBtHp5IBq0NpEmljOtWpGGtNnlarlpanuKxqy5B6VQQ0yfY5MIwb3dM_XZCo1mamrDLmrCwTPEJ86E2Zt_ygjl-MVtbokJ3Cs7E2kb3y-hI8TC2MpA6L2ruTUPivogQQ4M04H_tOl0rXlE8J4KFkrNZJXBDk656FIBWYmiivGenb9hiwm"
-                        />
-                        <div
-                            class="absolute inset-0 bg-black/10 transition-opacity opacity-0 group-hover:opacity-100 flex items-center justify-center"
-                        >
-                            <button
-                                class="bg-surface-container-lowest/90 backdrop-blur px-6 py-3 rounded-full font-bold flex items-center gap-2"
-                            >
-                                <span class="material-symbols-outlined"
-                                    >refresh</span
-                                >
-                                Retake Photo
-                            </button>
-                        </div>
-                        <!-- Detection Markers -->
-                        <div
-                            class="absolute top-1/4 left-1/3 w-8 h-8 rounded-full border-2 border-primary bg-primary/20 backdrop-blur-sm shadow-xl"
-                        ></div>
-                        <div
-                            class="absolute top-1/2 left-1/2 w-8 h-8 rounded-full border-2 border-primary bg-primary/20 backdrop-blur-sm shadow-xl"
-                        ></div>
-                        <div
-                            class="absolute bottom-1/4 right-1/4 w-8 h-8 rounded-full border-2 border-primary bg-primary/20 backdrop-blur-sm shadow-xl"
-                        ></div>
-                    </div>
-                    <p
-                        class="mt-4 text-sm text-on-surface-variant italic text-center"
-                    >
-                        AI is currently identifying ingredients from the scanned
-                        receipt...
-                    </p>
-                </div>
-                <!-- Right: Detected Ingredients -->
-                <div class="space-y-6">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-2xl font-bold tracking-tight">
-                            Detected Ingredients
-                        </h2>
-                        <span
-                            class="px-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full text-xs font-bold"
-                            >5 ITEMS FOUND</span
-                        >
-                    </div>
-                    <div class="space-y-4">
-                        <!-- Item 1 -->
-                        <div
-                            class="bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 transition-all hover:bg-surface-bright group"
-                        >
-                            <div
-                                class="w-12 h-12 rounded-lg bg-surface-container-low overflow-hidden shrink-0"
-                            >
-                                <img
-                                    class="w-full h-full object-cover"
-                                    data-alt="close-up of fresh organic mango with vibrant orange skin on a neutral studio background"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA43hO_5aNdTJJf26urvXTUVXr_WYIo-Eqt8bfX0x9sZ2BJdptXe0TK-8Xu8vMrSxr8n5Po80-U43FlWLHhvTe9Sqnt0k6eq6pmySiDsaOrApXDnl1rIaDLFk9flqkVIB0dEJMOk-ZjASz7334mxcZUP2IB4sLpwubvxFxTEEk97nXdPHP00iPLw4ib4md_2f9m2k0MiskEYcSTcJnRuAY9xnUe-JMcPLOskfZ4HdF5_4chZ5EmKuJj7xFMngHq8Q8Cc3F5d06hPitv"
-                                />
-                            </div>
-                            <div class="flex-grow grid grid-cols-2 gap-4">
-                                <div>
-                                    <label
-                                        class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-1"
-                                        >Ingredient</label
-                                    >
-                                    <input
-                                        class="w-full bg-transparent border-0 p-0 text-on-surface font-bold focus:ring-0 focus:outline-none"
-                                        type="text"
-                                        value="Alphonso Mango"
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-1"
-                                        >Best Before</label
-                                    >
-                                    <input
-                                        class="w-full bg-transparent border-0 p-0 text-tertiary font-medium focus:ring-0 focus:outline-none"
-                                        type="text"
-                                        value="24 Oct 2023"
-                                    />
-                                </div>
-                            </div>
-                            <button
-                                class="text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity"
-                            >
-                                <span class="material-symbols-outlined"
-                                    >delete</span
-                                >
-                            </button>
-                        </div>
-                        <!-- Item 2 -->
-                        <div
-                            class="bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 transition-all hover:bg-surface-bright group"
-                        >
-                            <div
-                                class="w-12 h-12 rounded-lg bg-surface-container-low overflow-hidden shrink-0"
-                            >
-                                <img
-                                    class="w-full h-full object-cover"
-                                    data-alt="organic baby spinach leaves in a white ceramic bowl with soft natural lighting"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0girPpLuYxppX6ASwiipTemiYy-r62kHqXWQN7yyW-V4h4zjvcQNCzJWjLvgzsDL_ZTv-PHwTOrc4b2aUBTmMdUmrt2scSGsZ2r1OtnK9RYt2vxOmFJ2diq-fVXp3htyY9tYd6iAcydD4MES8g8GHOXKk2Z9iMHci2gxa1tNii8YmERMJzBptbC17vm4YZVgFS4z3WSgIIFvLYCpurWcAQH7iMD2yFjkb8vCv4fCtkQTx_ATEVEGV2dGHJUJwfFYHRAVUBymIfw8L"
-                                />
-                            </div>
-                            <div class="flex-grow grid grid-cols-2 gap-4">
-                                <div>
-                                    <label
-                                        class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-1"
-                                        >Ingredient</label
-                                    >
-                                    <input
-                                        class="w-full bg-transparent border-0 p-0 text-on-surface font-bold focus:ring-0 focus:outline-none"
-                                        type="text"
-                                        value="Baby Spinach"
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-1"
-                                        >Best Before</label
-                                    >
-                                    <input
-                                        class="w-full bg-transparent border-0 p-0 text-on-surface-variant focus:ring-0 focus:outline-none"
-                                        type="text"
-                                        value="18 Oct 2023"
-                                    />
-                                </div>
-                            </div>
-                            <button
-                                class="text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity"
-                            >
-                                <span class="material-symbols-outlined"
-                                    >delete</span
-                                >
-                            </button>
-                        </div>
-                        <!-- Item 3 -->
-                        <div
-                            class="bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 transition-all hover:bg-surface-bright group border-2 border-transparent hover:border-primary-container/10"
-                        >
-                            <div
-                                class="w-12 h-12 rounded-lg bg-surface-container-low overflow-hidden shrink-0"
-                            >
-                                <img
-                                    class="w-full h-full object-cover"
-                                    data-alt="bunch of fresh organic carrots with green tops on a wooden rustic background"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwM13804Das_ZbamBwoys_7hYmA7ozyTvcyX1i23jx_NyrVyo1-NdcRKrA9WV1h28jWKX-Vf76Ahxon6th8DaP5tveOn1YcFsRP1h8wmwhD1pZnNyPnQrnzjHLY561Lz_CF_lxMXK9DB-fLLBP3kiL7HEfF_dlrwm-_CU2vVuReF4hSBT1PGasMkTR3uDxKpS-n0xVe_JgpDIaf4SS85AojWYteJU-RV1vnpErIMDvoTI0ANcubMNs7joXnAEn0dBh9leSWF8w0KOl"
-                                />
-                            </div>
-                            <div class="flex-grow grid grid-cols-2 gap-4">
-                                <div>
-                                    <label
-                                        class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-1"
-                                        >Ingredient</label
-                                    >
-                                    <input
-                                        class="w-full bg-transparent border-0 p-0 text-on-surface font-bold focus:ring-0 focus:outline-none"
-                                        type="text"
-                                        value="Organic Carrots"
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-1"
-                                        >Best Before</label
-                                    >
-                                    <input
-                                        class="w-full bg-transparent border-0 p-0 text-on-surface-variant focus:ring-0 focus:outline-none"
-                                        type="text"
-                                        value="30 Oct 2023"
-                                    />
-                                </div>
-                            </div>
-                            <button
-                                class="text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity"
-                            >
-                                <span class="material-symbols-outlined"
-                                    >delete</span
-                                >
-                            </button>
-                        </div>
-                        <!-- Item 4 (Ambiguous Detection Example) -->
-                        <div
-                            class="bg-tertiary-container/5 p-5 rounded-xl flex items-center gap-4 border border-tertiary-container/20 group"
-                        >
-                            <div
-                                class="w-12 h-12 rounded-lg bg-tertiary-container/10 flex items-center justify-center shrink-0"
-                            >
-                                <span
-                                    class="material-symbols-outlined text-tertiary"
-                                    >question_mark</span
-                                >
-                            </div>
-                            <div class="flex-grow grid grid-cols-2 gap-4">
-                                <div>
-                                    <label
-                                        class="text-[10px] font-bold uppercase tracking-widest text-on-tertiary-fixed-variant block mb-1"
-                                        >Ingredient (Unsure)</label
-                                    >
-                                    <input
-                                        class="w-full bg-transparent border-0 p-0 text-on-surface font-bold focus:ring-0 focus:outline-none italic"
-                                        placeholder="Type name..."
-                                        type="text"
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        class="text-[10px] font-bold uppercase tracking-widest text-on-tertiary-fixed-variant block mb-1"
-                                        >Set Expiry</label
-                                    >
-                                    <input
-                                        class="w-full bg-transparent border-0 p-0 text-on-surface-variant focus:ring-0 focus:outline-none italic"
-                                        placeholder="Select date"
-                                        type="text"
-                                    />
-                                </div>
-                            </div>
-                            <button
-                                class="text-on-surface-variant hover:text-error"
-                            >
-                                <span class="material-symbols-outlined"
-                                    >close</span
-                                >
-                            </button>
-                        </div>
-                        <button
-                            class="w-full py-4 rounded-xl border-2 border-dashed border-outline-variant text-on-surface-variant font-bold hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2"
-                        >
-                            <span class="material-symbols-outlined">add</span>
-                            Add Another Manually
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <!-- Fixed Bottom Action Bar -->
-        <div
-            class="fixed bottom-0 right-0 left-0 z-50 flex justify-center pb-8 px-4"
+        <!-- SideNavBar (Desktop Only) -->
+        <nav
+            class="hidden md:flex flex-col h-screen p-md fixed left-0 top-0 z-40 bg-surface-container-low border-r border-outline-variant w-64"
         >
-            <div
-                class="max-w-2xl w-full mx-auto rounded-full bg-white/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-2xl shadow-stone-200/50 dark:shadow-black/50 border border-stone-200/20 px-4 py-3 flex items-center justify-between"
-            >
-                <div class="flex items-center gap-2 pl-4">
+            <div class="flex items-center gap-sm mb-xl px-2">
+                <img
+                    alt="Zubora User"
+                    class="w-12 h-12 rounded-full object-cover shadow-sm"
+                    data-alt="A close-up portrait of a cheerful person in a bright, modern kitchen setting. The lighting is soft and natural, emphasizing a clean, organic aesthetic with subtle warm tones. The mood is welcoming and culinary-focused."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaWuT0wBYAdfbcKKBsdi9EQYRrWQuyCuG81b_wD0iZxQ3cpG0CivDYuNKhi68UVzCTJUysQKkJPO6Vh95br4myUHcxNq9JgToKxqjWSR_xcPMXbYjsZCCLZTY2TA72Q0CWn-FGy97r2txh9l2IJuC5tYadPuuiYRpAgBG4F6goRSwvZQ63EJ2xE-NaHAYQ_27iUtznHeRwOqvfYNtcF0U0dr_UIPHL1fOJJLJliUWiL851HygdEUBPIN9PmnEL9aw11pTl-qHOuQ"
+                />
+                <div class="flex flex-col">
+                    <span class="font-headline-md text-headline-md text-primary"
+                        >My Kitchen</span
+                    >
                     <span
-                        class="text-sm font-body font-medium text-on-surface-variant"
-                        >4 items ready for storage</span
+                        class="font-label-sm text-label-sm text-on-surface-variant"
+                        >Stay lazy, eat well</span
                     >
-                </div>
-                <div class="flex items-center gap-4">
-                    <button
-                        class="text-stone-600 dark:text-stone-300 font-bold px-6 py-2 hover:scale-105 transition-transform duration-300"
-                    >
-                        Cancel
-                    </button>
-                    <button
-                        class="bg-gradient-to-br from-primary to-primary-container text-white rounded-full px-8 py-3 font-bold shadow-lg flex items-center gap-2 hover:scale-105 transition-all active:scale-95 duration-150"
-                    >
-                        Add to Inventory
-                        <span class="material-symbols-outlined text-xl"
-                            >inventory_2</span
-                        >
-                    </button>
                 </div>
             </div>
-        </div>
-        <!-- Floating Assistant (The Zubora Report) -->
-        <div class="fixed bottom-24 right-8 z-50">
+            <div class="flex flex-col gap-2 flex-grow">
+                <a
+                    class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all rounded-xl font-label-md text-label-md py-3 px-4 flex items-center gap-3 active:translate-x-1 transition-transform"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">home</span>
+                    Home
+                </a>
+                <!-- Active Tab -->
+                <a
+                    class="bg-primary-container text-on-primary-container rounded-xl font-bold font-label-md text-label-md py-3 px-4 flex items-center gap-3 active:translate-x-1 transition-transform shadow-sm"
+                    href="#"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >inventory_2</span
+                    >
+                    Food Inventory
+                </a>
+                <a
+                    class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all rounded-xl font-label-md text-label-md py-3 px-4 flex items-center gap-3 active:translate-x-1 transition-transform"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined"
+                        >restaurant_menu</span
+                    >
+                    Recipe List
+                </a>
+                <a
+                    class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all rounded-xl font-label-md text-label-md py-3 px-4 flex items-center gap-3 active:translate-x-1 transition-transform"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+            </div>
             <button
-                class="w-14 h-14 rounded-full bg-surface-container-lowest/80 backdrop-blur-xl border border-stone-200/20 flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group"
+                class="mt-auto bg-primary text-on-primary rounded-xl font-label-md text-label-md py-3 px-4 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-sm"
+            >
+                <span class="material-symbols-outlined">add</span>
+                Add Food
+            </button>
+        </nav>
+        <!-- BottomNavBar (Mobile Only) -->
+        <nav
+            class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-lg rounded-t-xl"
+        >
+            <a
+                class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1"
+                href="#"
+            >
+                <span class="material-symbols-outlined">home</span>
+                <span class="font-label-sm text-label-sm">Home</span>
+            </a>
+            <!-- Active Tab -->
+            <a
+                class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-150"
+                href="#"
             >
                 <span
-                    class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform"
+                    class="material-symbols-outlined"
                     style="font-variation-settings: &quot;FILL&quot; 1"
-                    >mic</span
+                    >inventory_2</span
                 >
-            </button>
-        </div>
+                <span class="font-label-sm text-label-sm font-bold">Food</span>
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1"
+                href="#"
+            >
+                <span class="material-symbols-outlined">restaurant_menu</span>
+                <span class="font-label-sm text-label-sm">Recipes</span>
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1"
+                href="#"
+            >
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-sm text-label-sm">Settings</span>
+            </a>
+        </nav>
+        <!-- Main Content Canvas -->
+        <main
+            class="ml-0 md:ml-64 pt-[72px] md:pt-0 pb-[80px] md:pb-0 min-h-screen"
+        >
+            <div
+                class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl flex flex-col gap-xl"
+            >
+                <!-- Page Header & Search -->
+                <section class="flex flex-col gap-lg">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md"
+                    >
+                        <div>
+                            <h1
+                                class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background"
+                            >
+                                Food Inventory
+                            </h1>
+                            <p
+                                class="font-body-md text-body-md text-on-surface-variant mt-1"
+                            >
+                                Manage your ingredients and track expiration
+                                dates.
+                            </p>
+                        </div>
+                        <div class="w-full md:w-auto flex items-center gap-sm">
+                            <div class="relative flex-grow md:w-80">
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline"
+                                    >search</span
+                                >
+                                <input
+                                    class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface outline-none transition-shadow shadow-[inset_0_1px_3px_rgba(0,0,0,0.05)]"
+                                    placeholder="Search ingredients..."
+                                    type="text"
+                                />
+                            </div>
+                            <button
+                                class="p-3 bg-surface-container-lowest border border-outline-variant rounded-xl text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >filter_list</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Category Chips -->
+                    <div
+                        class="flex items-center gap-sm overflow-x-auto pb-2 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0 scrollbar-hide"
+                    >
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-primary-container text-on-primary-container rounded-lg font-label-md text-label-md border border-transparent"
+                        >
+                            All Items
+                        </button>
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-surface-container-lowest text-on-surface-variant rounded-lg font-label-md text-label-md border border-outline-variant hover:bg-surface-container transition-colors"
+                        >
+                            Produce
+                        </button>
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-surface-container-lowest text-on-surface-variant rounded-lg font-label-md text-label-md border border-outline-variant hover:bg-surface-container transition-colors"
+                        >
+                            Dairy
+                        </button>
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-surface-container-lowest text-on-surface-variant rounded-lg font-label-md text-label-md border border-outline-variant hover:bg-surface-container transition-colors"
+                        >
+                            Meat
+                        </button>
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-surface-container-lowest text-on-surface-variant rounded-lg font-label-md text-label-md border border-outline-variant hover:bg-surface-container transition-colors"
+                        >
+                            Pantry
+                        </button>
+                    </div>
+                </section>
+                <!-- Inventory Grid -->
+                <section
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter md:gap-lg"
+                >
+                    <!-- Card: Safe (Green) -->
+                    <div
+                        class="bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-outline-variant/50 p-md flex flex-col gap-md relative overflow-hidden group"
+                    >
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-primary"
+                        ></div>
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[24px]"
+                                        >nutrition</span
+                                    >
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-body-lg font-bold text-on-surface leading-tight"
+                                    >
+                                        Avocados
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-on-surface-variant"
+                                        >Produce</span
+                                    >
+                                </div>
+                            </div>
+                            <button class="text-outline hover:text-on-surface">
+                                <span class="material-symbols-outlined"
+                                    >more_vert</span
+                                >
+                            </button>
+                        </div>
+                        <div
+                            class="flex items-center justify-between mt-auto pt-2"
+                        >
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm text-outline"
+                                    >Expires</span
+                                >
+                                <div
+                                    class="flex items-center gap-1 text-primary"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px]"
+                                        >check_circle</span
+                                    >
+                                    <span class="font-label-md text-label-md"
+                                        >In 5 days</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center bg-surface-container rounded-lg p-1 border border-outline-variant/30"
+                            >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >remove</span
+                                    >
+                                </button>
+                                <span
+                                    class="w-8 text-center font-label-md text-label-md text-on-surface"
+                                    >3</span
+                                >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >add</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card: Expiring Soon (Yellow/Orange) -->
+                    <div
+                        class="bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-outline-variant/50 p-md flex flex-col gap-md relative overflow-hidden group bg-gradient-to-b from-secondary-container/5 to-transparent"
+                    >
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-secondary-container"
+                        ></div>
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center text-on-secondary-container"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[24px]"
+                                        >egg_alt</span
+                                    >
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-body-lg font-bold text-on-surface leading-tight"
+                                    >
+                                        Free Range Eggs
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-on-surface-variant"
+                                        >Dairy</span
+                                    >
+                                </div>
+                            </div>
+                            <button class="text-outline hover:text-on-surface">
+                                <span class="material-symbols-outlined"
+                                    >more_vert</span
+                                >
+                            </button>
+                        </div>
+                        <div
+                            class="flex items-center justify-between mt-auto pt-2"
+                        >
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm text-outline"
+                                    >Expires</span
+                                >
+                                <div
+                                    class="flex items-center gap-1 text-on-secondary-container"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px]"
+                                        >warning</span
+                                    >
+                                    <span class="font-label-md text-label-md"
+                                        >Tomorrow</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center bg-surface-container rounded-lg p-1 border border-outline-variant/30"
+                            >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >remove</span
+                                    >
+                                </button>
+                                <span
+                                    class="w-8 text-center font-label-md text-label-md text-on-surface"
+                                    >6</span
+                                >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >add</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card: Expired (Red) -->
+                    <div
+                        class="bg-error-container/20 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-error/30 p-md flex flex-col gap-md relative overflow-hidden group"
+                    >
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-error"
+                        ></div>
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-error-container flex items-center justify-center text-on-error-container"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[24px]"
+                                        >local_drink</span
+                                    >
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-body-lg font-bold text-on-surface leading-tight"
+                                    >
+                                        Whole Milk
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-on-surface-variant"
+                                        >Dairy</span
+                                    >
+                                </div>
+                            </div>
+                            <button class="text-outline hover:text-on-surface">
+                                <span class="material-symbols-outlined"
+                                    >more_vert</span
+                                >
+                            </button>
+                        </div>
+                        <div
+                            class="flex items-center justify-between mt-auto pt-2"
+                        >
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm text-error"
+                                    >Expired</span
+                                >
+                                <div class="flex items-center gap-1 text-error">
+                                    <span
+                                        class="material-symbols-outlined text-[16px]"
+                                        >error</span
+                                    >
+                                    <span class="font-label-md text-label-md"
+                                        >2 days ago</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center bg-surface-container-lowest rounded-lg p-1 border border-outline-variant/30"
+                            >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors rounded-md"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >remove</span
+                                    >
+                                </button>
+                                <span
+                                    class="w-8 text-center font-label-md text-label-md text-on-surface"
+                                    >1</span
+                                >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors rounded-md"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >add</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card: Safe (Green) -->
+                    <div
+                        class="bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-outline-variant/50 p-md flex flex-col gap-md relative overflow-hidden group"
+                    >
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-primary"
+                        ></div>
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[24px]"
+                                        >set_meal</span
+                                    >
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-body-lg font-bold text-on-surface leading-tight"
+                                    >
+                                        Chicken Breast
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-on-surface-variant"
+                                        >Meat</span
+                                    >
+                                </div>
+                            </div>
+                            <button class="text-outline hover:text-on-surface">
+                                <span class="material-symbols-outlined"
+                                    >more_vert</span
+                                >
+                            </button>
+                        </div>
+                        <div
+                            class="flex items-center justify-between mt-auto pt-2"
+                        >
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm text-outline"
+                                    >Expires</span
+                                >
+                                <div
+                                    class="flex items-center gap-1 text-primary"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px]"
+                                        >check_circle</span
+                                    >
+                                    <span class="font-label-md text-label-md"
+                                        >In 3 days</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center bg-surface-container rounded-lg p-1 border border-outline-variant/30"
+                            >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >remove</span
+                                    >
+                                </button>
+                                <span
+                                    class="w-8 text-center font-label-md text-label-md text-on-surface"
+                                    >2</span
+                                >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >add</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
     </body>
 </html>
