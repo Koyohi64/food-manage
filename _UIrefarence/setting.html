@@ -1,0 +1,477 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Zubora Kitchen - Settings</title>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- Material Symbols -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <!-- Theme Configuration -->
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-surface-variant": "#3d4a3e",
+                            "on-tertiary-fixed": "#301400",
+                            "on-surface": "#161d17",
+                            outline: "#6d7b6d",
+                            "surface-container-low": "#eef6eb",
+                            surface: "#f3fcf0",
+                            secondary: "#944a00",
+                            error: "#ba1a1a",
+                            "surface-container": "#e8f0e5",
+                            "on-tertiary": "#ffffff",
+                            "on-secondary-container": "#693300",
+                            "on-tertiary-container": "#794418",
+                            "surface-tint": "#006d36",
+                            "secondary-fixed": "#ffdcc5",
+                            "primary-container": "#4ade80",
+                            "surface-container-high": "#e2ebe0",
+                            "on-background": "#161d17",
+                            "on-secondary": "#ffffff",
+                            "inverse-primary": "#4de082",
+                            "secondary-fixed-dim": "#ffb783",
+                            "surface-variant": "#dde5da",
+                            "on-primary": "#ffffff",
+                            background: "#f3fcf0",
+                            "on-secondary-fixed": "#301400",
+                            tertiary: "#895024",
+                            primary: "#006d36",
+                            "on-primary-container": "#005e2d",
+                            "primary-fixed": "#6dfe9c",
+                            "primary-fixed-dim": "#4de082",
+                            "tertiary-container": "#ffb47f",
+                            "outline-variant": "#bccabb",
+                            "surface-dim": "#d4dcd2",
+                            "on-error": "#ffffff",
+                            "surface-container-highest": "#dde5da",
+                            "on-error-container": "#93000a",
+                            "secondary-container": "#fd933d",
+                            "on-primary-fixed-variant": "#005227",
+                            "on-primary-fixed": "#00210c",
+                            "inverse-surface": "#2b322b",
+                            "tertiary-fixed-dim": "#ffb784",
+                            "on-tertiary-fixed-variant": "#6c3a0f",
+                            "inverse-on-surface": "#ebf3e8",
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary-fixed-variant": "#713700",
+                            "error-container": "#ffdad6",
+                            "tertiary-fixed": "#ffdcc6",
+                            "surface-bright": "#f3fcf0",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            "margin-mobile": "20px",
+                            "margin-desktop": "64px",
+                            "max-width": "1200px",
+                            base: "4px",
+                            xs: "4px",
+                            xl: "32px",
+                            md: "16px",
+                            lg: "24px",
+                            sm: "8px",
+                            gutter: "16px",
+                        },
+                        fontFamily: {
+                            "headline-lg-mobile": ["Plus Jakarta Sans"],
+                            "body-lg": ["Be Vietnam Pro"],
+                            "headline-lg": ["Plus Jakarta Sans"],
+                            "display-lg": ["Plus Jakarta Sans"],
+                            "label-md": ["Be Vietnam Pro"],
+                            "headline-md": ["Plus Jakarta Sans"],
+                            "body-md": ["Be Vietnam Pro"],
+                            "label-sm": ["Be Vietnam Pro"],
+                        },
+                        fontSize: {
+                            "headline-lg-mobile": [
+                                "28px",
+                                { lineHeight: "34px", fontWeight: "600" },
+                            ],
+                            "body-lg": [
+                                "18px",
+                                { lineHeight: "28px", fontWeight: "400" },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "40px",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "display-lg": [
+                                "40px",
+                                {
+                                    lineHeight: "48px",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                            "label-md": [
+                                "14px",
+                                {
+                                    lineHeight: "20px",
+                                    letterSpacing: "0.05em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "headline-md": [
+                                "24px",
+                                { lineHeight: "32px", fontWeight: "600" },
+                            ],
+                            "body-md": [
+                                "16px",
+                                { lineHeight: "24px", fontWeight: "400" },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                { lineHeight: "16px", fontWeight: "500" },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                background-color: #f3fcf0;
+            }
+            /* Custom Toggle Switch Styles */
+            .toggle-checkbox:checked {
+                right: 0;
+                border-color: #006d36;
+            }
+            .toggle-checkbox:checked + .toggle-label {
+                background-color: #006d36;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background text-on-surface font-body-md antialiased min-h-screen flex"
+    >
+        <!-- Mobile TopAppBar -->
+        <header
+            class="md:hidden fixed top-0 w-full z-40 bg-surface/80 backdrop-blur-md flex items-center justify-between px-margin-mobile py-md"
+        >
+            <div
+                class="font-headline-md text-headline-md text-primary font-bold tracking-tight"
+            >
+                Zubora Kitchen
+            </div>
+            <div class="flex items-center">
+                <span class="material-symbols-outlined text-primary text-2xl"
+                    >account_circle</span
+                >
+            </div>
+        </header>
+        <!-- Desktop SideNavBar -->
+        <nav
+            class="hidden md:flex flex-col gap-lg p-lg fixed left-0 top-0 h-full z-50 overflow-y-auto bg-surface w-72 border-r border-outline-variant shadow-sm"
+        >
+            <div class="mb-xl">
+                <h1
+                    class="font-headline-md text-headline-md text-primary font-bold"
+                >
+                    Zubora Kitchen
+                </h1>
+                <p
+                    class="font-label-md text-label-md text-on-surface-variant mt-sm"
+                >
+                    Your AI Sous Chef
+                </p>
+            </div>
+            <div class="flex flex-col gap-sm flex-1">
+                <a
+                    class="flex items-center gap-md text-on-surface-variant rounded-xl px-4 py-3 font-medium hover:bg-surface-container hover:text-primary transition-all"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="font-label-md text-label-md">Home</span>
+                </a>
+                <a
+                    class="flex items-center gap-md text-on-surface-variant rounded-xl px-4 py-3 font-medium hover:bg-surface-container hover:text-primary transition-all"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="font-label-md text-label-md"
+                        >Food Inventory</span
+                    >
+                </a>
+                <a
+                    class="flex items-center gap-md text-on-surface-variant rounded-xl px-4 py-3 font-medium hover:bg-surface-container hover:text-primary transition-all"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined"
+                        >restaurant_menu</span
+                    >
+                    <span class="font-label-md text-label-md">Recipe List</span>
+                </a>
+                <a
+                    class="flex items-center gap-md bg-primary-container/20 text-on-primary-container rounded-xl px-4 py-3 font-bold hover:bg-surface-container hover:text-primary transition-all scale-[0.98]"
+                    href="#"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >settings</span
+                    >
+                    <span class="font-label-md text-label-md">Settings</span>
+                </a>
+            </div>
+            <div class="mt-auto pt-lg">
+                <button
+                    class="w-full bg-primary text-on-primary rounded-xl py-3 px-4 font-label-md text-label-md flex items-center justify-center gap-sm"
+                >
+                    <span class="material-symbols-outlined">add</span>
+                    Add Ingredients
+                </button>
+            </div>
+        </nav>
+        <!-- Main Content Area -->
+        <main
+            class="flex-1 ml-0 md:ml-72 pt-[88px] md:pt-0 px-margin-mobile md:px-margin-desktop py-xl"
+        >
+            <div class="max-w-[1000px] mx-auto w-full space-y-xl">
+                <header class="mb-xl">
+                    <h2
+                        class="font-headline-lg text-headline-lg text-on-surface"
+                    >
+                        Settings
+                    </h2>
+                    <p
+                        class="font-body-md text-body-md text-on-surface-variant mt-sm"
+                    >
+                        Manage your kitchen preferences and account details.
+                    </p>
+                </header>
+                <!-- Bento Grid Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+                    <!-- Profile Card -->
+                    <section
+                        class="bg-surface-container-lowest rounded-xl p-lg border border-surface-variant shadow-[0_4px_12px_rgba(0,0,0,0.04)] lg:col-span-2 flex flex-col md:flex-row gap-lg"
+                    >
+                        <div class="flex-1 md:text-left">
+                            <h3
+                                class="font-headline-md text-headline-md text-on-surface"
+                            >
+                                Alex Mercer
+                            </h3>
+                            <p
+                                class="font-body-md text-body-md text-on-surface-variant"
+                            >
+                                alex.mercer@example.com
+                            </p>
+                        </div>
+                        <div class="mt-md md:mt-0 flex gap-md items-center">
+                            <button
+                                class="border border-outline text-on-surface hover:bg-surface-container transition-colors rounded-xl px-6 py-2 font-label-md text-label-md flex items-center gap-sm"
+                            >
+                                <span class="material-symbols-outlined text-sm"
+                                    >edit</span
+                                >
+                                Edit Profile
+                            </button>
+                            <button
+                                class="border border-outline text-on-surface hover:bg-surface-container transition-colors rounded-xl px-6 py-2 font-label-md text-label-md flex items-center gap-sm"
+                            >
+                                <span class="material-symbols-outlined text-sm"
+                                    >lock_reset</span
+                                >
+                                Password Reset
+                            </button>
+                        </div>
+                    </section>
+                    <!-- Notifications Card -->
+                    <section
+                        class="bg-surface-container-lowest rounded-xl p-lg border border-surface-variant shadow-[0_4px_12px_rgba(0,0,0,0.04)] flex flex-col gap-lg"
+                    >
+                        <div>
+                            <h3
+                                class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-secondary"
+                                    >notifications</span
+                                >
+                                Notifications
+                            </h3>
+                            <p
+                                class="font-body-md text-body-md text-on-surface-variant mt-xs"
+                            >
+                                Stay updated on your ingredients.
+                            </p>
+                        </div>
+                        <div class="space-y-md">
+                            <div class="flex items-center justify-between">
+                                <span
+                                    class="font-body-md text-body-md text-on-surface"
+                                    >Push Alerts</span
+                                >
+                                <div
+                                    class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in"
+                                >
+                                    <input
+                                        checked=""
+                                        class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-surface-variant"
+                                        id="push-toggle"
+                                        name="toggle"
+                                        type="checkbox"
+                                    />
+                                    <label
+                                        class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer"
+                                        for="push-toggle"
+                                    ></label>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span
+                                    class="font-body-md text-body-md text-on-surface"
+                                    >Email Summaries</span
+                                >
+                                <div
+                                    class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in"
+                                >
+                                    <input
+                                        class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-surface-variant"
+                                        id="email-toggle"
+                                        name="toggle"
+                                        type="checkbox"
+                                    />
+                                    <label
+                                        class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer"
+                                        for="email-toggle"
+                                    ></label>
+                                </div>
+                            </div>
+                            <div class="pt-sm">
+                                <label
+                                    class="block font-body-md text-body-md text-on-surface mb-xs"
+                                    for="expiry-days"
+                                    >Days before expiry alert</label
+                                >
+                                <input
+                                    class="w-24 bg-surface rounded border border-surface-variant focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface font-body-md px-3 py-2 outline-none transition-all"
+                                    id="expiry-days"
+                                    type="number"
+                                    value="3"
+                                />
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Preferences Card -->
+                    <section
+                        class="bg-surface-container-lowest rounded-xl p-lg border border-surface-variant shadow-[0_4px_12px_rgba(0,0,0,0.04)] flex flex-col gap-lg"
+                    >
+                        <div>
+                            <h3
+                                class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-secondary"
+                                    >palette</span
+                                >
+                                Preferences
+                            </h3>
+                            <p
+                                class="font-body-md text-body-md text-on-surface-variant mt-xs"
+                            >
+                                Customize your app experience.
+                            </p>
+                        </div>
+                        <div>
+                            <span
+                                class="block font-body-md text-body-md text-on-surface mb-sm"
+                                >Theme</span
+                            >
+                            <div
+                                class="flex bg-surface-container rounded-xl p-1 w-full max-w-xs"
+                            >
+                                <button
+                                    class="flex-1 bg-surface-container-lowest text-primary shadow-sm rounded-lg py-2 font-label-md text-label-md flex items-center justify-center gap-xs"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >light_mode</span
+                                    >
+                                    Light
+                                </button>
+                                <button
+                                    class="flex-1 text-on-surface-variant hover:text-on-surface rounded-lg py-2 font-label-md text-label-md flex items-center justify-center gap-xs transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >dark_mode</span
+                                    >
+                                    Dark
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Account Actions (Danger Zone) -->
+                    <section
+                        class="bg-surface-container-lowest rounded-xl p-lg border border-error/20 shadow-[0_4px_12px_rgba(0,0,0,0.04)] lg:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-md"
+                    >
+                        <div>
+                            <h3
+                                class="font-headline-md text-headline-md text-error flex items-center gap-sm"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >warning</span
+                                >
+                                Account Actions
+                            </h3>
+                            <p
+                                class="font-body-md text-body-md text-on-surface-variant mt-xs"
+                            >
+                                Manage your session or permanently remove your
+                                data.
+                            </p>
+                        </div>
+                        <div
+                            class="flex flex-wrap gap-md w-full sm:w-auto mt-md sm:mt-0"
+                        >
+                            <button
+                                class="flex-1 sm:flex-none border border-outline text-on-surface hover:bg-surface-container transition-colors rounded-xl px-6 py-2 font-label-md text-label-md"
+                            >
+                                Logout
+                            </button>
+                            <button
+                                class="flex-1 sm:flex-none bg-error text-on-error hover:bg-on-error-container transition-colors rounded-xl px-6 py-2 font-label-md text-label-md"
+                            >
+                                Delete Account
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,314 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Zubora Kitchen - Login</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            tertiary: "#895024",
+                            "on-secondary-fixed": "#301400",
+                            "error-container": "#ffdad6",
+                            "on-error-container": "#93000a",
+                            "on-primary-fixed-variant": "#005227",
+                            "on-tertiary-fixed-variant": "#6c3a0f",
+                            "on-tertiary": "#ffffff",
+                            "on-tertiary-fixed": "#301400",
+                            "primary-container": "#4ade80",
+                            "surface-container-high": "#e2ebe0",
+                            "tertiary-fixed": "#ffdcc6",
+                            outline: "#6d7b6d",
+                            "inverse-surface": "#2b322b",
+                            "on-error": "#ffffff",
+                            "on-primary-container": "#005e2d",
+                            "on-secondary-container": "#693300",
+                            "surface-dim": "#d4dcd2",
+                            "on-surface": "#161d17",
+                            "surface-container-low": "#eef6eb",
+                            "on-primary": "#ffffff",
+                            "on-secondary": "#ffffff",
+                            error: "#ba1a1a",
+                            "on-background": "#161d17",
+                            "inverse-on-surface": "#ebf3e8",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-bright": "#f3fcf0",
+                            secondary: "#944a00",
+                            "on-tertiary-container": "#794418",
+                            "primary-fixed-dim": "#4de082",
+                            "surface-tint": "#006d36",
+                            "secondary-fixed": "#ffdcc5",
+                            "surface-container-highest": "#dde5da",
+                            "tertiary-container": "#ffb47f",
+                            "surface-container": "#e8f0e5",
+                            "primary-fixed": "#6dfe9c",
+                            "surface-variant": "#dde5da",
+                            background: "#f3fcf0",
+                            "tertiary-fixed-dim": "#ffb784",
+                            "secondary-container": "#fd933d",
+                            "secondary-fixed-dim": "#ffb783",
+                            surface: "#f3fcf0",
+                            "inverse-primary": "#4de082",
+                            "on-secondary-fixed-variant": "#713700",
+                            "outline-variant": "#bccabb",
+                            "on-primary-fixed": "#00210c",
+                            "on-surface-variant": "#3d4a3e",
+                            primary: "#006d36",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            md: "16px",
+                            base: "4px",
+                            "margin-mobile": "20px",
+                            "margin-desktop": "64px",
+                            xs: "4px",
+                            sm: "8px",
+                            gutter: "16px",
+                            xl: "32px",
+                            lg: "24px",
+                            "max-width": "1200px",
+                        },
+                        fontFamily: {
+                            "body-lg": ["Be Vietnam Pro"],
+                            "headline-md": ["Plus Jakarta Sans"],
+                            "display-lg": ["Plus Jakarta Sans"],
+                            "headline-lg": ["Plus Jakarta Sans"],
+                            "body-md": ["Be Vietnam Pro"],
+                            "label-md": ["Be Vietnam Pro"],
+                            "headline-lg-mobile": ["Plus Jakarta Sans"],
+                            "label-sm": ["Be Vietnam Pro"],
+                        },
+                        fontSize: {
+                            "body-lg": [
+                                "18px",
+                                {
+                                    lineHeight: "28px",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "headline-md": [
+                                "24px",
+                                {
+                                    lineHeight: "32px",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "display-lg": [
+                                "40px",
+                                {
+                                    lineHeight: "48px",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "40px",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "body-md": [
+                                "16px",
+                                {
+                                    lineHeight: "24px",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "label-md": [
+                                "14px",
+                                {
+                                    lineHeight: "20px",
+                                    letterSpacing: "0.05em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "headline-lg-mobile": [
+                                "28px",
+                                {
+                                    lineHeight: "34px",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                {
+                                    lineHeight: "16px",
+                                    fontWeight: "500",
+                                },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body
+        class="bg-background text-on-background min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop"
+    >
+        <main
+            class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-lg border border-surface-variant overflow-hidden"
+        >
+            <div class="p-lg md:p-xl flex flex-col gap-lg">
+                <div class="flex flex-col items-center text-center gap-sm">
+                    <span
+                        class="material-symbols-outlined text-primary text-5xl"
+                        data-icon="restaurant_menu"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >restaurant_menu</span
+                    >
+                    <h1
+                        class="font-headline-lg text-headline-lg text-on-surface"
+                    >
+                        Zubora Kitchen
+                    </h1>
+                    <p
+                        class="font-body-md text-body-md text-on-surface-variant"
+                    >
+                        Welcome back. Stay lazy, eat well.
+                    </p>
+                </div>
+                <form class="flex flex-col gap-md">
+                    <div class="flex flex-col gap-xs">
+                        <label
+                            class="font-label-md text-label-md text-on-surface"
+                            for="email"
+                            >Email Address</label
+                        >
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant"
+                                data-icon="mail"
+                                >mail</span
+                            >
+                            <input
+                                class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-xl pr-sm py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-on-surface-variant transition-colors"
+                                id="email"
+                                name="email"
+                                placeholder="chef@home.com"
+                                required=""
+                                type="email"
+                            />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-xs">
+                        <label
+                            class="font-label-md text-label-md text-on-surface"
+                            for="password"
+                            >Password</label
+                        >
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant"
+                                data-icon="lock"
+                                >lock</span
+                            >
+                            <input
+                                class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-xl pr-sm py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-on-surface-variant transition-colors"
+                                id="password"
+                                name="password"
+                                placeholder="••••••••"
+                                required=""
+                                type="password"
+                            />
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-sm">
+                        <label class="flex items-center gap-sm cursor-pointer">
+                            <input
+                                class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 bg-surface-container-lowest"
+                                type="checkbox"
+                            />
+                            <span
+                                class="font-body-md text-body-md text-on-surface-variant"
+                                >Keep me logged in</span
+                            >
+                        </label>
+                        <a
+                            class="font-label-md text-label-md text-primary hover:text-on-primary-container transition-colors"
+                            href="#"
+                            >Forgot password?</a
+                        >
+                    </div>
+                    <button
+                        class="mt-md w-full bg-primary text-on-primary rounded-xl py-sm px-md font-label-md text-label-md flex items-center justify-center gap-sm hover:bg-on-primary-container transition-colors shadow-sm active:scale-[0.98]"
+                        type="submit"
+                    >
+                        Login
+                        <span
+                            class="material-symbols-outlined text-sm"
+                            data-icon="arrow_forward"
+                            >arrow_forward</span
+                        >
+                    </button>
+                </form>
+                <div class="text-center mt-sm">
+                    <p
+                        class="font-body-md text-body-md text-on-surface-variant"
+                    >
+                        Don't have an account?
+                        <a
+                            class="font-label-md text-label-md text-secondary hover:text-on-secondary-container transition-colors"
+                            href="#"
+                            >Sign up</a
+                        >
+                    </p>
+                </div>
+                <div class="relative flex items-center justify-center mt-sm">
+                    <div class="absolute inset-0 flex items-center">
+                        <div
+                            class="w-full border-t border-outline-variant"
+                        ></div>
+                    </div>
+                    <div class="relative bg-surface-container-lowest px-sm">
+                        <span
+                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider"
+                            >Or continue with</span
+                        >
+                    </div>
+                </div>
+                <div class="flex gap-md justify-center">
+                    <button
+                        class="flex-1 flex items-center justify-center gap-sm border border-outline-variant rounded-lg py-sm px-md hover:bg-surface-container-low transition-colors text-on-surface"
+                    >
+                        <span class="font-label-md text-label-md">Google</span>
+                    </button>
+                    <button
+                        class="flex-1 flex items-center justify-center gap-sm border border-outline-variant rounded-lg py-sm px-md hover:bg-surface-container-low transition-colors text-on-surface"
+                    >
+                        <span class="font-label-md text-label-md">Apple</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

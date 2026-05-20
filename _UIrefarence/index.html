@@ -1,0 +1,660 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Zubora Kitchen - Home</title>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- Material Symbols -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .material-symbols-outlined.fill {
+                font-variation-settings: "FILL" 1;
+            }
+
+            /* Hide scrollbar for horizontal scroll areas */
+            .hide-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            .hide-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        </style>
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "tertiary-fixed": "#ffdcc6",
+                            "surface-bright": "#f3fcf0",
+                            "secondary-container": "#fd933d",
+                            "inverse-on-surface": "#ebf3e8",
+                            "on-secondary-fixed-variant": "#713700",
+                            "on-background": "#161d17",
+                            "surface-container": "#e8f0e5",
+                            "on-tertiary-container": "#794418",
+                            "on-surface": "#161d17",
+                            "surface-variant": "#dde5da",
+                            error: "#ba1a1a",
+                            "on-secondary-fixed": "#301400",
+                            "on-tertiary-fixed-variant": "#6c3a0f",
+                            "surface-container-low": "#eef6eb",
+                            "inverse-primary": "#4de082",
+                            "outline-variant": "#bccabb",
+                            "on-primary": "#ffffff",
+                            outline: "#6d7b6d",
+                            "primary-container": "#4ade80",
+                            "surface-container-highest": "#dde5da",
+                            "surface-tint": "#006d36",
+                            primary: "#006d36",
+                            "primary-fixed-dim": "#4de082",
+                            "surface-container-lowest": "#ffffff",
+                            "on-primary-fixed-variant": "#005227",
+                            "on-surface-variant": "#3d4a3e",
+                            "tertiary-fixed-dim": "#ffb784",
+                            "on-secondary": "#ffffff",
+                            "on-tertiary": "#ffffff",
+                            secondary: "#944a00",
+                            "on-tertiary-fixed": "#301400",
+                            "on-secondary-container": "#693300",
+                            "on-error-container": "#93000a",
+                            tertiary: "#895024",
+                            "surface-container-high": "#e2ebe0",
+                            "surface-dim": "#d4dcd2",
+                            "on-primary-fixed": "#00210c",
+                            "secondary-fixed": "#ffdcc5",
+                            "inverse-surface": "#2b322b",
+                            background: "#f3fcf0",
+                            "on-error": "#ffffff",
+                            "primary-fixed": "#6dfe9c",
+                            "on-primary-container": "#005e2d",
+                            surface: "#f3fcf0",
+                            "tertiary-container": "#ffb47f",
+                            "secondary-fixed-dim": "#ffb783",
+                            "error-container": "#ffdad6",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            gutter: "16px",
+                            "margin-mobile": "20px",
+                            "max-width": "1200px",
+                            sm: "8px",
+                            lg: "24px",
+                            base: "4px",
+                            xl: "32px",
+                            xs: "4px",
+                            "margin-desktop": "64px",
+                            md: "16px",
+                        },
+                        fontFamily: {
+                            "body-lg": ["Be Vietnam Pro"],
+                            "body-md": ["Be Vietnam Pro"],
+                            "headline-lg-mobile": ["Plus Jakarta Sans"],
+                            "headline-md": ["Plus Jakarta Sans"],
+                            "headline-lg": ["Plus Jakarta Sans"],
+                            "display-lg": ["Plus Jakarta Sans"],
+                            "label-md": ["Be Vietnam Pro"],
+                            "label-sm": ["Be Vietnam Pro"],
+                        },
+                        fontSize: {
+                            "body-lg": [
+                                "18px",
+                                { lineHeight: "28px", fontWeight: "400" },
+                            ],
+                            "body-md": [
+                                "16px",
+                                { lineHeight: "24px", fontWeight: "400" },
+                            ],
+                            "headline-lg-mobile": [
+                                "28px",
+                                { lineHeight: "34px", fontWeight: "600" },
+                            ],
+                            "headline-md": [
+                                "24px",
+                                { lineHeight: "32px", fontWeight: "600" },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "40px",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "display-lg": [
+                                "40px",
+                                {
+                                    lineHeight: "48px",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                            "label-md": [
+                                "14px",
+                                {
+                                    lineHeight: "20px",
+                                    letterSpacing: "0.05em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                { lineHeight: "16px", fontWeight: "500" },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body
+        class="bg-background text-on-background font-body-md text-body-md antialiased overflow-hidden selection:bg-primary-container selection:text-on-primary-container"
+    >
+        <div class="flex h-screen w-full relative">
+            <!-- SideNavBar (Desktop) -->
+            <nav
+                class="hidden md:flex flex-col h-screen p-md fixed left-0 top-0 z-40 bg-surface-container-low border-r border-outline-variant docked h-screen left-0 w-64 flat no shadows"
+            >
+                <div class="flex items-center gap-sm mb-xl px-sm">
+                    <div
+                        class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden shrink-0 shadow-sm flex items-center justify-center text-primary font-headline-md"
+                    >
+                        Z
+                    </div>
+                    <div>
+                        <h1
+                            class="font-headline-md text-headline-md text-primary truncate"
+                        >
+                            My Kitchen
+                        </h1>
+                        <p
+                            class="font-label-sm text-label-sm text-on-surface-variant truncate"
+                        >
+                            Stay lazy, eat well
+                        </p>
+                    </div>
+                </div>
+                <ul class="flex flex-col gap-sm flex-1">
+                    <li>
+                        <a
+                            class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container rounded-xl font-bold font-label-md text-label-md hover:bg-surface-container-high transition-all active:translate-x-1 transition-transform"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined fill"
+                                >home</span
+                            >
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-all active:translate-x-1 transition-transform"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >inventory_2</span
+                            >
+                            Food Inventory
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-all active:translate-x-1 transition-transform"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >restaurant_menu</span
+                            >
+                            Recipe List
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-all active:translate-x-1 transition-transform"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >settings</span
+                            >
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+                <button
+                    class="mt-auto flex items-center justify-center gap-sm w-full py-md bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-colors shadow-sm"
+                >
+                    <span class="material-symbols-outlined">add</span>
+                    Add Food
+                </button>
+            </nav>
+            <!-- Main Content Wrapper -->
+            <div
+                class="flex-1 flex flex-col h-screen w-full md:ml-64 relative bg-surface"
+            >
+                <!-- TopNavBar (Mobile) -->
+                <header
+                    class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-sm fixed top-0 z-50 md:hidden bg-surface shadow-sm docked full-width top-0"
+                >
+                    <div
+                        class="text-headline-md font-headline-md font-bold text-primary"
+                    >
+                        Zubora Kitchen
+                    </div>
+                    <div class="flex items-center gap-md">
+                        <button
+                            class="p-xs text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full active:scale-95 transition-transform"
+                        >
+                            <span class="material-symbols-outlined"
+                                >notifications</span
+                            >
+                        </button>
+                        <button
+                            class="p-xs text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full active:scale-95 transition-transform"
+                        >
+                            <span class="material-symbols-outlined">mic</span>
+                        </button>
+                        <div
+                            class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant"
+                        >
+                            <!-- Profile Image Placeholder -->
+                        </div>
+                    </div>
+                </header>
+                <!-- Scrollable Canvas -->
+                <main
+                    class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop pt-24 md:pt-margin-desktop pb-40 w-full max-w-[1200px] mx-auto"
+                >
+                    <div class="mb-xl">
+                        <h2
+                            class="font-display-lg text-display-lg text-on-background mb-base"
+                        >
+                            Good morning.
+                        </h2>
+                        <p
+                            class="font-body-lg text-body-lg text-on-surface-variant"
+                        >
+                            Here is your kitchen overview.
+                        </p>
+                    </div>
+                    <!-- Expiration Alerts (Bento Layout) -->
+                    <section class="mb-xl">
+                        <div class="flex items-center justify-between mb-lg">
+                            <h3
+                                class="font-headline-md text-headline-md text-on-background"
+                            >
+                                Needs Attention
+                            </h3>
+                            <a
+                                class="font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant transition-colors"
+                                href="#"
+                                >View All</a
+                            >
+                        </div>
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"
+                        >
+                            <!-- Expiring Today (Red) -->
+                            <div
+                                class="bg-surface-container-lowest rounded-xl p-md border border-error-container relative shadow-[0_4px_12px_rgba(186,26,26,0.04)] overflow-hidden group"
+                            >
+                                <div
+                                    class="absolute top-0 right-0 w-24 h-24 bg-error-container rounded-bl-full -mr-4 -mt-4 opacity-50 transition-transform group-hover:scale-110"
+                                ></div>
+                                <div
+                                    class="flex items-start justify-between mb-md relative z-10"
+                                >
+                                    <div
+                                        class="bg-error-container text-on-error-container font-label-sm text-label-sm px-sm py-xs rounded-full flex items-center gap-xs"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[14px]"
+                                            >warning</span
+                                        >
+                                        Today
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-error"
+                                        >nutrition</span
+                                    >
+                                </div>
+                                <div
+                                    class="relative z-10 flex gap-md items-center"
+                                >
+                                    <div
+                                        class="w-16 h-16 rounded-lg bg-surface-variant overflow-hidden shrink-0"
+                                    >
+                                        <img
+                                            alt="Freshly washed organic spinach leaves in a bright white modern kitchen setting. Soft, diffused daylight from a window illuminates the vibrant green textures against a clean off-white countertop, emphasizing a healthy, fresh aesthetic."
+                                            class="w-full h-full object-cover"
+                                            data-alt="Freshly washed organic spinach leaves in a bright white modern kitchen setting. Soft, diffused daylight from a window illuminates the vibrant green textures against a clean off-white countertop, emphasizing a healthy, fresh aesthetic."
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNyGZuWmQ5Gc0l-vPn8-1PrjfeSn3So392IyWRwLiKjRCAnFtxUkv8V9G8EED4eSpCSLHmXl3M1RHvOCZsQ8RdbjBoS3sNlZd4f4K54nAJxHK8mMIDMytx_cCUlvrj8PLrCk3cmrS-ETRv8nN8smq5tOQCo25m22IrT3uJypuvba8Qq7dmk4fo6WnXRabq3_9rrSkb9yXqGPMRnC9OkbgasZDYk8zMu8TsFcW6uMvh-xNWtJMXxBQoTtoLyLVP7SYiRZEhI1WBcw"
+                                        />
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface leading-tight"
+                                        >
+                                            Organic Baby Spinach
+                                        </h4>
+                                        <p
+                                            class="font-body-md text-body-md text-on-surface-variant mt-xs"
+                                        >
+                                            1 Bag • Fridge
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Expiring Soon (Yellow/Terracotta) -->
+                            <div
+                                class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant relative shadow-[0_4px_12px_rgba(0,0,0,0.04)] overflow-hidden group"
+                            >
+                                <div
+                                    class="absolute top-0 right-0 w-24 h-24 bg-tertiary-container rounded-bl-full -mr-4 -mt-4 opacity-30 transition-transform group-hover:scale-110"
+                                ></div>
+                                <div
+                                    class="flex items-start justify-between mb-md relative z-10"
+                                >
+                                    <div
+                                        class="bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm px-sm py-xs rounded-full flex items-center gap-xs"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[14px]"
+                                            >schedule</span
+                                        >
+                                        In 2 days
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-tertiary"
+                                        >egg</span
+                                    >
+                                </div>
+                                <div
+                                    class="relative z-10 flex gap-md items-center"
+                                >
+                                    <div
+                                        class="w-16 h-16 rounded-lg bg-surface-variant overflow-hidden shrink-0"
+                                    >
+                                        <img
+                                            alt="A dozen free-range brown eggs resting in a minimalist ceramic carton on a light wood kitchen table. The lighting is bright and warm, casting soft shadows that highlight the natural, organic aesthetic of the scene."
+                                            class="w-full h-full object-cover"
+                                            data-alt="A dozen free-range brown eggs resting in a minimalist ceramic carton on a light wood kitchen table. The lighting is bright and warm, casting soft shadows that highlight the natural, organic aesthetic of the scene."
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLhwSfwiAKLD3i61o3Y1zrO8_hCBAVvdZxhQ8ESVG4z76ocYQty9gMt4l1OB--1IIWFfpGBXHZXpJasWZCEWjU0qnz3pYN5Xget1P2WzeQVV7PLgW-GUhRcYxAQ_3ZjlNd6SKTmWrGlOdA6TGX7-mqoL2aiZAi3EtJGuVIJhay6Elb3ulJX4m7HZzAKppOqOsu_ffO0eJeUzTWUTDEGsJU32oSI1fJ1z25EMjhGKRRJqxl3_0ezD7YiUOKGtywywoH1df66VZ_yw"
+                                        />
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface leading-tight"
+                                        >
+                                            Farm Fresh Eggs
+                                        </h4>
+                                        <p
+                                            class="font-body-md text-body-md text-on-surface-variant mt-xs"
+                                        >
+                                            6 Left • Fridge
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- AI Suggestion Box -->
+                            <div
+                                class="bg-gradient-to-br from-surface-bright to-surface-container-lowest rounded-xl p-md border border-tertiary-fixed-dim relative shadow-[0_4px_12px_rgba(253,147,61,0.06)] flex flex-col justify-between"
+                            >
+                                <div
+                                    class="flex items-start justify-between mb-md"
+                                >
+                                    <div
+                                        class="font-label-sm text-label-sm text-tertiary flex items-center gap-xs"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[16px]"
+                                            >auto_awesome</span
+                                        >
+                                        AI Recipe Idea
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="font-headline-md text-headline-md text-on-surface mb-xs"
+                                    >
+                                        Spinach Frittata
+                                    </h4>
+                                    <p
+                                        class="font-body-md text-body-md text-on-surface-variant line-clamp-2"
+                                    >
+                                        Use up your spinach and eggs before they
+                                        go bad.
+                                    </p>
+                                </div>
+                                <button
+                                    class="mt-md w-full py-sm bg-surface text-tertiary border border-tertiary-fixed-dim rounded-lg font-label-md text-label-md hover:bg-tertiary-fixed transition-colors"
+                                >
+                                    View Recipe
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Recent Activity -->
+                    <section>
+                        <h3
+                            class="font-headline-md text-headline-md text-on-background mb-lg"
+                        >
+                            Recent Recipes
+                        </h3>
+                        <div
+                            class="flex gap-gutter overflow-x-auto hide-scrollbar pb-lg -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0"
+                        >
+                            <!-- Recipe Card 1 -->
+                            <div
+                                class="w-[260px] shrink-0 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group cursor-pointer"
+                            >
+                                <div
+                                    class="h-36 w-full bg-surface-variant overflow-hidden relative"
+                                >
+                                    <img
+                                        alt="A beautifully plated healthy salad bowl featuring avocado, quinoa, and roasted vegetables. Photographed from directly above on an off-white stone surface in a brightly lit modern kitchen. The colors are vibrant and appetizing, emphasizing a fresh, organic lifestyle."
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        data-alt="A beautifully plated healthy salad bowl featuring avocado, quinoa, and roasted vegetables. Photographed from directly above on an off-white stone surface in a brightly lit modern kitchen. The colors are vibrant and appetizing, emphasizing a fresh, organic lifestyle."
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbFwznQOMk5q5Yz4HXn8nEGJGTrqcP75W5bUB9pdwLPEJhLQhxuz1UAdbqtuMrWf9zsLoSJWKTmvFCAlBi3l_xMjHDyIj61DTLGHzH9B1svxEOn_qGU06Ntd6ggVpPNx72JG9qen4hpsNt7_-r63LlIzqbObRgyGMX8-Rz6zCZ4TrIR4zYkipATVd4tdq206hwXPj4t-yTAJqPtW0K5rJ1n7AVqrgoN2K2Z4QbJuc8bTYhFGunGVoLMPXbT9_-6wNNMsYyDokBKg"
+                                    />
+                                    <div
+                                        class="absolute top-sm right-sm bg-surface/90 backdrop-blur-sm p-xs rounded-full shadow-sm text-on-surface"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[18px]"
+                                            >favorite</span
+                                        >
+                                    </div>
+                                </div>
+                                <div class="p-md flex-1 flex flex-col">
+                                    <div class="flex gap-xs mb-sm">
+                                        <span
+                                            class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-md"
+                                            >Healthy</span
+                                        >
+                                        <span
+                                            class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-md"
+                                            >15 min</span
+                                        >
+                                    </div>
+                                    <h4
+                                        class="font-headline-md text-headline-md text-on-surface mb-xs"
+                                    >
+                                        Avocado Quinoa Bowl
+                                    </h4>
+                                    <p
+                                        class="font-body-md text-body-md text-on-surface-variant mt-auto flex items-center gap-xs"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[16px]"
+                                            >history</span
+                                        >
+                                        Cooked 2 days ago
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Recipe Card 2 -->
+                            <div
+                                class="w-[260px] shrink-0 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group cursor-pointer"
+                            >
+                                <div
+                                    class="h-36 w-full bg-surface-variant overflow-hidden relative"
+                                >
+                                    <img
+                                        alt="A rustic cast iron skillet containing sizzling lemon herb chicken breasts with roasted cherry tomatoes. Set on a light wooden cutting board in a sunlit kitchen. The aesthetic is warm, inviting, and appetizing with soft ambient shadows."
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        data-alt="A rustic cast iron skillet containing sizzling lemon herb chicken breasts with roasted cherry tomatoes. Set on a light wooden cutting board in a sunlit kitchen. The aesthetic is warm, inviting, and appetizing with soft ambient shadows."
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYkmBSwsYdj-tikPtxfU7q5D7FHcowO4bOwgc_BGfAHeY26rZefW3CBkcdyJrdQkxZGAtj8KPaBhgABGeiIruoOW3ASqqqs_IvRjkHj5tFkzIZFOfT1LJM1s7_YOl-RgVnVN8zYYGWTbbWtjFu45q8QZqqRTHufW0GjtHE8f0RKgda2Y3Dnop2rj71tjvLiHjHlhn5Vlk8QstrDlgblnue_qPhdP-AbSXyxINP5bVF-xYiKrJKJawgxXnRhENgSwScmUXVEuJOAw"
+                                    />
+                                </div>
+                                <div class="p-md flex-1 flex flex-col">
+                                    <div class="flex gap-xs mb-sm">
+                                        <span
+                                            class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-md"
+                                            >Dinner</span
+                                        >
+                                        <span
+                                            class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-md"
+                                            >High Protein</span
+                                        >
+                                    </div>
+                                    <h4
+                                        class="font-headline-md text-headline-md text-on-surface mb-xs"
+                                    >
+                                        Lemon Herb Chicken
+                                    </h4>
+                                    <p
+                                        class="font-body-md text-body-md text-on-surface-variant mt-auto flex items-center gap-xs"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[16px]"
+                                            >history</span
+                                        >
+                                        Cooked last week
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+                <!-- Floating Action Button (FAB) - Visible above reporting bar -->
+                <button
+                    class="fixed bottom-24 right-margin-mobile md:bottom-28 md:right-margin-desktop bg-primary text-on-primary w-14 h-14 rounded-2xl shadow-lg flex items-center justify-center hover:bg-on-primary-fixed-variant transition-colors z-40 active:scale-95 group"
+                >
+                    <span
+                        class="material-symbols-outlined text-[28px] group-hover:rotate-90 transition-transform"
+                        >add</span
+                    >
+                </button>
+                <!-- Zubora Reporting Bar (Pinned Bottom Content Area) -->
+                <div
+                    class="absolute bottom-0 md:bottom-0 left-0 w-full px-margin-mobile md:px-margin-desktop pb-20 md:pb-lg pt-4 bg-gradient-to-t from-surface via-surface to-transparent z-30"
+                >
+                    <div
+                        class="max-w-[800px] mx-auto bg-surface-container-lowest rounded-full shadow-[0_8px_24px_rgba(0,109,54,0.08)] border border-outline-variant flex items-center p-sm pr-2"
+                    >
+                        <button
+                            class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors shrink-0"
+                        >
+                            <span class="material-symbols-outlined"
+                                >add_photo_alternate</span
+                            >
+                        </button>
+                        <input
+                            class="flex-1 bg-transparent border-none focus:ring-0 text-body-lg font-body-lg text-on-surface placeholder-on-surface-variant px-sm h-full w-full"
+                            placeholder="What did you cook?"
+                            type="text"
+                        />
+                        <button
+                            class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors shrink-0 shadow-sm"
+                        >
+                            <span class="material-symbols-outlined fill"
+                                >mic</span
+                            >
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- BottomNavBar (Mobile) -->
+            <nav
+                class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-lg docked full-width bottom-0 rounded-t-xl shadow-lg"
+            >
+                <a
+                    class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-150"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined fill text-[24px]"
+                        >home</span
+                    >
+                    <span class="font-label-sm text-label-sm mt-1 font-bold"
+                        >Home</span
+                    >
+                </a>
+                <a
+                    class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant active:scale-90 transition-all duration-150 px-4 py-1 rounded-full"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined text-[24px]"
+                        >inventory_2</span
+                    >
+                    <span class="font-label-sm text-label-sm mt-1">Food</span>
+                </a>
+                <a
+                    class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant active:scale-90 transition-all duration-150 px-4 py-1 rounded-full"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined text-[24px]"
+                        >restaurant_menu</span
+                    >
+                    <span class="font-label-sm text-label-sm mt-1"
+                        >Recipes</span
+                    >
+                </a>
+                <a
+                    class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant active:scale-90 transition-all duration-150 px-4 py-1 rounded-full"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined text-[24px]"
+                        >settings</span
+                    >
+                    <span class="font-label-sm text-label-sm mt-1"
+                        >Settings</span
+                    >
+                </a>
+            </nav>
+        </div>
+    </body>
+</html>

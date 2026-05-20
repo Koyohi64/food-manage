@@ -1,0 +1,645 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Receipt Scanning - Zubora Kitchen</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-surface-variant": "#3d4a3e",
+                            "on-tertiary-fixed": "#301400",
+                            "on-surface": "#161d17",
+                            outline: "#6d7b6d",
+                            "surface-container-low": "#eef6eb",
+                            surface: "#f3fcf0",
+                            secondary: "#944a00",
+                            error: "#ba1a1a",
+                            "surface-container": "#e8f0e5",
+                            "on-tertiary": "#ffffff",
+                            "on-secondary-container": "#693300",
+                            "on-tertiary-container": "#794418",
+                            "surface-tint": "#006d36",
+                            "secondary-fixed": "#ffdcc5",
+                            "primary-container": "#4ade80",
+                            "surface-container-high": "#e2ebe0",
+                            "on-background": "#161d17",
+                            "on-secondary": "#ffffff",
+                            "inverse-primary": "#4de082",
+                            "secondary-fixed-dim": "#ffb783",
+                            "surface-variant": "#dde5da",
+                            "on-primary": "#ffffff",
+                            background: "#f3fcf0",
+                            "on-secondary-fixed": "#301400",
+                            tertiary: "#895024",
+                            primary: "#006d36",
+                            "on-primary-container": "#005e2d",
+                            "primary-fixed": "#6dfe9c",
+                            "primary-fixed-dim": "#4de082",
+                            "tertiary-container": "#ffb47f",
+                            "outline-variant": "#bccabb",
+                            "surface-dim": "#d4dcd2",
+                            "on-error": "#ffffff",
+                            "surface-container-highest": "#dde5da",
+                            "on-error-container": "#93000a",
+                            "secondary-container": "#fd933d",
+                            "on-primary-fixed-variant": "#005227",
+                            "on-primary-fixed": "#00210c",
+                            "inverse-surface": "#2b322b",
+                            "tertiary-fixed-dim": "#ffb784",
+                            "on-tertiary-fixed-variant": "#6c3a0f",
+                            "inverse-on-surface": "#ebf3e8",
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary-fixed-variant": "#713700",
+                            "error-container": "#ffdad6",
+                            "tertiary-fixed": "#ffdcc6",
+                            "surface-bright": "#f3fcf0",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            "margin-mobile": "20px",
+                            "margin-desktop": "64px",
+                            "max-width": "1200px",
+                            base: "4px",
+                            xs: "4px",
+                            xl: "32px",
+                            md: "16px",
+                            lg: "24px",
+                            sm: "8px",
+                            gutter: "16px",
+                        },
+                        fontFamily: {
+                            "headline-lg-mobile": ["Plus Jakarta Sans"],
+                            "body-lg": ["Be Vietnam Pro"],
+                            "headline-lg": ["Plus Jakarta Sans"],
+                            "display-lg": ["Plus Jakarta Sans"],
+                            "label-md": ["Be Vietnam Pro"],
+                            "headline-md": ["Plus Jakarta Sans"],
+                            "body-md": ["Be Vietnam Pro"],
+                            "label-sm": ["Be Vietnam Pro"],
+                        },
+                        fontSize: {
+                            "headline-lg-mobile": [
+                                "28px",
+                                { lineHeight: "34px", fontWeight: "600" },
+                            ],
+                            "body-lg": [
+                                "18px",
+                                { lineHeight: "28px", fontWeight: "400" },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "40px",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "display-lg": [
+                                "40px",
+                                {
+                                    lineHeight: "48px",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                            "label-md": [
+                                "14px",
+                                {
+                                    lineHeight: "20px",
+                                    letterSpacing: "0.05em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "headline-md": [
+                                "24px",
+                                { lineHeight: "32px", fontWeight: "600" },
+                            ],
+                            "body-md": [
+                                "16px",
+                                { lineHeight: "24px", fontWeight: "400" },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                { lineHeight: "16px", fontWeight: "500" },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .material-symbols-outlined.fill {
+                font-variation-settings:
+                    "FILL" 1,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+
+            /* Subtle scanline animation effect for the receipt overlay */
+            @keyframes scanline {
+                0% {
+                    transform: translateY(-100%);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100%);
+                    opacity: 0;
+                }
+            }
+            .scan-effect {
+                position: relative;
+                overflow: hidden;
+            }
+            .scan-effect::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(74, 222, 128, 0.2),
+                    transparent
+                );
+                animation: scanline 3s infinite linear;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+    <body class="bg-background text-on-background font-body-md min-h-screen">
+        <!-- TopAppBar - Suppressed main nav, using back button intent for this task-focused screen -->
+        <header
+            class="bg-surface/80 backdrop-blur-md sticky top-0 z-40 flex items-center justify-between px-margin-mobile md:px-margin-desktop py-md w-full"
+        >
+            <button
+                class="flex items-center gap-sm text-on-surface-variant hover:text-primary transition-colors"
+            >
+                <span class="material-symbols-outlined" data-icon="arrow_back"
+                    >arrow_back</span
+                >
+                <span class="font-label-md text-label-md"
+                    >Back to Inventory</span
+                >
+            </button>
+            <div
+                class="font-headline-md text-headline-md text-primary font-bold tracking-tight"
+            >
+                Scan Receipt
+            </div>
+            <div class="w-8"></div>
+            <!-- Spacer for center alignment -->
+        </header>
+        <main
+            class="max-w-[max-width] mx-auto px-margin-mobile md:px-margin-desktop py-xl"
+        >
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+                <!-- Left Column: Camera View / Uploaded Image (Bento style) -->
+                <div class="col-span-1 lg:col-span-5 flex flex-col gap-md">
+                    <div
+                        class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-surface-variant relative aspect-[3/4] flex flex-col"
+                    >
+                        <!-- Top bar of camera view -->
+                        <div
+                            class="flex items-center justify-between p-md bg-inverse-surface/80 backdrop-blur-sm absolute top-0 w-full z-10 text-inverse-on-surface"
+                        >
+                            <span
+                                class="font-label-sm text-label-sm flex items-center gap-xs"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[16px]"
+                                    data-icon="center_focus_weak"
+                                    >center_focus_weak</span
+                                >
+                                Align receipt within frame
+                            </span>
+                            <div class="flex gap-sm">
+                                <button
+                                    class="p-xs rounded-full bg-surface/20 hover:bg-surface/40 transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[20px]"
+                                        data-icon="flash_on"
+                                        >flash_on</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Image / Camera feed -->
+                        <div
+                            class="flex-grow bg-surface-variant relative scan-effect flex items-center justify-center"
+                        >
+                            <img
+                                alt="Grocery store receipt lying on a light kitchen counter"
+                                class="w-full h-full object-cover opacity-90"
+                                data-alt="A top-down view of a slightly crumpled grocery store receipt resting on a bright, off-white kitchen countertop. The lighting is bright and natural, highlighting the text on the paper. The scene feels clean, modern, and perfectly aligned with a minimalistic, organic culinary aesthetic. Subtle soft shadows give the paper depth."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0G4U1foiJfdMBJM0c1v4gGeIUA9-PYnr0rYZdqjFnj2Hyl2dvJ8VhNaOvRbD7V9AnIi30QE04_TF_kGwAlm43E4U209uj4ipns9mj4Yj6xsg6hofAf9ULqLv5sxFp0opaygyTasPKoIYBT78r5P87NrU26FBAE35JZJEKLWsUuBqyHFh57VNNgXeVzwC62NKfzNq90vQqcXTNDmpCoH1dJxRUHzwCKLLeFqCnBs-k1alcOa7sNmXp4BDhP1clDT6m9Zg6pjGQ6A"
+                            />
+                            <!-- AI extraction overlays -->
+                            <div
+                                class="absolute top-[20%] left-[10%] bg-surface-container-lowest/90 backdrop-blur-sm border border-primary-container text-on-surface px-sm py-xs rounded-md shadow-sm flex items-center gap-xs text-label-sm font-label-sm"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[14px] text-primary"
+                                    data-icon="check_circle"
+                                    >check_circle</span
+                                >
+                                Organic Milk
+                            </div>
+                            <div
+                                class="absolute top-[35%] left-[15%] bg-surface-container-lowest/90 backdrop-blur-sm border border-primary-container text-on-surface px-sm py-xs rounded-md shadow-sm flex items-center gap-xs text-label-sm font-label-sm"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[14px] text-primary"
+                                    data-icon="check_circle"
+                                    >check_circle</span
+                                >
+                                Free Range Eggs
+                            </div>
+                            <div
+                                class="absolute top-[50%] left-[12%] bg-surface-container-lowest/90 backdrop-blur-sm border border-primary-container text-on-surface px-sm py-xs rounded-md shadow-sm flex items-center gap-xs text-label-sm font-label-sm"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[14px] text-primary"
+                                    data-icon="check_circle"
+                                    >check_circle</span
+                                >
+                                Baby Spinach
+                            </div>
+                        </div>
+                        <!-- Bottom controls -->
+                        <div
+                            class="p-md bg-surface-container flex items-center justify-center gap-xl relative z-10"
+                        >
+                            <button
+                                class="flex flex-col items-center gap-xs text-on-surface-variant hover:text-primary transition-colors"
+                            >
+                                <span
+                                    class="material-symbols-outlined"
+                                    data-icon="photo_library"
+                                    >photo_library</span
+                                >
+                                <span class="font-label-sm text-label-sm"
+                                    >Upload</span
+                                >
+                            </button>
+                            <button
+                                class="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-md hover:bg-primary/90 transition-colors border-4 border-surface-container-lowest"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-on-primary text-[32px]"
+                                    data-icon="camera"
+                                    >camera</span
+                                >
+                            </button>
+                            <button
+                                class="flex flex-col items-center gap-xs text-on-surface-variant hover:text-primary transition-colors"
+                            >
+                                <span
+                                    class="material-symbols-outlined"
+                                    data-icon="flip_camera_ios"
+                                    >flip_camera_ios</span
+                                >
+                                <span class="font-label-sm text-label-sm"
+                                    >Flip</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Column: Detected Items List -->
+                <div class="col-span-1 lg:col-span-7 flex flex-col gap-md">
+                    <!-- AI Status Banner -->
+                    <div
+                        class="bg-surface-container-lowest border border-tertiary-container/30 rounded-xl p-md flex items-start gap-md shadow-[0_4px_12px_rgba(0,0,0,0.04)] relative overflow-hidden"
+                    >
+                        <!-- Subtle terracota gradient hint -->
+                        <div
+                            class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-tertiary-container to-secondary"
+                        ></div>
+                        <div
+                            class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center text-secondary shrink-0"
+                        >
+                            <span
+                                class="material-symbols-outlined fill"
+                                data-icon="auto_awesome"
+                                >auto_awesome</span
+                            >
+                        </div>
+                        <div class="flex-grow">
+                            <h2
+                                class="font-headline-md text-headline-md text-on-surface mb-xs"
+                            >
+                                Processing complete
+                            </h2>
+                            <p
+                                class="font-body-md text-body-md text-on-surface-variant"
+                            >
+                                We found 8 items. Review the suggested expiry
+                                dates before adding them to your inventory.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- List Header -->
+                    <div class="flex items-center justify-between mt-sm px-sm">
+                        <span
+                            class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider"
+                            >Detected Items (8)</span
+                        >
+                        <button
+                            class="text-primary font-label-md text-label-md flex items-center gap-xs hover:underline"
+                        >
+                            <span
+                                class="material-symbols-outlined text-[18px]"
+                                data-icon="add"
+                                >add</span
+                            >
+                            Add Missing Item
+                        </button>
+                    </div>
+                    <!-- Items List -->
+                    <div class="flex flex-col gap-sm">
+                        <!-- Item 1 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-md flex flex-col sm:flex-row sm:items-center gap-md border border-surface-variant shadow-[0_4px_12px_rgba(0,0,0,0.04)]"
+                        >
+                            <div class="flex-grow flex items-center gap-md">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        data-icon="local_drink"
+                                        >local_drink</span
+                                    >
+                                </div>
+                                <div>
+                                    <input
+                                        class="font-label-md text-label-md text-on-surface bg-transparent border-b border-transparent focus:border-primary focus:outline-none focus:ring-0 px-0 py-1 w-full sm:w-auto"
+                                        type="text"
+                                        value="Organic Whole Milk"
+                                    />
+                                    <div
+                                        class="font-label-sm text-label-sm text-on-surface-variant mt-xs"
+                                    >
+                                        Dairy • 1 Gallon
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-sm mt-sm sm:mt-0 pt-sm sm:pt-0 border-t sm:border-t-0 border-surface-variant w-full sm:w-auto shrink-0 justify-between sm:justify-end"
+                            >
+                                <div
+                                    class="flex items-center gap-xs bg-surface text-on-surface px-sm py-xs rounded-md border border-outline-variant shadow-inner"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px] text-on-surface-variant"
+                                        data-icon="event"
+                                        >event</span
+                                    >
+                                    <input
+                                        class="bg-transparent border-none text-sm p-0 focus:ring-0 text-on-surface font-body-md"
+                                        type="date"
+                                        value="2023-11-15"
+                                    />
+                                </div>
+                                <button
+                                    class="p-xs text-on-surface-variant hover:text-error transition-colors ml-sm"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[20px]"
+                                        data-icon="delete"
+                                        >delete</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-md flex flex-col sm:flex-row sm:items-center gap-md border border-surface-variant shadow-[0_4px_12px_rgba(0,0,0,0.04)]"
+                        >
+                            <div class="flex-grow flex items-center gap-md">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        data-icon="egg"
+                                        >egg</span
+                                    >
+                                </div>
+                                <div>
+                                    <input
+                                        class="font-label-md text-label-md text-on-surface bg-transparent border-b border-transparent focus:border-primary focus:outline-none focus:ring-0 px-0 py-1 w-full sm:w-auto"
+                                        type="text"
+                                        value="Free Range Eggs"
+                                    />
+                                    <div
+                                        class="font-label-sm text-label-sm text-on-surface-variant mt-xs"
+                                    >
+                                        Dairy • 1 Dozen
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-sm mt-sm sm:mt-0 pt-sm sm:pt-0 border-t sm:border-t-0 border-surface-variant w-full sm:w-auto shrink-0 justify-between sm:justify-end"
+                            >
+                                <div
+                                    class="flex items-center gap-xs bg-surface text-on-surface px-sm py-xs rounded-md border border-outline-variant shadow-inner"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px] text-on-surface-variant"
+                                        data-icon="event"
+                                        >event</span
+                                    >
+                                    <input
+                                        class="bg-transparent border-none text-sm p-0 focus:ring-0 text-on-surface font-body-md"
+                                        type="date"
+                                        value="2023-11-28"
+                                    />
+                                </div>
+                                <button
+                                    class="p-xs text-on-surface-variant hover:text-error transition-colors ml-sm"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[20px]"
+                                        data-icon="delete"
+                                        >delete</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-md flex flex-col sm:flex-row sm:items-center gap-md border border-surface-variant shadow-[0_4px_12px_rgba(0,0,0,0.04)]"
+                        >
+                            <div class="flex-grow flex items-center gap-md">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        data-icon="grass"
+                                        >grass</span
+                                    >
+                                </div>
+                                <div>
+                                    <input
+                                        class="font-label-md text-label-md text-on-surface bg-transparent border-b border-transparent focus:border-primary focus:outline-none focus:ring-0 px-0 py-1 w-full sm:w-auto"
+                                        type="text"
+                                        value="Baby Spinach"
+                                    />
+                                    <div
+                                        class="font-label-sm text-label-sm text-on-surface-variant mt-xs"
+                                    >
+                                        Produce • 10 oz bag
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-sm mt-sm sm:mt-0 pt-sm sm:pt-0 border-t sm:border-t-0 border-surface-variant w-full sm:w-auto shrink-0 justify-between sm:justify-end"
+                            >
+                                <div
+                                    class="flex items-center gap-xs bg-surface text-on-surface px-sm py-xs rounded-md border border-outline-variant shadow-inner"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px] text-on-surface-variant"
+                                        data-icon="event"
+                                        >event</span
+                                    >
+                                    <input
+                                        class="bg-transparent border-none text-sm p-0 focus:ring-0 text-on-surface font-body-md text-secondary"
+                                        type="date"
+                                        value="2023-11-10"
+                                    />
+                                </div>
+                                <button
+                                    class="p-xs text-on-surface-variant hover:text-error transition-colors ml-sm"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[20px]"
+                                        data-icon="delete"
+                                        >delete</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Item 4 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-md flex flex-col sm:flex-row sm:items-center gap-md border border-surface-variant shadow-[0_4px_12px_rgba(0,0,0,0.04)]"
+                        >
+                            <div class="flex-grow flex items-center gap-md">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0"
+                                >
+                                    <span
+                                        class="material-symbols-outlined"
+                                        data-icon="bakery_dining"
+                                        >bakery_dining</span
+                                    >
+                                </div>
+                                <div>
+                                    <input
+                                        class="font-label-md text-label-md text-on-surface bg-transparent border-b border-transparent focus:border-primary focus:outline-none focus:ring-0 px-0 py-1 w-full sm:w-auto"
+                                        type="text"
+                                        value="Sourdough Bread"
+                                    />
+                                    <div
+                                        class="font-label-sm text-label-sm text-on-surface-variant mt-xs"
+                                    >
+                                        Bakery • 1 Loaf
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-sm mt-sm sm:mt-0 pt-sm sm:pt-0 border-t sm:border-t-0 border-surface-variant w-full sm:w-auto shrink-0 justify-between sm:justify-end"
+                            >
+                                <div
+                                    class="flex items-center gap-xs bg-surface text-on-surface px-sm py-xs rounded-md border border-outline-variant shadow-inner"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px] text-on-surface-variant"
+                                        data-icon="event"
+                                        >event</span
+                                    >
+                                    <input
+                                        class="bg-transparent border-none text-sm p-0 focus:ring-0 text-on-surface font-body-md"
+                                        type="date"
+                                        value="2023-11-12"
+                                    />
+                                </div>
+                                <button
+                                    class="p-xs text-on-surface-variant hover:text-error transition-colors ml-sm"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[20px]"
+                                        data-icon="delete"
+                                        >delete</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sticky Bottom Action -->
+                    <div
+                        class="mt-xl pt-md border-t border-surface-variant flex justify-end gap-md sticky bottom-0 bg-background/90 backdrop-blur-sm pb-md"
+                    >
+                        <button
+                            class="px-lg py-sm rounded-xl font-label-md text-label-md border border-secondary text-secondary hover:bg-secondary/5 transition-colors"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            class="px-lg py-sm rounded-xl font-label-md text-label-md bg-primary text-on-primary hover:bg-primary/90 transition-colors shadow-md flex items-center gap-sm"
+                        >
+                            <span
+                                class="material-symbols-outlined text-[20px]"
+                                data-icon="check"
+                                >check</span
+                            >
+                            Confirm 8 Items
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
