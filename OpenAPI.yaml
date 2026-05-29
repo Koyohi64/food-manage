@@ -1,706 +1,1322 @@
 openapi: 3.0.3
 info:
-  title: 食材・レシピ管理API
-  version: 1.0.0
-  description: |
-    食材管理、レシピ管理、AIレシピ生成を行うWebアプリ用API。
+    title: 食材・レシピ管理API
+    version: 1.0.0
+    description: |
+        食材管理、レシピ管理、AIレシピ生成を行うWebアプリ用API。
+
+        ## 認証
+        NextAuth.js による httpOnly Cookie ベースのセッション。
+        ログイン成功時に Set-Cookie で `next-auth.session-token` が発行され、
+        以降のリクエストに自動的に付与される。
+
+        ## 画像
+        DB・ストレージには保存しない。解析エンドポイントで一時的にメモリ上で扱うのみ。
+        クライアント側で **最大 1MB に圧縮** してからアップロードすること。
+
+        ## レスポンス形式
+        - 成功: `{ "data": ... }`
+        - 失敗: `{ "error": { "code": string, "message": string } }`
+        - 削除成功: 204 No Content（ボディなし）
 
 servers:
-  - url: https://api.example.com
+    - url: https://api.example.com
 
 tags:
-  - name: Auth
-  - name: Users
-  - name: Ingredients
-  - name: Recipes
-  - name: History
-  - name: Images
+    - name: Auth
+    - name: Users
+    - name: Ingredients
+    - name: Recipes
+    - name: History
 
 paths:
-  /api/auth/login:
-    post:
-      tags: [Auth]
-      summary: ログイン
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - email
-                - password
-              properties:
-                email:
-                  type: string
-                  format: email
-                password:
-                  type: string
-                  format: password
-      responses:
-        "200":
-          description: ログイン成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-                  user:
-                    $ref: "#/components/schemas/User"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
+    /api/auth/signup:
+        post:
+            tags: [Auth]
+            summary: サインアップ
+            description: |
+                新規アカウント作成。成功時にセッション Cookie が発行される。
 
-  /api/auth/signup:
-    post:
-      tags: [Auth]
-      summary: サインアップ
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - username
-                - email
-                - password
-              properties:
-                username:
-                  type: string
-                email:
-                  type: string
-                  format: email
-                password:
-                  type: string
-                  format: password
-      responses:
-        "201":
-          description: ユーザー作成成功
-        "400":
-          $ref: "#/components/responses/BadRequest"
+                ## 副作用
+                - users と user_settings をトランザクションで同時作成
+                - 失敗時は両方ともロールバック
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [name, email, password]
+                            properties:
+                                name:
+                                    type: string
+                                    minLength: 1
+                                    maxLength: 50
+                                email:
+                                    type: string
+                                    format: email
+                                password:
+                                    type: string
+                                    format: password
+                                    minLength: 8
+                                    maxLength: 72
+            responses:
+                "201":
+                    description: ユーザー作成成功
+                    headers:
+                        Set-Cookie:
+                            schema: { type: string }
+                            description: next-auth.session-token を発行
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UserResponse"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "409":
+                    description: メールアドレスが既に登録済み
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
 
-  /api/auth/password-reset:
-    post:
-      tags: [Auth]
-      summary: パスワードリセット要求
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - email
-              properties:
-                email:
-                  type: string
-                  format: email
-      responses:
-        "200":
-          description: メール送信成功
+    /api/auth/login:
+        post:
+            tags: [Auth]
+            summary: ログイン
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [email, password]
+                            properties:
+                                email: { type: string, format: email }
+                                password: { type: string, format: password }
+            responses:
+                "200":
+                    description: ログイン成功
+                    headers:
+                        Set-Cookie:
+                            schema: { type: string }
+                            description: next-auth.session-token を発行
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UserResponse"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
 
-  /api/auth/password:
-    put:
-      tags: [Auth]
-      summary: パスワード再設定
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - token
-                - newPassword
-              properties:
-                token:
-                  type: string
-                newPassword:
-                  type: string
-                  format: password
-      responses:
-        "200":
-          description: パスワード変更成功
+    /api/auth/logout:
+        post:
+            tags: [Auth]
+            summary: ログアウト
+            description: セッション Cookie を破棄する。
+            security:
+                - sessionCookie: []
+            responses:
+                "204":
+                    description: ログアウト成功
 
-  /api/auth/logout:
-    post:
-      tags: [Auth]
-      summary: ログアウト
-      security:
-        - bearerAuth: []
-      responses:
-        "200":
-          description: ログアウト成功
+    /api/auth/password-reset:
+        post:
+            tags: [Auth]
+            summary: パスワードリセット要求
+            description: |
+                リセット用リンクを記載したメールを送信する。
 
-  /api/me:
-    get:
-      tags: [Users]
-      summary: ユーザープロフィール取得
-      security:
-        - bearerAuth: []
-      responses:
-        "200":
-          description: 取得成功
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/User"
+                ## セキュリティ
+                - 存在しないメールアドレスでも 200 を返す（メアド存在の漏洩防止）
+                - レート制限: 同一メアドあたり5分に1回
 
-    put:
-      tags: [Users]
-      summary: ユーザープロフィール更新
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                email:
-                  type: string
-                  format: email
-      responses:
-        "200":
-          description: 更新成功
+                ## 副作用
+                - password_reset_tokens にトークンハッシュを保存
+                - 同ユーザーの既存未使用トークンを無効化
+                - メール送信（外部 API）
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [email]
+                            properties:
+                                email: { type: string, format: email }
+            responses:
+                "200":
+                    description: 受付完了
+                "429":
+                    description: レート制限超過
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
 
-    delete:
-      tags: [Users]
-      summary: アカウント削除
-      security:
-        - bearerAuth: []
-      responses:
-        "204":
-          description: 削除成功
+    /api/auth/password:
+        put:
+            tags: [Auth]
+            summary: パスワード再設定実行
+            description: |
+                メールに記載されたトークンを使って新パスワードを設定する。
 
-  /api/me/settings:
-    get:
-      tags: [Users]
-      summary: 設定取得
-      security:
-        - bearerAuth: []
-      responses:
-        "200":
-          description: 設定取得成功
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserSettings"
+                ## トランザクション仕様
+                - users.password_hash の更新
+                - トークンの used_at セット
+                - 同ユーザーの他の未使用トークンも全て無効化
+                - これらを1トランザクションで実行
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [token, newPassword]
+                            properties:
+                                token: { type: string }
+                                newPassword:
+                                    type: string
+                                    format: password
+                                    minLength: 8
+                                    maxLength: 72
+            responses:
+                "200":
+                    description: パスワード変更成功
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    description: トークン無効・期限切れ・使用済み
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
 
-    put:
-      tags: [Users]
-      summary: 設定更新
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UserSettings"
-      responses:
-        "200":
-          description: 更新成功
+    /api/me:
+        get:
+            tags: [Users]
+            summary: ユーザープロフィール取得
+            security:
+                - sessionCookie: []
+            responses:
+                "200":
+                    description: 取得成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UserResponse"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
 
-  /api/ingredients:
-    get:
-      tags: [Ingredients]
-      summary: 食材一覧取得
-      security:
-        - bearerAuth: []
-      parameters:
-        - in: query
-          name: search
-          schema:
-            type: string
-        - in: query
-          name: sort
-          schema:
-            type: string
-            example: expiry_asc
-        - in: query
-          name: expiringWithinDays
-          schema:
-            type: integer
-        - in: query
-          name: page
-          schema:
-            type: integer
-        - in: query
-          name: limit
-          schema:
-            type: integer
-      responses:
-        "200":
-          description: 食材一覧取得成功
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Ingredient"
+        put:
+            tags: [Users]
+            summary: ユーザープロフィール更新
+            security:
+                - sessionCookie: []
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                                    minLength: 1
+                                    maxLength: 50
+                                email:
+                                    type: string
+                                    format: email
+            responses:
+                "200":
+                    description: 更新成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UserResponse"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "409":
+                    description: メールアドレス重複
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
 
-    post:
-      tags: [Ingredients]
-      summary: 食材追加
-      description: |
-        食材を1件または複数件追加する。
+        delete:
+            tags: [Users]
+            summary: アカウント削除
+            description: |
+                アカウントと関連する全データを削除する（CASCADE）。
+                セキュリティのためパスワード再確認が必要。
+            security:
+                - sessionCookie: []
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [password]
+                            properties:
+                                password: { type: string, format: password }
+            responses:
+                "204":
+                    description: 削除成功
+                "401":
+                    description: パスワード不一致
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
 
-        ## トランザクション仕様
-        - 複数件追加時はDBトランザクションを使用する
-        - 1件でも登録に失敗した場合、すべての登録をロールバックする
-        - 部分成功は許可しない（all-or-nothing）
-        - 成功時のみ全件commitする
+    /api/me/settings:
+        get:
+            tags: [Users]
+            summary: 設定取得
+            security:
+                - sessionCookie: []
+            responses:
+                "200":
+                    description: 取得成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UserSettingsResponse"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
 
-      security:
-        - bearerAuth: []
+        put:
+            tags: [Users]
+            summary: 設定更新
+            description: |
+                ## revalidate 対象
+                - /settings
+                - /dashboard（warning_day が期限アラート判定に影響するため）
+            security:
+                - sessionCookie: []
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserSettings"
+            responses:
+                "200":
+                    description: 更新成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UserSettingsResponse"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
 
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - ingredients
-              properties:
-                ingredients:
-                  type: array
-                  minItems: 1
-                  items:
-                    type: object
-                    required:
-                      - name
-                      - quantity
-                      - expiryDate
-                    properties:
-                      name:
-                        type: string
-                        example: にんじん
+    /api/ingredients:
+        get:
+            tags: [Ingredients]
+            summary: 食材一覧取得
+            security:
+                - sessionCookie: []
+            parameters:
+                - in: query
+                  name: search
+                  schema: { type: string }
+                  description: 食材名の部分一致
+                - in: query
+                  name: sort
+                  schema:
+                      type: string
+                      enum:
+                          [
+                              expiry_asc,
+                              expiry_desc,
+                              name_asc,
+                              name_desc,
+                              created_desc,
+                          ]
+                      default: expiry_asc
+                - in: query
+                  name: expiringWithinDays
+                  schema: { type: integer, minimum: 0 }
+                  description: 指定日数以内に期限切れになる食材のみ
+                - in: query
+                  name: page
+                  schema: { type: integer, minimum: 1, default: 1 }
+                - in: query
+                  name: limit
+                  schema:
+                      { type: integer, minimum: 1, maximum: 100, default: 50 }
+            responses:
+                "200":
+                    description: 食材一覧取得成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/IngredientListResponse"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
 
-                      quantity:
-                        type: string
-                        example: 2本
+        post:
+            tags: [Ingredients]
+            summary: 食材追加
+            description: |
+                食材を1件または複数件追加する。
 
-                      expiryDate:
-                        type: string
-                        format: date
-                        example: 2026-05-25
+                ## トランザクション仕様
+                - 複数件追加時は必ず DB トランザクションを使用する
+                - 1件でも登録に失敗した場合、すべての登録をロールバックする
+                - 部分成功は許可しない（all-or-nothing）
 
-      responses:
-        "201":
-          description: 食材追加成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  insertedCount:
-                    type: integer
-                    example: 3
+                ## revalidate 対象
+                - /dashboard
+                - /ingredients
+            security:
+                - sessionCookie: []
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [ingredients]
+                            properties:
+                                ingredients:
+                                    type: array
+                                    minItems: 1
+                                    maxItems: 100
+                                    items:
+                                        $ref: "#/components/schemas/IngredientCreate"
+            responses:
+                "201":
+                    description: 食材追加成功
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                required: [data]
+                                properties:
+                                    data:
+                                        type: object
+                                        properties:
+                                            insertedCount: { type: integer }
+                                            ingredients:
+                                                type: array
+                                                items:
+                                                    $ref: "#/components/schemas/Ingredient"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "500":
+                    description: |
+                        サーバーエラー。トランザクションはロールバックされ、
+                        食材は1件も保存されない。
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
 
-                  ingredients:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/Ingredient"
+    /api/ingredients/{id}:
+        get:
+            tags: [Ingredients]
+            summary: 食材詳細取得
+            security:
+                - sessionCookie: []
+            parameters:
+                - $ref: "#/components/parameters/IngredientId"
+            responses:
+                "200":
+                    description: 取得成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/IngredientResponse"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "404":
+                    $ref: "#/components/responses/NotFound"
 
-        "400":
-          description: 入力値不正
+        put:
+            tags: [Ingredients]
+            summary: 食材更新
+            description: |
+                ## revalidate 対象
+                - /dashboard
+                - /ingredients
+            security:
+                - sessionCookie: []
+            parameters:
+                - $ref: "#/components/parameters/IngredientId"
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/IngredientUpdate"
+            responses:
+                "200":
+                    description: 更新成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/IngredientResponse"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "404":
+                    $ref: "#/components/responses/NotFound"
 
-        "409":
-          description: 重複データなどにより登録失敗
+        delete:
+            tags: [Ingredients]
+            summary: 食材削除
+            description: |
+                ## revalidate 対象
+                - /dashboard
+                - /ingredients
+            security:
+                - sessionCookie: []
+            parameters:
+                - $ref: "#/components/parameters/IngredientId"
+            responses:
+                "204":
+                    description: 削除成功
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "404":
+                    $ref: "#/components/responses/NotFound"
 
-        "500":
-          description: |
-            サーバーエラー。
-            トランザクションはロールバックされ、
-            食材は1件も保存されない。
-  
+    /api/ingredients/analyze-receipt:
+        post:
+            tags: [Ingredients]
+            summary: レシート画像解析
+            description: |
+                レシート画像を AI で解析し、食材リストを返す。
 
-  /api/ingredients/{id}:
-    get:
-      tags: [Ingredients]
-      summary: 食材詳細取得
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: "#/components/parameters/IngredientId"
-      responses:
-        "200":
-          description: 食材取得成功
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Ingredient"
+                ## 画像の扱い
+                - DB・ストレージに保存しない（メモリ内のみで処理）
+                - OpenAI Vision API へ画像が送信される
 
-    put:
-      tags: [Ingredients]
-      summary: 食材更新
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: "#/components/parameters/IngredientId"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Ingredient"
-      responses:
-        "200":
-          description: 更新成功
+                ## クライアント要件
+                - 送信前に画像を **最大 1MB に圧縮** する
+                - Vercel Serverless の上限 4.5MB を超えないこと
 
-    delete:
-      tags: [Ingredients]
-      summary: 食材削除
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: "#/components/parameters/IngredientId"
-      responses:
-        "204":
-          description: 削除成功
+                ## 副作用
+                DB への書き込みは行わない。保存は別途 `POST /api/ingredients` で実行する。
+            security:
+                - sessionCookie: []
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            required: [image]
+                            properties:
+                                image:
+                                    type: string
+                                    format: binary
+                                    description: 圧縮済み画像ファイル（最大 1MB 推奨）
+            responses:
+                "200":
+                    description: 解析成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnalyzedIngredientsResponse"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "413":
+                    description: 画像サイズが大きすぎる
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
+                "500":
+                    $ref: "#/components/responses/InternalServerError"
 
-  /api/ingredients/analyze-receipt:
-    post:
-      tags: [Ingredients]
-      summary: レシート画像解析
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                image:
-                  type: string
-                  format: binary
-      responses:
-        "200":
-          description: 解析成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  ingredients:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/Ingredient"
+    /api/ingredients/analyze-fridge:
+        post:
+            tags: [Ingredients]
+            summary: 冷蔵庫画像解析
+            description: |
+                冷蔵庫内の画像を AI で解析し、検出された食材リストを返す。
 
-  /api/ingredients/analyze-fridge:
-    post:
-      tags: [Ingredients]
-      summary: 冷蔵庫画像解析
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                image:
-                  type: string
-                  format: binary
-      responses:
-        "200":
-          description: 解析成功
+                ## 画像の扱い
+                - DB・ストレージに保存しない
+                - OpenAI Vision API へ画像が送信される
 
-  /api/recipes:
-    get:
-      tags: [Recipes]
-      summary: レシピ一覧取得
-      security:
-        - bearerAuth: []
-      parameters:
-        - in: query
-          name: search
-          schema:
-            type: string
-        - in: query
-          name: sort
-          schema:
-            type: string
-        - in: query
-          name: page
-          schema:
-            type: integer
-        - in: query
-          name: limit
-          schema:
-            type: integer
-      responses:
-        "200":
-          description: レシピ一覧取得成功
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Recipe"
+                ## クライアント要件
+                - 送信前に画像を **最大 1MB に圧縮** する
 
-    post:
-      tags: [Recipes]
-      summary: レシピ作成
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/RecipeCreateRequest"
-      responses:
-        "201":
-          description: 作成成功
+                ## 仕様
+                既存食材との重複チェックは行わない（クライアント側で確認画面を提供する）。
 
-  /api/recipes/{id}:
-    get:
-      tags: [Recipes]
-      summary: レシピ詳細取得
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: "#/components/parameters/RecipeId"
-      responses:
-        "200":
-          description: レシピ取得成功
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Recipe"
+                ## 副作用
+                DB への書き込みは行わない。保存は別途 `POST /api/ingredients` で実行する。
+            security:
+                - sessionCookie: []
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            required: [image]
+                            properties:
+                                image:
+                                    type: string
+                                    format: binary
+                                    description: 圧縮済み画像ファイル（最大 1MB 推奨）
+            responses:
+                "200":
+                    description: 解析成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AnalyzedIngredientsResponse"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "413":
+                    description: 画像サイズが大きすぎる
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
+                "500":
+                    $ref: "#/components/responses/InternalServerError"
 
-    put:
-      tags: [Recipes]
-      summary: レシピ更新
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: "#/components/parameters/RecipeId"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/RecipeCreateRequest"
-      responses:
-        "200":
-          description: 更新成功
+    /api/recipes:
+        get:
+            tags: [Recipes]
+            summary: レシピ一覧取得
+            description: |
+                各レシピに調理回数 (cookCount) と最終調理日 (lastCookedAt) を集計して返す。
+            security:
+                - sessionCookie: []
+            parameters:
+                - in: query
+                  name: search
+                  schema: { type: string }
+                - in: query
+                  name: sort
+                  schema:
+                      type: string
+                      enum:
+                          [
+                              created_desc,
+                              last_cooked_desc,
+                              cook_count_desc,
+                              name_asc,
+                          ]
+                      default: created_desc
+                - in: query
+                  name: page
+                  schema: { type: integer, minimum: 1, default: 1 }
+                - in: query
+                  name: limit
+                  schema:
+                      { type: integer, minimum: 1, maximum: 100, default: 50 }
+            responses:
+                "200":
+                    description: 取得成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/RecipeListResponse"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
 
-    delete:
-      tags: [Recipes]
-      summary: レシピ削除
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: "#/components/parameters/RecipeId"
-      responses:
-        "204":
-          description: 削除成功
+        post:
+            tags: [Recipes]
+            summary: レシピ作成
+            description: |
+                手動または AI 生成済みのレシピを保存する。
 
-  /api/recipes/{id}/history:
-    get:
-      tags: [Recipes]
-      summary: レシピ調理履歴取得
-      security:
-        - bearerAuth: []
-      parameters:
-        - $ref: "#/components/parameters/RecipeId"
-      responses:
-        "200":
-          description: 履歴取得成功
+                ## revalidate 対象
+                - /recipes
+            security:
+                - sessionCookie: []
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/RecipeCreateRequest"
+            responses:
+                "201":
+                    description: 作成成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/RecipeResponse"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
 
-  /api/recipes/ai-generate:
-    post:
-      tags: [Recipes]
-      summary: AIレシピ生成
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - ingredients
-              properties:
-                ingredients:
-                  type: array
-                  items:
-                    type: string
-      responses:
-        "200":
-          description: AI生成成功
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Recipe"
+    /api/recipes/{id}:
+        get:
+            tags: [Recipes]
+            summary: レシピ詳細取得
+            security:
+                - sessionCookie: []
+            parameters:
+                - $ref: "#/components/parameters/RecipeId"
+            responses:
+                "200":
+                    description: 取得成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/RecipeResponse"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "404":
+                    $ref: "#/components/responses/NotFound"
 
-  /api/history:
-    get:
-      tags: [History]
-      summary: 直近料理履歴取得
-      security:
-        - bearerAuth: []
-      responses:
-        "200":
-          description: 履歴取得成功
+        put:
+            tags: [Recipes]
+            summary: レシピ更新
+            description: |
+                ## revalidate 対象
+                - /recipes
+                - /recipes/{id}
+            security:
+                - sessionCookie: []
+            parameters:
+                - $ref: "#/components/parameters/RecipeId"
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/RecipeCreateRequest"
+            responses:
+                "200":
+                    description: 更新成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/RecipeResponse"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "404":
+                    $ref: "#/components/responses/NotFound"
 
-    post:
-      tags: [History]
-      summary: 作った報告
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - recipeId
-              properties:
-                recipeId:
-                  type: string
-      responses:
-        "201":
-          description: 登録成功
+        delete:
+            tags: [Recipes]
+            summary: レシピ削除
+            description: |
+                レシピを削除する。
+                関連する cooking_logs.recipe_id は FK 制約により SET NULL（履歴は残る）。
 
-  /api/images:
-    post:
-      tags: [Images]
-      summary: 画像アップロード
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                image:
-                  type: string
-                  format: binary
-      responses:
-        "201":
-          description: アップロード成功
+                ## revalidate 対象
+                - /recipes
+            security:
+                - sessionCookie: []
+            parameters:
+                - $ref: "#/components/parameters/RecipeId"
+            responses:
+                "204":
+                    description: 削除成功
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "404":
+                    $ref: "#/components/responses/NotFound"
+
+    /api/recipes/{id}/history:
+        get:
+            tags: [Recipes]
+            summary: 特定レシピの調理履歴取得
+            security:
+                - sessionCookie: []
+            parameters:
+                - $ref: "#/components/parameters/RecipeId"
+                - in: query
+                  name: limit
+                  schema:
+                      { type: integer, minimum: 1, maximum: 100, default: 20 }
+                - in: query
+                  name: page
+                  schema: { type: integer, minimum: 1, default: 1 }
+            responses:
+                "200":
+                    description: 履歴取得成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CookingLogListResponse"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "404":
+                    $ref: "#/components/responses/NotFound"
+
+    /api/recipes/ai-generate:
+        post:
+            tags: [Recipes]
+            summary: AIレシピ生成（ストリーミング）
+            description: |
+                指定された食材を使ったレシピを AI で生成する。
+
+                ## レスポンス
+                Server-Sent Events (`text/event-stream`) で部分的な JSON を順次配信する。
+                クライアントは Vercel AI SDK の `useObject` フックで受信する。
+                最終的に `RecipeContent` スキーマに準拠したオブジェクトが完成する。
+
+                ## 認可
+                渡された `ingredientIds` が全て自分の食材であることを検証する。
+                他人の食材 ID が混入していた場合は 403 を返す。
+
+                ## 副作用
+                DB への書き込みは行わない。保存は別途 `POST /api/recipes` で実行する。
+            security:
+                - sessionCookie: []
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [ingredientIds]
+                            properties:
+                                ingredientIds:
+                                    type: array
+                                    minItems: 1
+                                    items:
+                                        type: string
+                                        format: uuid
+                                preferences:
+                                    type: string
+                                    maxLength: 200
+                                    description: 「ガッツリ系」「火を使わない」などの追加条件
+                                servings:
+                                    type: integer
+                                    minimum: 1
+                                    default: 2
+            responses:
+                "200":
+                    description: ストリーミング開始
+                    content:
+                        text/event-stream:
+                            schema:
+                                $ref: "#/components/schemas/RecipeContent"
+                "400":
+                    $ref: "#/components/responses/BadRequest"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "403":
+                    description: 他人の食材 ID が含まれている
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
+                "500":
+                    $ref: "#/components/responses/InternalServerError"
+
+    /api/history:
+        get:
+            tags: [History]
+            summary: 直近料理履歴取得
+            security:
+                - sessionCookie: []
+            parameters:
+                - in: query
+                  name: limit
+                  schema:
+                      { type: integer, minimum: 1, maximum: 100, default: 20 }
+                - in: query
+                  name: page
+                  schema: { type: integer, minimum: 1, default: 1 }
+            responses:
+                "200":
+                    description: 履歴取得成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CookingLogListResponse"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+
+        post:
+            tags: [History]
+            summary: 作った報告（履歴記録 + 在庫消費）
+            description: |
+                レシピを作った事実を記録し、消費食材の在庫を減らす。
+
+                ## トランザクション仕様
+                - cooking_logs への INSERT
+                - 各 ingredients の数量減算
+                - 数量が 0 になった ingredients は削除
+                - 以上を1トランザクションで実行
+                - 在庫不足（消費量 > 在庫量）の場合はロールバックして 400 を返す
+
+                ## 認可
+                - recipeId が自分のレシピであることを検証
+                - 全ての ingredientId が自分の食材であることを検証
+
+                ## revalidate 対象
+                - /dashboard
+                - /ingredients
+                - /recipes
+                - /recipes/{recipeId}
+            security:
+                - sessionCookie: []
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required: [recipeId, consumedIngredients]
+                            properties:
+                                recipeId:
+                                    type: string
+                                    format: uuid
+                                consumedIngredients:
+                                    type: array
+                                    minItems: 1
+                                    items:
+                                        type: object
+                                        required: [ingredientId, quantity]
+                                        properties:
+                                            ingredientId:
+                                                type: string
+                                                format: uuid
+                                            quantity:
+                                                type: number
+                                                minimum: 0
+            responses:
+                "201":
+                    description: 記録成功
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CookingLogResponse"
+                "400":
+                    description: バリデーション失敗、または在庫不足
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "403":
+                    description: 他人のレシピまたは食材 ID が含まれている
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ApiError"
+                "404":
+                    $ref: "#/components/responses/NotFound"
 
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    securitySchemes:
+        sessionCookie:
+            type: apiKey
+            in: cookie
+            name: next-auth.session-token
+            description: |
+                NextAuth.js が発行する httpOnly Cookie。
+                ログイン成功時に Set-Cookie で自動付与され、以降のリクエストに自動的に含まれる。
 
-  parameters:
-    IngredientId:
-      in: path
-      name: id
-      required: true
-      schema:
-        type: string
+    parameters:
+        IngredientId:
+            in: path
+            name: id
+            required: true
+            schema:
+                type: string
+                format: uuid
 
-    RecipeId:
-      in: path
-      name: id
-      required: true
-      schema:
-        type: string
+        RecipeId:
+            in: path
+            name: id
+            required: true
+            schema:
+                type: string
+                format: uuid
 
-  responses:
-    BadRequest:
-      description: 不正なリクエスト
-    Unauthorized:
-      description: 認証失敗
-    Forbidden:
-      description: 権限なし
-    NotFound:
-      description: リソースが存在しない
-    InternalServerError:
-      description: サーバーエラー
+    responses:
+        BadRequest:
+            description: 入力値不正
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/ApiError"
+        Unauthorized:
+            description: 未認証またはセッション切れ
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/ApiError"
+        Forbidden:
+            description: 認可エラー（他人のリソースへのアクセスなど）
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/ApiError"
+        NotFound:
+            description: リソースが存在しない（他人のリソースもこれを返す）
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/ApiError"
+        InternalServerError:
+            description: サーバー内部エラー
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/ApiError"
 
-  schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        username:
-          type: string
-        email:
-          type: string
-          format: email
+    schemas:
+        ApiError:
+            type: object
+            required: [error]
+            properties:
+                error:
+                    type: object
+                    required: [code, message]
+                    properties:
+                        code:
+                            type: string
+                            enum:
+                                - VALIDATION_ERROR
+                                - UNAUTHORIZED
+                                - FORBIDDEN
+                                - NOT_FOUND
+                                - CONFLICT
+                                - RATE_LIMITED
+                                - INVALID_TOKEN
+                                - EXPIRED
+                                - INSUFFICIENT_STOCK
+                                - INTERNAL_ERROR
+                            example: VALIDATION_ERROR
+                        message:
+                            type: string
+                            example: 入力値が不正です
 
-    UserSettings:
-      type: object
-      properties:
-        notificationEnabled:
-          type: boolean
-        notifyBeforeDays:
-          type: integer
-        theme:
-          type: string
-          enum:
-            - light
-            - dark
-            - system
+        Pagination:
+            type: object
+            required: [page, limit, total, totalPages]
+            properties:
+                page: { type: integer, example: 1 }
+                limit: { type: integer, example: 50 }
+                total: { type: integer, example: 123 }
+                totalPages: { type: integer, example: 3 }
 
-    Ingredient:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        quantity:
-          type: string
-        expiryDate:
-          type: string
-          format: date
+        User:
+            type: object
+            properties:
+                id: { type: string, format: uuid }
+                name: { type: string }
+                email: { type: string, format: email }
+                createdAt: { type: string, format: date-time }
+                updatedAt: { type: string, format: date-time }
 
-    Recipe:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        thumbnailUrl:
-          type: string
-        ingredients:
-          type: array
-          items:
-            type: string
-        steps:
-          type: array
-          items:
-            type: string
+        UserResponse:
+            type: object
+            required: [data]
+            properties:
+                data:
+                    $ref: "#/components/schemas/User"
 
-    RecipeCreateRequest:
-      type: object
-      required:
-        - name
-        - ingredients
-        - steps
-      properties:
-        name:
-          type: string
-        ingredients:
-          type: array
-          items:
-            type: string
-        steps:
-          type: array
-          items:
-            type: string
+        UserSettings:
+            type: object
+            properties:
+                warningDay:
+                    type: integer
+                    minimum: 0
+                    maximum: 14
+                    default: 3
+                    description: 期限警告を何日前から出すか
+                notificationEnabled:
+                    type: boolean
+                    default: true
+                theme:
+                    type: string
+                    enum: [light, dark, system]
+                    default: system
+
+        UserSettingsResponse:
+            type: object
+            required: [data]
+            properties:
+                data:
+                    $ref: "#/components/schemas/UserSettings"
+
+        Ingredient:
+            type: object
+            properties:
+                id: { type: string, format: uuid }
+                name: { type: string }
+                quantity:
+                    type: number
+                    nullable: true
+                    example: 200
+                unit:
+                    type: string
+                    nullable: true
+                    example: g
+                deadline:
+                    type: string
+                    format: date
+                    nullable: true
+                    description: 賞味期限
+                source:
+                    type: string
+                    enum: [manual, receipt, fridge_photo]
+                createdAt: { type: string, format: date-time }
+                updatedAt: { type: string, format: date-time }
+
+        IngredientCreate:
+            type: object
+            required: [name, source]
+            properties:
+                name:
+                    type: string
+                    minLength: 1
+                    maxLength: 100
+                quantity:
+                    type: number
+                    minimum: 0
+                    nullable: true
+                unit:
+                    type: string
+                    maxLength: 20
+                    nullable: true
+                deadline:
+                    type: string
+                    format: date
+                    nullable: true
+                source:
+                    type: string
+                    enum: [manual, receipt, fridge_photo]
+                    default: manual
+
+        IngredientUpdate:
+            type: object
+            properties:
+                name:
+                    type: string
+                    minLength: 1
+                    maxLength: 100
+                quantity:
+                    type: number
+                    minimum: 0
+                    nullable: true
+                unit:
+                    type: string
+                    maxLength: 20
+                    nullable: true
+                deadline:
+                    type: string
+                    format: date
+                    nullable: true
+
+        IngredientResponse:
+            type: object
+            required: [data]
+            properties:
+                data:
+                    $ref: "#/components/schemas/Ingredient"
+
+        IngredientListResponse:
+            type: object
+            required: [data, pagination]
+            properties:
+                data:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/Ingredient"
+                pagination:
+                    $ref: "#/components/schemas/Pagination"
+
+        AnalyzedIngredient:
+            type: object
+            properties:
+                name: { type: string }
+                quantity:
+                    type: number
+                    nullable: true
+                unit:
+                    type: string
+                    nullable: true
+                estimatedExpiryDate:
+                    type: string
+                    format: date
+                    nullable: true
+                    description: AI が推測した期限
+                confidence:
+                    type: number
+                    minimum: 0
+                    maximum: 1
+                    nullable: true
+                    description: AI の確信度（冷蔵庫解析時のみ）
+
+        AnalyzedIngredientsResponse:
+            type: object
+            required: [data]
+            properties:
+                data:
+                    type: object
+                    properties:
+                        ingredients:
+                            type: array
+                            items:
+                                $ref: "#/components/schemas/AnalyzedIngredient"
+
+        RecipeContent:
+            type: object
+            required: [ingredients, steps]
+            properties:
+                description:
+                    type: string
+                    nullable: true
+                    description: レシピの一言紹介
+                servings:
+                    type: integer
+                    minimum: 1
+                    nullable: true
+                cookingTimeMinutes:
+                    type: integer
+                    minimum: 1
+                    nullable: true
+                difficulty:
+                    type: string
+                    enum: [easy, medium, hard]
+                    nullable: true
+                ingredients:
+                    type: array
+                    items:
+                        type: object
+                        required: [name]
+                        properties:
+                            name: { type: string }
+                            quantity:
+                                oneOf:
+                                    - { type: number }
+                                    - { type: string }
+                                nullable: true
+                            unit: { type: string, nullable: true }
+                            note: { type: string, nullable: true }
+                steps:
+                    type: array
+                    items:
+                        type: object
+                        required: [order, description]
+                        properties:
+                            order: { type: integer }
+                            description: { type: string }
+                            tip: { type: string, nullable: true }
+                tags:
+                    type: array
+                    items: { type: string }
+                    nullable: true
+
+        Recipe:
+            type: object
+            properties:
+                id: { type: string, format: uuid }
+                name: { type: string }
+                content:
+                    $ref: "#/components/schemas/RecipeContent"
+                cookCount:
+                    type: integer
+                    description: cooking_logs から集計した調理回数
+                lastCookedAt:
+                    type: string
+                    format: date-time
+                    nullable: true
+                createdAt: { type: string, format: date-time }
+                updatedAt: { type: string, format: date-time }
+
+        RecipeCreateRequest:
+            type: object
+            required: [name, content]
+            properties:
+                name:
+                    type: string
+                    minLength: 1
+                    maxLength: 200
+                content:
+                    $ref: "#/components/schemas/RecipeContent"
+
+        RecipeResponse:
+            type: object
+            required: [data]
+            properties:
+                data:
+                    $ref: "#/components/schemas/Recipe"
+
+        RecipeListResponse:
+            type: object
+            required: [data, pagination]
+            properties:
+                data:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/Recipe"
+                pagination:
+                    $ref: "#/components/schemas/Pagination"
+
+        UsedIngredient:
+            type: object
+            description: cooking_logs に保存されるスナップショット
+            properties:
+                name: { type: string }
+                quantity:
+                    oneOf:
+                        - { type: number }
+                        - { type: string }
+                    nullable: true
+                unit: { type: string, nullable: true }
+
+        CookingLog:
+            type: object
+            properties:
+                id: { type: string, format: uuid }
+                recipeId:
+                    type: string
+                    format: uuid
+                    nullable: true
+                    description: 元レシピが削除されると null になる（SET NULL）
+                name:
+                    type: string
+                    description: 料理名のスナップショット（レシピ削除後も残る）
+                source:
+                    type: string
+                    enum: [ai_recipe, manual]
+                usedIngredients:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/UsedIngredient"
+                cookedAt: { type: string, format: date-time }
+                createdAt: { type: string, format: date-time }
+
+        CookingLogResponse:
+            type: object
+            required: [data]
+            properties:
+                data:
+                    $ref: "#/components/schemas/CookingLog"
+
+        CookingLogListResponse:
+            type: object
+            required: [data, pagination]
+            properties:
+                data:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/CookingLog"
+                pagination:
+                    $ref: "#/components/schemas/Pagination"
