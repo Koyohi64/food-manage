@@ -1,0 +1,697 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Food Inventory Management - Zubora Kitchen</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+        </style>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-secondary-container": "#004d44",
+                            "on-primary-fixed-variant": "#005227",
+                            "surface-variant": "#2f372f",
+                            "on-surface": "#dde5da",
+                            "on-primary": "#003919",
+                            "surface-container-high": "#242c25",
+                            "primary-fixed-dim": "#4de082",
+                            "surface-tint": "#4de082",
+                            "on-tertiary-container": "#794418",
+                            error: "#ffb4ab",
+                            "on-error-container": "#ffdad6",
+                            "surface-bright": "#333b34",
+                            "surface-container-highest": "#2f372f",
+                            "on-error": "#690005",
+                            "on-secondary": "#003731",
+                            "on-secondary-fixed": "#00201c",
+                            "tertiary-fixed": "#ffdcc6",
+                            "surface-dim": "#0e150f",
+                            "secondary-container": "#03c6b2",
+                            "inverse-surface": "#dde5da",
+                            "surface-container-low": "#161d17",
+                            "error-container": "#93000a",
+                            "on-primary-fixed": "#00210c",
+                            background: "#0e150f",
+                            "surface-container": "#1a211b",
+                            "on-tertiary-fixed": "#301400",
+                            "primary-container": "#4ade80",
+                            "outline-variant": "#3d4a3e",
+                            surface: "#0e150f",
+                            "inverse-on-surface": "#2b322b",
+                            "on-tertiary": "#4f2500",
+                            "on-secondary-fixed-variant": "#005047",
+                            "on-surface-variant": "#bccabb",
+                            secondary: "#44e2cd",
+                            outline: "#869486",
+                            "on-tertiary-fixed-variant": "#6c3a0f",
+                            "secondary-fixed": "#62fae3",
+                            "on-primary-container": "#005e2d",
+                            primary: "#6bfb9a",
+                            "tertiary-fixed-dim": "#ffb784",
+                            "secondary-fixed-dim": "#3cddc7",
+                            "on-background": "#dde5da",
+                            tertiary: "#ffd9c1",
+                            "inverse-primary": "#006d36",
+                            "primary-fixed": "#6dfe9c",
+                            "surface-container-lowest": "#09100a",
+                            "tertiary-container": "#ffb47f",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            gutter: "20px",
+                            "margin-mobile": "16px",
+                            "margin-desktop": "64px",
+                            lg: "24px",
+                            xl: "32px",
+                            md: "16px",
+                            xs: "4px",
+                            unit: "4px",
+                            sm: "8px",
+                            "max-width": "1200px",
+                        },
+                        fontFamily: {
+                            "headline-md": ["Plus Jakarta Sans"],
+                            "display-lg": ["Plus Jakarta Sans"],
+                            "body-md": ["Plus Jakarta Sans"],
+                            "body-lg": ["Plus Jakarta Sans"],
+                            "headline-lg-mobile": ["Plus Jakarta Sans"],
+                            "label-md": ["Plus Jakarta Sans"],
+                            "label-sm": ["Plus Jakarta Sans"],
+                            "headline-lg": ["Plus Jakarta Sans"],
+                        },
+                        fontSize: {
+                            "headline-md": [
+                                "24px",
+                                { lineHeight: "32px", fontWeight: "600" },
+                            ],
+                            "display-lg": [
+                                "48px",
+                                {
+                                    lineHeight: "56px",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "800",
+                                },
+                            ],
+                            "body-md": [
+                                "16px",
+                                { lineHeight: "24px", fontWeight: "400" },
+                            ],
+                            "body-lg": [
+                                "18px",
+                                { lineHeight: "28px", fontWeight: "400" },
+                            ],
+                            "headline-lg-mobile": [
+                                "28px",
+                                { lineHeight: "36px", fontWeight: "700" },
+                            ],
+                            "label-md": [
+                                "14px",
+                                {
+                                    lineHeight: "20px",
+                                    letterSpacing: "0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                { lineHeight: "16px", fontWeight: "500" },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "40px",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body class="bg-background text-on-background font-body-md min-h-screen">
+        <!-- TopNavBar (Mobile Only) -->
+        <header
+            class="md:hidden flex justify-between items-center w-full px-margin-mobile py-sm fixed top-0 z-50 bg-surface shadow-sm border-b border-outline-variant"
+        >
+            <div class="flex items-center gap-sm">
+                <span
+                    class="material-symbols-outlined text-primary text-[28px]"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >restaurant</span
+                >
+                <span
+                    class="text-headline-md font-headline-md font-bold text-primary"
+                    >Zubora Kitchen</span
+                >
+            </div>
+            <div class="flex gap-md text-on-surface-variant">
+                <button
+                    class="hover:bg-surface-container-low transition-colors rounded-full p-2 active:scale-95 transition-transform"
+                >
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <button
+                    class="hover:bg-surface-container-low transition-colors rounded-full p-2 active:scale-95 transition-transform"
+                >
+                    <span class="material-symbols-outlined">mic</span>
+                </button>
+            </div>
+        </header>
+        <!-- SideNavBar (Desktop Only) -->
+        <nav
+            class="hidden md:flex flex-col h-screen p-md fixed left-0 top-0 z-40 bg-surface-container-lowest border-r border-outline-variant w-64"
+        >
+            <div class="flex items-center gap-sm mb-xl px-2">
+                <img
+                    alt="Zubora User"
+                    class="w-12 h-12 rounded-full object-cover shadow-sm ring-2 ring-outline-variant"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaWuT0wBYAdfbcKKBsdi9EQYRrWQuyCuG81b_wD0iZxQ3cpG0CivDYuNKhi68UVzCTJUysQKkJPO6Vh95br4myUHcxNq9JgToKxqjWSR_xcPMXbYjsZCCLZTY2TA72Q0CWn-FGy97r2txh9l2IJuC5tYadPuuiYRpAgBG4F6goRSwvZQ63EJ2xE-NaHAYQ_27iUtznHeRwOqvfYNtcF0U0dr_UIPHL1fOJJLJliUWiL851HygdEUBPIN9PmnEL9aw11pTl-qHOuQ"
+                />
+                <div class="flex flex-col">
+                    <span class="font-headline-md text-headline-md text-primary"
+                        >My Kitchen</span
+                    >
+                    <span
+                        class="font-label-sm text-label-sm text-on-surface-variant"
+                        >Stay lazy, eat well</span
+                    >
+                </div>
+            </div>
+            <div class="flex flex-col gap-2 flex-grow">
+                <a
+                    class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all rounded-xl font-label-md text-label-md py-3 px-4 flex items-center gap-3 active:translate-x-1 transition-transform"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">home</span>
+                    Home
+                </a>
+                <!-- Active Tab -->
+                <a
+                    class="bg-primary-container text-on-primary-container rounded-xl font-bold font-label-md text-label-md py-3 px-4 flex items-center gap-3 active:translate-x-1 transition-transform shadow-sm"
+                    href="#"
+                >
+                    <span
+                        class="material-symbols-outlined"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >inventory_2</span
+                    >
+                    Food Inventory
+                </a>
+                <a
+                    class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all rounded-xl font-label-md text-label-md py-3 px-4 flex items-center gap-3 active:translate-x-1 transition-transform"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined"
+                        >restaurant_menu</span
+                    >
+                    Recipe List
+                </a>
+                <a
+                    class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all rounded-xl font-label-md text-label-md py-3 px-4 flex items-center gap-3 active:translate-x-1 transition-transform"
+                    href="#"
+                >
+                    <span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+            </div>
+            <button
+                class="mt-auto bg-primary text-on-primary rounded-xl font-label-md text-label-md py-3 px-4 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-sm"
+            >
+                <span class="material-symbols-outlined">add</span>
+                Add Food
+            </button>
+        </nav>
+        <!-- BottomNavBar (Mobile Only) -->
+        <nav
+            class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface border-t border-outline-variant shadow-lg rounded-t-xl"
+        >
+            <a
+                class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1"
+                href="#"
+            >
+                <span class="material-symbols-outlined">home</span>
+                <span class="font-label-sm text-label-sm">Home</span>
+            </a>
+            <!-- Active Tab -->
+            <a
+                class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-150"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >inventory_2</span
+                >
+                <span class="font-label-sm text-label-sm font-bold">Food</span>
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1"
+                href="#"
+            >
+                <span class="material-symbols-outlined">restaurant_menu</span>
+                <span class="font-label-sm text-label-sm">Recipes</span>
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1"
+                href="#"
+            >
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-sm text-label-sm">Settings</span>
+            </a>
+        </nav>
+        <!-- Main Content Canvas -->
+        <main
+            class="ml-0 md:ml-64 pt-[72px] md:pt-0 pb-[80px] md:pb-0 min-h-screen"
+        >
+            <div
+                class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl flex flex-col gap-xl"
+            >
+                <!-- Page Header & Search -->
+                <section class="flex flex-col gap-lg">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md"
+                    >
+                        <div>
+                            <h1
+                                class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background"
+                            >
+                                Food Inventory
+                            </h1>
+                            <p
+                                class="font-body-md text-body-md text-on-surface-variant mt-1"
+                            >
+                                Manage your ingredients and track expiration
+                                dates.
+                            </p>
+                        </div>
+                        <div class="w-full md:w-auto flex items-center gap-sm">
+                            <div class="relative flex-grow md:w-80">
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline"
+                                    >search</span
+                                >
+                                <input
+                                    class="w-full pl-10 pr-4 py-3 bg-surface-container border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface outline-none transition-shadow"
+                                    placeholder="Search ingredients..."
+                                    type="text"
+                                />
+                            </div>
+                            <button
+                                class="p-3 bg-surface-container border border-outline-variant rounded-xl text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >filter_list</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Category Chips -->
+                    <div
+                        class="flex items-center gap-sm overflow-x-auto pb-2 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0 scrollbar-hide"
+                    >
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-primary-container text-on-primary-container rounded-lg font-label-md text-label-md border border-transparent"
+                        >
+                            All Items
+                        </button>
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md border border-outline-variant hover:bg-surface-container-high transition-colors"
+                        >
+                            Produce
+                        </button>
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md border border-outline-variant hover:bg-surface-container-high transition-colors"
+                        >
+                            Dairy
+                        </button>
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md border border-outline-variant hover:bg-surface-container-high transition-colors"
+                        >
+                            Meat
+                        </button>
+                        <button
+                            class="whitespace-nowrap px-4 py-1.5 bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md border border-outline-variant hover:bg-surface-container-high transition-colors"
+                        >
+                            Pantry
+                        </button>
+                    </div>
+                </section>
+                <!-- Inventory Grid -->
+                <section
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter md:gap-lg"
+                >
+                    <!-- Card: Safe (Green) -->
+                    <div
+                        class="bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant p-md flex flex-col gap-md relative overflow-hidden group"
+                    >
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-primary"
+                        ></div>
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[24px]"
+                                        >nutrition</span
+                                    >
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-body-lg font-bold text-on-surface leading-tight"
+                                    >
+                                        Avocados
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-on-surface-variant"
+                                        >Produce</span
+                                    >
+                                </div>
+                            </div>
+                            <button class="text-outline hover:text-on-surface">
+                                <span class="material-symbols-outlined"
+                                    >more_vert</span
+                                >
+                            </button>
+                        </div>
+                        <div
+                            class="flex items-center justify-between mt-auto pt-2"
+                        >
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm text-outline"
+                                    >Expires</span
+                                >
+                                <div
+                                    class="flex items-center gap-1 text-primary"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px]"
+                                        >check_circle</span
+                                    >
+                                    <span class="font-label-md text-label-md"
+                                        >In 5 days</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center bg-surface-container rounded-lg p-1 border border-outline-variant"
+                            >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >remove</span
+                                    >
+                                </button>
+                                <span
+                                    class="w-8 text-center font-label-md text-label-md text-on-surface"
+                                    >3</span
+                                >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >add</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card: Expiring Soon (Yellow/Orange) -->
+                    <div
+                        class="bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant p-md flex flex-col gap-md relative overflow-hidden group"
+                    >
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-secondary-container"
+                        ></div>
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary-fixed"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[24px]"
+                                        >egg_alt</span
+                                    >
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-body-lg font-bold text-on-surface leading-tight"
+                                    >
+                                        Free Range Eggs
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-on-surface-variant"
+                                        >Dairy</span
+                                    >
+                                </div>
+                            </div>
+                            <button class="text-outline hover:text-on-surface">
+                                <span class="material-symbols-outlined"
+                                    >more_vert</span
+                                >
+                            </button>
+                        </div>
+                        <div
+                            class="flex items-center justify-between mt-auto pt-2"
+                        >
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm text-outline"
+                                    >Expires</span
+                                >
+                                <div
+                                    class="flex items-center gap-1 text-secondary-container"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px]"
+                                        >warning</span
+                                    >
+                                    <span class="font-label-md text-label-md"
+                                        >Tomorrow</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center bg-surface-container rounded-lg p-1 border border-outline-variant"
+                            >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >remove</span
+                                    >
+                                </button>
+                                <span
+                                    class="w-8 text-center font-label-md text-label-md text-on-surface"
+                                    >6</span
+                                >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >add</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card: Expired (Red) -->
+                    <div
+                        class="bg-error-container/10 rounded-xl shadow-lg border border-error/20 p-md flex flex-col gap-md relative overflow-hidden group"
+                    >
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-error"
+                        ></div>
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-error-container flex items-center justify-center text-on-error-container"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[24px]"
+                                        >local_drink</span
+                                    >
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-body-lg font-bold text-on-surface leading-tight"
+                                    >
+                                        Whole Milk
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-on-surface-variant"
+                                        >Dairy</span
+                                    >
+                                </div>
+                            </div>
+                            <button class="text-outline hover:text-on-surface">
+                                <span class="material-symbols-outlined"
+                                    >more_vert</span
+                                >
+                            </button>
+                        </div>
+                        <div
+                            class="flex items-center justify-between mt-auto pt-2"
+                        >
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm text-error"
+                                    >Expired</span
+                                >
+                                <div class="flex items-center gap-1 text-error">
+                                    <span
+                                        class="material-symbols-outlined text-[16px]"
+                                        >error</span
+                                    >
+                                    <span class="font-label-md text-label-md"
+                                        >2 days ago</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center bg-surface-container-low rounded-lg p-1 border border-outline-variant"
+                            >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors rounded-md"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >remove</span
+                                    >
+                                </button>
+                                <span
+                                    class="w-8 text-center font-label-md text-label-md text-on-surface"
+                                    >1</span
+                                >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors rounded-md"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >add</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card: Safe (Green) -->
+                    <div
+                        class="bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant p-md flex flex-col gap-md relative overflow-hidden group"
+                    >
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-primary"
+                        ></div>
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[24px]"
+                                        >set_meal</span
+                                    >
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-body-lg font-bold text-on-surface leading-tight"
+                                    >
+                                        Chicken Breast
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-on-surface-variant"
+                                        >Meat</span
+                                    >
+                                </div>
+                            </div>
+                            <button class="text-outline hover:text-on-surface">
+                                <span class="material-symbols-outlined"
+                                    >more_vert</span
+                                >
+                            </button>
+                        </div>
+                        <div
+                            class="flex items-center justify-between mt-auto pt-2"
+                        >
+                            <div class="flex flex-col">
+                                <span
+                                    class="font-label-sm text-label-sm text-outline"
+                                    >Expires</span
+                                >
+                                <div
+                                    class="flex items-center gap-1 text-primary"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[16px]"
+                                        >check_circle</span
+                                    >
+                                    <span class="font-label-md text-label-md"
+                                        >In 3 days</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center bg-surface-container rounded-lg p-1 border border-outline-variant"
+                            >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >remove</span
+                                    >
+                                </button>
+                                <span
+                                    class="w-8 text-center font-label-md text-label-md text-on-surface"
+                                    >2</span
+                                >
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded-md transition-colors"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[18px]"
+                                        >add</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </body>
+</html>

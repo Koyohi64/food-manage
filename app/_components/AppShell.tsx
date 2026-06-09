@@ -1,4 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useAuthContext } from "@/lib/context/AuthContext";
+import { useStats } from "@/lib/hooks/useStats";
 
 const navItems = [
   { href: "/", label: "ダッシュボード" },
@@ -11,6 +17,37 @@ export default function AppShell({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const router = useRouter();
+  const { logout, isAuthenticated, loading } = useAuthContext();
+  const stats = useStats();
+
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      router.replace("/login");
+    }
+  }, [loading, isAuthenticated, router]);
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-surface">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null;
+  }
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      router.push("/login");
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-surface text-on-surface">
       <header className="border-b border-outline-variant bg-surface-container-lowest">
@@ -33,12 +70,15 @@ export default function AppShell({
             >
               設定
             </Link>
-            <button
-              className="rounded-full bg-primary px-4 py-2 font-medium text-on-primary transition hover:bg-primary/90"
-              type="button"
-            >
-              ログアウト
-            </button>
+            {isAuthenticated && (
+              <button
+                className="rounded-full bg-primary px-4 py-2 font-medium text-on-primary transition hover:bg-primary/90"
+                type="button"
+                onClick={handleLogout}
+              >
+                ログアウト
+              </button>
+            )}
           </nav>
         </div>
       </header>
@@ -67,15 +107,21 @@ export default function AppShell({
             <div className="mt-3 space-y-3 text-sm text-on-surface-variant">
               <div className="flex items-center justify-between">
                 <span>食材</span>
-                <span className="font-semibold text-on-surface">24</span>
+                <span className="font-semibold text-on-surface">
+                  {stats.loading ? "…" : `${stats.data?.ingredientCount ?? 0}件`}
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>レシピ</span>
-                <span className="font-semibold text-on-surface">12</span>
+                <span className="font-semibold text-on-surface">
+                  {stats.loading ? "…" : `${stats.data?.recipeCount ?? 0}件`}
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>期限間近</span>
-                <span className="font-semibold text-on-surface">3</span>
+                <span className={`font-semibold ${stats.data && stats.data.expiringCount > 0 ? "text-error" : "text-on-surface"}`}>
+                  {stats.loading ? "…" : `${stats.data?.expiringCount ?? 0}件`}
+                </span>
               </div>
             </div>
           </div>

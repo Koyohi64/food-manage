@@ -1,0 +1,403 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Zubora Kitchen - Add Food</title>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- Material Symbols -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .icon-fill {
+                font-variation-settings: "FILL" 1;
+            }
+        </style>
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <!-- Theme Configuration -->
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-secondary-container": "#004d44",
+                            "on-primary-fixed-variant": "#005227",
+                            "surface-variant": "#2f372f",
+                            "on-surface": "#dde5da",
+                            "on-primary": "#003919",
+                            "surface-container-high": "#242c25",
+                            "primary-fixed-dim": "#4de082",
+                            "surface-tint": "#4de082",
+                            "on-tertiary-container": "#794418",
+                            error: "#ffb4ab",
+                            "on-error-container": "#ffdad6",
+                            "surface-bright": "#333b34",
+                            "surface-container-highest": "#2f372f",
+                            "on-error": "#690005",
+                            "on-secondary": "#003731",
+                            "on-secondary-fixed": "#00201c",
+                            "tertiary-fixed": "#ffdcc6",
+                            "surface-dim": "#0e150f",
+                            "secondary-container": "#03c6b2",
+                            "inverse-surface": "#dde5da",
+                            "surface-container-low": "#161d17",
+                            "error-container": "#93000a",
+                            "on-primary-fixed": "#00210c",
+                            background: "#0e150f",
+                            "surface-container": "#1a211b",
+                            "on-tertiary-fixed": "#301400",
+                            "primary-container": "#4ade80",
+                            "outline-variant": "#3d4a3e",
+                            surface: "#0e150f",
+                            "inverse-on-surface": "#2b322b",
+                            "on-tertiary": "#4f2500",
+                            "on-secondary-fixed-variant": "#005047",
+                            "on-surface-variant": "#bccabb",
+                            secondary: "#44e2cd",
+                            outline: "#869486",
+                            "on-tertiary-fixed-variant": "#6c3a0f",
+                            "secondary-fixed": "#62fae3",
+                            "on-primary-container": "#005e2d",
+                            primary: "#6bfb9a",
+                            "tertiary-fixed-dim": "#ffb784",
+                            "secondary-fixed-dim": "#3cddc7",
+                            "on-background": "#dde5da",
+                            tertiary: "#ffd9c1",
+                            "inverse-primary": "#006d36",
+                            "primary-fixed": "#6dfe9c",
+                            "surface-container-lowest": "#09100a",
+                            "tertiary-container": "#ffb47f",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            gutter: "20px",
+                            "margin-mobile": "16px",
+                            "margin-desktop": "64px",
+                            lg: "24px",
+                            xl: "32px",
+                            md: "16px",
+                            xs: "4px",
+                            unit: "4px",
+                            sm: "8px",
+                            "max-width": "1200px",
+                        },
+                        fontFamily: {
+                            "headline-md": ["Plus Jakarta Sans"],
+                            "display-lg": ["Plus Jakarta Sans"],
+                            "body-md": ["Plus Jakarta Sans"],
+                            "body-lg": ["Plus Jakarta Sans"],
+                            "headline-lg-mobile": ["Plus Jakarta Sans"],
+                            "label-md": ["Plus Jakarta Sans"],
+                            "label-sm": ["Plus Jakarta Sans"],
+                            "headline-lg": ["Plus Jakarta Sans"],
+                        },
+                        fontSize: {
+                            "headline-md": [
+                                "24px",
+                                { lineHeight: "32px", fontWeight: "600" },
+                            ],
+                            "display-lg": [
+                                "48px",
+                                {
+                                    lineHeight: "56px",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "800",
+                                },
+                            ],
+                            "body-md": [
+                                "16px",
+                                { lineHeight: "24px", fontWeight: "400" },
+                            ],
+                            "body-lg": [
+                                "18px",
+                                { lineHeight: "28px", fontWeight: "400" },
+                            ],
+                            "headline-lg-mobile": [
+                                "28px",
+                                { lineHeight: "36px", fontWeight: "700" },
+                            ],
+                            "label-md": [
+                                "14px",
+                                {
+                                    lineHeight: "20px",
+                                    letterSpacing: "0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                { lineHeight: "16px", fontWeight: "500" },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "40px",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body
+        class="bg-background min-h-screen flex flex-col text-on-surface antialiased"
+    >
+        <!-- Task-Focused Header -->
+        <header
+            class="w-full px-margin-mobile md:px-margin-desktop py-md flex items-center justify-between sticky top-0 bg-background/80 backdrop-blur-md z-40"
+        >
+            <div class="w-10"></div>
+            <!-- Spacer for centering -->
+            <h1
+                class="font-label-md text-label-md text-on-surface tracking-widest uppercase opacity-60"
+            >
+                Add Food
+            </h1>
+            <button
+                aria-label="Close"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors shadow-sm"
+            >
+                <span class="material-symbols-outlined icon-fill">close</span>
+            </button>
+        </header>
+        <!-- Main Canvas -->
+        <main
+            class="flex-1 w-full max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl flex flex-col items-center"
+        >
+            <!-- Guidance Text -->
+            <div class="text-center mb-xl md:mb-16 max-w-2xl">
+                <h2
+                    class="font-display-lg text-display-lg text-on-surface mb-sm tracking-tight leading-tight"
+                >
+                    Choose how you want to add your food.
+                </h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Select the fastest method to keep your digital pantry up to
+                    date.
+                </p>
+            </div>
+            <!-- Primary Actions (Bento Grid) -->
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-md md:gap-xl w-full max-w-5xl mb-xl md:mb-16"
+            >
+                <!-- Option 1: Snap Receipt -->
+                <button
+                    class="group flex flex-col items-center justify-center p-xl md:py-16 bg-surface-container-lowest border border-outline-variant rounded-[24px] shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-primary transition-all duration-300 relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+                >
+                    <!-- Decorative background blob -->
+                    <div
+                        class="absolute -top-10 -right-10 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl group-hover:bg-primary-container/20 transition-colors"
+                    ></div>
+                    <div
+                        class="w-20 h-20 mb-md rounded-full bg-primary-container flex items-center justify-center text-on-primary-container group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(74,222,128,0.4)]"
+                    >
+                        <span
+                            class="material-symbols-outlined icon-fill text-[40px]"
+                            >receipt_long</span
+                        >
+                    </div>
+                    <h3
+                        class="font-headline-md text-headline-md text-on-surface mb-xs"
+                    >
+                        Snap Receipt
+                    </h3>
+                    <span
+                        class="font-body-md text-body-md text-on-surface-variant"
+                        >Auto-scan from store</span
+                    >
+                </button>
+                <!-- Option 2: Snap Refrigerator -->
+                <button
+                    class="group flex flex-col items-center justify-center p-xl md:py-16 bg-surface-container-lowest border border-outline-variant rounded-[24px] shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-tertiary-container transition-all duration-300 relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-tertiary focus:ring-offset-2 focus:ring-offset-background"
+                >
+                    <!-- Decorative background blob -->
+                    <div
+                        class="absolute -top-10 -right-10 w-32 h-32 bg-tertiary-container/10 rounded-full blur-2xl group-hover:bg-tertiary-container/20 transition-colors"
+                    ></div>
+                    <div
+                        class="w-20 h-20 mb-md rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(255,180,127,0.4)]"
+                    >
+                        <span
+                            class="material-symbols-outlined icon-fill text-[40px]"
+                            >kitchen</span
+                        >
+                    </div>
+                    <h3
+                        class="font-headline-md text-headline-md text-on-surface mb-xs"
+                    >
+                        Snap Refrigerator
+                    </h3>
+                    <span
+                        class="font-body-md text-body-md text-on-surface-variant"
+                        >AI inventory update</span
+                    >
+                </button>
+                <!-- Option 3: Manual Entry -->
+                <button
+                    class="group flex flex-col items-center justify-center p-xl md:py-16 bg-surface-container-lowest border border-outline-variant rounded-[24px] shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-secondary transition-all duration-300 relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background"
+                >
+                    <!-- Decorative background blob -->
+                    <div
+                        class="absolute -top-10 -right-10 w-32 h-32 bg-secondary-container/10 rounded-full blur-2xl group-hover:bg-secondary-container/20 transition-colors"
+                    ></div>
+                    <div
+                        class="w-20 h-20 mb-md rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(3,198,178,0.4)]"
+                    >
+                        <span
+                            class="material-symbols-outlined icon-fill text-[40px]"
+                            >keyboard</span
+                        >
+                    </div>
+                    <h3
+                        class="font-headline-md text-headline-md text-on-surface mb-xs"
+                    >
+                        Manual Entry
+                    </h3>
+                    <span
+                        class="font-body-md text-body-md text-on-surface-variant"
+                        >Type it in yourself</span
+                    >
+                </button>
+            </div>
+            <!-- Recently Added Section -->
+            <section class="w-full max-w-3xl flex flex-col gap-md">
+                <div class="flex items-center justify-between px-sm">
+                    <h3
+                        class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider"
+                    >
+                        Recently Added
+                    </h3>
+                    <button
+                        class="font-label-sm text-label-sm text-primary hover:text-primary-fixed-dim transition-colors"
+                    >
+                        View All
+                    </button>
+                </div>
+                <div
+                    class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden divide-y divide-outline-variant/30"
+                >
+                    <!-- Recent Item 1 -->
+                    <div
+                        class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer"
+                    >
+                        <div class="flex items-center gap-md">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >eco</span
+                                >
+                            </div>
+                            <div>
+                                <p
+                                    class="font-body-md text-body-md font-medium text-on-surface"
+                                >
+                                    Organic Spinach
+                                </p>
+                                <p
+                                    class="font-label-sm text-label-sm text-on-surface-variant"
+                                >
+                                    Added Today, 9:41 AM
+                                </p>
+                            </div>
+                        </div>
+                        <span
+                            class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-3 py-1 rounded-full"
+                            >1 Bag</span
+                        >
+                    </div>
+                    <!-- Recent Item 2 -->
+                    <div
+                        class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer"
+                    >
+                        <div class="flex items-center gap-md">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >egg</span
+                                >
+                            </div>
+                            <div>
+                                <p
+                                    class="font-body-md text-body-md font-medium text-on-surface"
+                                >
+                                    Free-Range Eggs
+                                </p>
+                                <p
+                                    class="font-label-sm text-label-sm text-on-surface-variant"
+                                >
+                                    Added Yesterday
+                                </p>
+                            </div>
+                        </div>
+                        <span
+                            class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-3 py-1 rounded-full"
+                            >1 Dozen</span
+                        >
+                    </div>
+                    <!-- Recent Item 3 -->
+                    <div
+                        class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer"
+                    >
+                        <div class="flex items-center gap-md">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >local_drink</span
+                                >
+                            </div>
+                            <div>
+                                <p
+                                    class="font-body-md text-body-md font-medium text-on-surface"
+                                >
+                                    Almond Milk
+                                </p>
+                                <p
+                                    class="font-label-sm text-label-sm text-on-surface-variant"
+                                >
+                                    Added Oct 24
+                                </p>
+                            </div>
+                        </div>
+                        <span
+                            class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-3 py-1 rounded-full"
+                            >2 Cartons</span
+                        >
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
