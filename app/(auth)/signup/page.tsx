@@ -18,6 +18,14 @@ export default function SignupPage() {
     e.preventDefault();
     setLocalError(null);
 
+    if (name.length < 1 || name.length > 50) {
+      setLocalError("ユーザー名は1〜50文字で入力してください");
+      return;
+    }
+    if (password.length < 8) {
+      setLocalError("パスワードは8文字以上で入力してください");
+      return;
+    }
     if (password !== confirmPassword) {
       setLocalError("パスワードが一致しません");
       return;
@@ -74,10 +82,12 @@ export default function SignupPage() {
             className="rounded-xl border border-outline-variant bg-surface-container-low px-3 py-2 text-sm"
             placeholder="••••••••"
             type="password"
+            minLength={8}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <span className="text-xs text-on-surface-variant">8文字以上で入力してください</span>
         </label>
         <label className="flex flex-col gap-2 text-sm font-medium">
           パスワード確認
@@ -85,6 +95,7 @@ export default function SignupPage() {
             className="rounded-xl border border-outline-variant bg-surface-container-low px-3 py-2 text-sm"
             placeholder="••••••••"
             type="password"
+            minLength={8}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required

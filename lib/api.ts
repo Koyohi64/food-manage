@@ -325,14 +325,21 @@ export const ingredientsApi = {
     return { rawText, ingredients };
   },
 
-  analyzeFridge: (file: File) => {
+  analyzeFridge: async (file: File): Promise<{ ingredients: AnalyzedIngredient[] }> => {
     const formData = new FormData();
     formData.append("image", file);
-    return apiCall<{ ingredients: AnalyzedIngredient[] }>("/api/ingredients/analyze-fridge", {
+    const response = await fetch("/api/ingredients/analyze-fridge", {
       method: "POST",
+      credentials: "include",
       body: formData,
-      headers: {},
     });
+    const data = await response.json().catch(() => null);
+    if (!response.ok) {
+      const message = data?.error?.message ?? `HTTP ${response.status}`;
+      throw new ApiError(data?.error?.code ?? "UNKNOWN_ERROR", response.status, message);
+    }
+    if (!data?.data) throw new ApiError("PARSE_ERROR", 200, "Invalid response format");
+    return data.data;
   },
 };
 

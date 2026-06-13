@@ -34,8 +34,14 @@ export async function POST(request: Request): Promise<Response> {
     }
     const body = bodyResult.value as SignupBody;
 
-    if (!isValidName(body.name) || !isEmail(body.email) || !isValidPassword(body.password)) {
-        return errorResponse(400, "VALIDATION_ERROR", "Invalid signup payload.");
+    if (!isValidName(body.name)) {
+        return errorResponse(400, "VALIDATION_ERROR", "ユーザー名は1〜50文字で入力してください。");
+    }
+    if (!isEmail(body.email)) {
+        return errorResponse(400, "VALIDATION_ERROR", "有効なメールアドレスを入力してください。");
+    }
+    if (!isValidPassword(body.password)) {
+        return errorResponse(400, "VALIDATION_ERROR", "パスワードは8文字以上72文字以下で入力してください。");
     }
 
     const existing = await sql`SELECT id FROM users WHERE email = ${body.email} LIMIT 1`;
